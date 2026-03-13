@@ -1,0 +1,248 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// Core Entities
+// ============================================================================
+
+model Venue {
+  id        String   @id @default(cuid())
+  name      String   @db.VarChar(255)
+  city      String   @db.VarChar(100)
+  state     String   @db.VarChar(2)
+  timezone  String   @default("America/Los_Angeles")
+  externalRefs Json   @default("{}")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  events             Event[]
+  opportunities      Opportunity[]
+  inventoryItems     InventoryItem[]
+
+  @@index([city])
+  @@index([state])
+}
+
+model Event {
+  id         String   @id @default(cuid())
+  venueId    String
+  name       String   @db.VarChar(255)
+  category   String   @db.VarChar(100)
+  startTime  DateTime
+  endTime    DateTime?
+  status     String   @default("UPCOMING") // UPCOMING, ACTIVE, COMPLETED, CANCELLED
+  sourceUrl  String?  @db.Text
+  externalRefs Json   @default("{}")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  venue               Venue                @relation(fields: [venueId], references: [id], onDelete: Cascade)
+  parkingProducts     ParkingProduct[]
+  observations        MarketObservation[]
+  opportunities       Opportunity[]
+  inventoryItems      InventoryItem[]
+  alerts              Alert[]
+  
+  @@index([venueId])
+  @@index([startTime])
+  @@index([status])
+}
+
+model Source {
+  id        String   @id @default(cuid())
+  name      String   @db.VarChar(255)
+  type      String   // search_api, scraper, manual, other
+  baseUrl   String   @db.VarChar(500)
+  isActive  Boolean  @default(true)
+  config    Json     @default("{}")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  parkingProducts ParkingProduct[]
+  observations    MarketObservation[]
+  opportunities   Opportunity[]
+
+  @@unique([name])
+  @@index([type])
+}
+
+model ParkingProduct {
+  id                    String   @id @default(cuid())
+  eventId               String
+  sourceId              String
+  productName           String   @db.VarChar(255)
+  lotName               String?  @db.VarChar(255)
+  parkingType           String?  @db.VarChar(100) // compact, standard, premium, valet, etc.
+  sourceUrl             String   @db.Text
+  transferabilityStatus String   @default("UNKNOWN") // UNKNOWN, YES, NO
+  transferabilityNote   String?  @db.Text
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  event                Event                @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  source               Source               @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  observations         MarketObservation[]
+  opportunities        Opportunity[]
+  inventoryItems       InventoryItem[]
+
+  @@unique([eventId, sourceId, productName])
+  @@index([eventId])
+  @@index([sourceId])
+}
+
+model MarketObservation {
+  id                  String   @id @default(cuid())
+  eventId             String
+  parkingProductId    String?
+  sourceId            String
+  observedAt          DateTime
+  rawPriceText        String   @db.VarChar(100)
+  normalizedPrice     Decimal  @db.Decimal(12, 2)
+  currency            String   @default("USD") @db.VarChar(3)
+  availabilityText    String?  @db.Text
+  inventoryCount      Int?
+  transferabilityStatus String? @default("UNKNOWN") // inherited or observed
+  rawSnapshot         Json     @default("{}")
+  pageUrl             String   @db.Text
+  extractionMethod    String   // API, SELENIUM, MANUAL
+  createdAt           DateTime @default(now())
+
+  event               Event           @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  parkingProduct      ParkingProduct? @relation(fields: [parkingProductId], references: [id], onDelete: SetNull)
+  source              Source          @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  opportunities       Opportunity[]
+
+  @@index([eventId])
+  @@index([parkingProductId])
+  @@index([observedAt])
+  @@index([normalizedPrice])
+}
+
+model Opportunity {
+  id                      String   @id @default(cuid())
+  eventId                 String
+  parkingProductId        String?
+  latestObservationId     String?
+  estimatedBuyPrice       Decimal? @db.Decimal(12, 2)
+  estimatedSellPrice      Decimal? @db.Decimal(12, 2)
+  estimatedFees           Decimal? @db.Decimal(12, 2)
+  projectedProfit         Decimal? @db.Decimal(12, 2)
+  confidenceScore         Int      @default(50) // 0-100
+  opportunityScore        Int      @default(0) // 0-1000
+  rationale               Json     @default("{}")
+  status                  String   @default("OPEN") // OPEN, WATCHING, ACTIONED, CLOSED, REJECTED
+  manualNotes             String?  @db.Text
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  event               Event                   @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  parkingProduct      ParkingProduct?         @relation(fields: [parkingProductId], references: [id], onDelete: SetNull)
+  latestObservation   MarketObservation?      @relation(fields: [latestObservationId], references: [id], onDelete: SetNull)
+  source              Source                  @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  sourceId            String
+  alerts              Alert[]
+
+  @@unique([eventId, parkingProductId, sourceId])
+  @@index([eventId])
+  @@index([status])
+  @@index([opportunityScore])
+}
+
+model InventoryItem {
+  id                  String   @id @default(cuid())
+  eventId             String
+  parkingProductId    String?
+  venueId             String?
+  acquiredAt          DateTime
+  acquiredPrice       Decimal  @db.Decimal(12, 2)
+  quantity            Int      @default(1)
+  source              String   @db.VarChar(100) // "direct", "partner", "wholesale", etc.
+  externalOrderRef    String?  @db.VarChar(255)
+  notes               String?  @db.Text
+  status              String   @default("HELD") // HELD, LISTED, SOLD, EXPIRED, CANCELED
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  event           Event           @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  parkingProduct  ParkingProduct? @relation(fields: [parkingProductId], references: [id], onDelete: SetNull)
+  venue           Venue?          @relation(fields: [venueId], references: [id], onDelete: SetNull)
+  sales           Sale[]
+
+  @@index([eventId])
+  @@index([status])
+}
+
+model Sale {
+  id                String   @id @default(cuid())
+  inventoryItemId   String
+  soldAt            DateTime
+  soldPrice         Decimal  @db.Decimal(12, 2)
+  fees              Decimal  @default(0) @db.Decimal(12, 2)
+  netProfit         Decimal  @db.Decimal(12, 2)
+  saleChannel       String   @db.VarChar(100) // "direct", "marketplace", "reseller", etc.
+  externalSaleRef   String?  @db.VarChar(255)
+  createdAt         DateTime @default(now())
+
+  inventoryItem   InventoryItem @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
+
+  @@index([inventoryItemId])
+  @@index([soldAt])
+}
+
+model Alert {
+  id          String   @id @default(cuid())
+  eventId     String?
+  opportunityId String?
+  channel     String   @default("INAPP") // EMAIL, SMS, TELEGRAM, INAPP
+  message     String   @db.Text
+  sentAt      DateTime?
+  status      String   @default("PENDING") // PENDING, SENT, FAILED, DISMISSED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  event         Event?         @relation(fields: [eventId], references: [id], onDelete: SetNull)
+  opportunity   Opportunity?   @relation(fields: [opportunityId], references: [id], onDelete: SetNull)
+
+  @@index([eventId])
+  @@index([opportunityId])
+  @@index([status])
+}
+
+model Watchlist {
+  id        String   @id @default(cuid())
+  name      String   @db.VarChar(255)
+  query     Json
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model JobRun {
+  id          String   @id @default(cuid())
+  jobType     String   @db.VarChar(100)
+  status      String   @default("PENDING") // PENDING, RUNNING, SUCCESS, FAILED
+  startedAt   DateTime @default(now())
+  completedAt DateTime?
+  metadata    Json     @default("{}")
+  errorText   String?  @db.Text
+  createdAt   DateTime @default(now())
+
+  @@index([jobType])
+  @@index([status])
+}
+
+model AppSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique @db.VarChar(255)
+  value     Json
+  updatedAt DateTime @updatedAt
+}
