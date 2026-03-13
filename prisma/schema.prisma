@@ -25,7 +25,6 @@ model Venue {
   updatedAt DateTime @updatedAt
 
   events             Event[]
-  opportunities      Opportunity[]
   inventoryItems     InventoryItem[]
 
   @@index([city])

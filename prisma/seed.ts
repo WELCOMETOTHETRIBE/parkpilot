@@ -31,7 +31,7 @@ async function main() {
     },
   });
 
-  const dodgerStadium = await prisma.venue.create({
+  await prisma.venue.create({
     data: {
       name: 'Dodger Stadium',
       city: 'Los Angeles',
@@ -107,7 +107,7 @@ async function main() {
     },
   });
 
-  const manualEntry = await prisma.source.create({
+  await prisma.source.create({
     data: {
       name: 'Manual Entry',
       type: 'manual',
@@ -178,7 +178,7 @@ async function main() {
     },
   });
 
-  const obs2 = await prisma.marketObservation.create({
+  await prisma.marketObservation.create({
     data: {
       eventId: lakers.id,
       parkingProductId: standardLot.id,
@@ -240,7 +240,7 @@ async function main() {
     },
   });
 
-  const opp2 = await prisma.opportunity.create({
+  await prisma.opportunity.create({
     data: {
       eventId: rams.id,
       parkingProductId: ramsPremium.id,
@@ -284,7 +284,7 @@ async function main() {
   console.log('✓ Created 1 inventory item');
 
   // Create a sale
-  const sale1 = await prisma.sale.create({
+  await prisma.sale.create({
     data: {
       inventoryItemId: inventory1.id,
       soldAt: now,
@@ -299,7 +299,7 @@ async function main() {
   console.log('✓ Created 1 sale record');
 
   // Create an alert
-  const alert1 = await prisma.alert.create({
+  await prisma.alert.create({
     data: {
       opportunityId: opp1.id,
       channel: 'INAPP',

@@ -1,5 +1,5 @@
 import Decimal from 'decimal.js';
-import { differenceInHours, distanceInWordsToNow } from 'date-fns';
+import { differenceInHours } from 'date-fns';
 
 /**
  * Scoring Engine

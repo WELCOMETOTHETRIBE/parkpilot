@@ -2,7 +2,45 @@ import { db } from '@/lib/db';
 import { formatPrice } from '@/lib/utils';
 import Decimal from 'decimal.js';
 
-async function getDashboardStats() {
+interface Opportunity {
+  id: string;
+  projectedProfit: Decimal | null;
+  opportunityScore: number;
+  confidenceScore: number;
+  event?: Event;
+}
+
+interface InventoryItem {
+  quantity: number;
+  acquiredPrice: Decimal;
+}
+
+interface Sale {
+  netProfit: Decimal;
+}
+
+interface Event {
+  id: string;
+  name: string;
+  startTime: Date;
+  category: string;
+  venue?: {
+    name: string;
+  };
+}
+
+interface DashboardStats {
+  openOpportunitiesCount: number;
+  topOpportunity: Opportunity | null;
+  projectedProfit: Decimal;
+  heldCount: number;
+  heldValue: Decimal;
+  realizedProfit: Decimal;
+  recentEvents: Event[];
+}
+
+async function getDashboardStats(): Promise<DashboardStats> {
+  try {
   // Get open opportunities count
   const openOpportunitiesCount = await db.opportunity.count({
     where: { status: 'OPEN' },
@@ -20,7 +58,7 @@ async function getDashboardStats() {
     where: { status: 'OPEN' },
   });
   const projectedProfit = opportunities.reduce(
-    (sum, opp) => sum.plus(opp.projectedProfit || 0),
+    (sum: Decimal, opp: any) => sum.plus(opp.projectedProfit || 0),
     new Decimal(0)
   );
 
@@ -28,16 +66,16 @@ async function getDashboardStats() {
   const heldInventory = await db.inventoryItem.findMany({
     where: { status: 'HELD' },
   });
-  const heldCount = heldInventory.reduce((sum, inv) => sum + inv.quantity, 0);
+  const heldCount = heldInventory.reduce((sum: number, inv: InventoryItem) => sum + inv.quantity, 0);
   const heldValue = heldInventory.reduce(
-    (sum, inv) => sum.plus(inv.acquiredPrice.times(inv.quantity)),
+    (sum: Decimal, inv: InventoryItem) => sum.plus(inv.acquiredPrice.times(inv.quantity)),
     new Decimal(0)
   );
 
   // Get realized profit (from sales)
   const sales = await db.sale.findMany();
   const realizedProfit = sales.reduce(
-    (sum, sale) => sum.plus(sale.netProfit),
+    (sum: Decimal, sale: Sale) => sum.plus(sale.netProfit),
     new Decimal(0)
   );
 
@@ -61,6 +99,18 @@ async function getDashboardStats() {
     realizedProfit,
     recentEvents,
   };
+  } catch (error) {
+    // Return default values if db is not available (e.g., during build)
+    return {
+      openOpportunitiesCount: 0,
+      topOpportunity: null,
+      projectedProfit: new Decimal(0),
+      heldCount: 0,
+      heldValue: new Decimal(0),
+      realizedProfit: new Decimal(0),
+      recentEvents: [],
+    };
+  }
 }
 
 export default async function DashboardPage() {

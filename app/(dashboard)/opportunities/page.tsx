@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { formatPrice, formatDateTime } from '@/lib/utils';
+import { useEffect, useState, useCallback } from 'react';
+import { formatPrice } from '@/lib/utils';
 
 interface Opportunity {
   id: string;
@@ -27,11 +27,7 @@ export default function OpportunitiesPage() {
   const [error, setError] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<string>('');
 
-  useEffect(() => {
-    fetchOpportunities();
-  }, [statusFilter]);
-
-  async function fetchOpportunities() {
+  const fetchOpportunities = useCallback(async () => {
     try {
       const query = new URLSearchParams();
       if (statusFilter) query.append('status', statusFilter);
@@ -44,7 +40,11 @@ export default function OpportunitiesPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [statusFilter]);
+
+  useEffect(() => {
+    fetchOpportunities();
+  }, [statusFilter, fetchOpportunities]);
 
   if (loading) return <div className="text-center py-8">Loading opportunities...</div>;
 

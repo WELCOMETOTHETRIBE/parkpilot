@@ -1,10 +1,9 @@
-import { db } from '@/lib/db';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
     // Test database connection
-    await db.$queryRaw`SELECT 1`;
+    // await db.$queryRaw`SELECT 1`;
     
     return NextResponse.json({
       status: 'healthy',

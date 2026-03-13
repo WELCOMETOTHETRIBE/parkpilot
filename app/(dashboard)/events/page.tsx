@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { formatDateTime } from '@/lib/utils';
 
 interface Venue {
@@ -34,11 +34,7 @@ export default function EventsPage() {
     endTime: '',
   });
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  async function fetchData() {
+  const fetchData = useCallback(async () => {
     try {
       const [eventsRes, venuesRes] = await Promise.all([
         fetch('/api/events'),
@@ -59,7 +55,11 @@ export default function EventsPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [formData.venueId]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();

@@ -1,7 +1,6 @@
 import { db } from '@/lib/db';
 import { CreateObservationSchema } from '@/lib/validators';
 import { NextRequest, NextResponse } from 'next/server';
-import { scoreOpportunity, estimateSourceReliability } from '@/lib/scoring/engine';
 import Decimal from 'decimal.js';
 
 export async function GET(req: NextRequest) {
@@ -41,7 +40,7 @@ export async function POST(req: NextRequest) {
         pageUrl: validated.pageUrl,
         extractionMethod: validated.extractionMethod,
         transferabilityStatus: validated.transferabilityStatus,
-        rawSnapshot: validated.rawSnapshot || {},
+        rawSnapshot: validated.rawSnapshot || ({} as any),
       },
       include: {
         event: true,

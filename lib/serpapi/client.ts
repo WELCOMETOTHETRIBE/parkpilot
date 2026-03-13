@@ -79,4 +79,6 @@ export class SerpApiClient {
   }
 }
 
-export default new SerpApiClient();
+const serpApiClient = new SerpApiClient();
+
+export default serpApiClient;

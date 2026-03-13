@@ -137,7 +137,7 @@ export function deepClone<T>(obj: T): T {
  */
 export function safeStringify(obj: unknown): string {
   const seen = new WeakSet();
-  return JSON.stringify(obj, (key, value) => {
+  return JSON.stringify(obj, (_, value) => {
     if (typeof value === 'object' && value !== null) {
       if (seen.has(value)) {
         return '[Circular]';
