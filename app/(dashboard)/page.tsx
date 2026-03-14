@@ -113,6 +113,9 @@ async function getDashboardStats(): Promise<DashboardStats> {
   }
 }
 
+// Force dynamic rendering since we're fetching from database
+export const dynamic = 'force-dynamic';
+
 export default async function DashboardPage() {
   const stats = await getDashboardStats();
 
