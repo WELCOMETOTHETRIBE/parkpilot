@@ -5,7 +5,10 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function GET() {
   try {
     const events = await db.event.findMany({
-      include: { venue: true },
+      include: {
+        venue: true,
+        parkingProducts: { include: { source: true } },
+      },
       orderBy: { startTime: 'asc' },
     });
     return NextResponse.json(events);

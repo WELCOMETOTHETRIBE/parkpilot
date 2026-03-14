@@ -4,13 +4,13 @@ const envSchema = z.object({
   // Database - optional for health checks, required when actually using DB
   DATABASE_URL: z.string().url().optional(),
 
-  // App
+  // App (defaults so app starts with minimal .env)
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  APP_BASE_URL: z.string().url(),
-  ADMIN_PASSWORD: z.string().min(8),
+  APP_BASE_URL: z.string().url().default('http://localhost:3000'),
+  ADMIN_PASSWORD: z.string().min(8).default('changeme123'),
 
-  // APIs
-  SERPAPI_API_KEY: z.string().min(1),
+  // APIs (optional; discover shows message if missing)
+  SERPAPI_API_KEY: z.string().default(''),
 
   // Email
   SMTP_HOST: z.string().optional(),

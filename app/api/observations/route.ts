@@ -1,4 +1,5 @@
 import { db } from '@/lib/db';
+import { scoreOpportunity, estimateSourceReliability } from '@/lib/scoring/engine';
 import { CreateObservationSchema } from '@/lib/validators';
 import { NextRequest, NextResponse } from 'next/server';
 import Decimal from 'decimal.js';
@@ -12,6 +13,7 @@ export async function GET(req: NextRequest) {
       where: eventId ? { eventId } : undefined,
       orderBy: { observedAt: 'desc' },
       take: 100,
+      include: { event: true, source: true },
     });
 
     return NextResponse.json(observations);
@@ -40,22 +42,88 @@ export async function POST(req: NextRequest) {
         pageUrl: validated.pageUrl,
         extractionMethod: validated.extractionMethod,
         transferabilityStatus: validated.transferabilityStatus,
-        rawSnapshot: validated.rawSnapshot || ({} as any),
-      },
-      include: {
-        event: true,
-        source: true,
+        rawSnapshot: (validated.rawSnapshot ?? {}) as object,
       },
     });
 
-    // TODO: Trigger opportunity scoring job
-    // For MVP, we'll just return the observation
-    // In production, queue a background job to:
-    // 1. Check if parking product exists
-    // 2. Update opportunity scores
-    // 3. Send alerts if thresholds met
+    const [event, source, parkingProduct] = await Promise.all([
+      db.event.findUnique({ where: { id: observation.eventId } }),
+      db.source.findUnique({ where: { id: observation.sourceId } }),
+      observation.parkingProductId
+        ? db.parkingProduct.findUnique({ where: { id: observation.parkingProductId } })
+        : Promise.resolve(null),
+    ]);
+    if (!event || !source) {
+      return NextResponse.json(observation, { status: 201 });
+    }
+    const transferability =
+      (observation.transferabilityStatus as 'UNKNOWN' | 'YES' | 'NO') ??
+      parkingProduct?.transferabilityStatus ??
+      'UNKNOWN';
+    const sourceReliability = estimateSourceReliability(source.type, source.config as { historicalAccuracy?: number });
+    const buyPrice = new Decimal(validated.normalizedPrice);
+    const estimatedSell = buyPrice.times(1.3);
+    const estimatedFees = new Decimal(5);
+    const margin = estimatedSell.minus(buyPrice).minus(estimatedFees);
+    const { opportunityScore, confidenceScore, rationale } = scoreOpportunity({
+      estimatedBuyPrice: buyPrice,
+      estimatedSellPrice: estimatedSell,
+      estimatedFees,
+      eventStartTime: event.startTime,
+      observationTime: validated.observedAt,
+      sourceReliability,
+      confidenceScore: 50,
+      transferabilityStatus: transferability,
+      demandMultiplier: 1.0,
+    });
 
-    return NextResponse.json(observation, { status: 201 });
+    const existing = await db.opportunity.findFirst({
+      where: {
+        eventId: validated.eventId,
+        sourceId: validated.sourceId,
+        parkingProductId: validated.parkingProductId ?? null,
+      },
+    });
+
+    const rationaleJson = JSON.parse(JSON.stringify(rationale)) as object;
+    if (existing) {
+      await db.opportunity.update({
+        where: { id: existing.id },
+        data: {
+          latestObservationId: observation.id,
+          estimatedBuyPrice: buyPrice,
+          estimatedSellPrice: estimatedSell,
+          estimatedFees,
+          projectedProfit: margin,
+          opportunityScore,
+          confidenceScore,
+          rationale: rationaleJson,
+        },
+      });
+    } else {
+      await db.opportunity.create({
+        data: {
+          eventId: validated.eventId,
+          sourceId: validated.sourceId,
+          parkingProductId: validated.parkingProductId ?? null,
+          latestObservationId: observation.id,
+          estimatedBuyPrice: buyPrice,
+          estimatedSellPrice: estimatedSell,
+          estimatedFees,
+          projectedProfit: margin,
+          opportunityScore,
+          confidenceScore,
+          rationale: rationaleJson,
+          status: 'OPEN',
+        },
+      });
+    }
+
+    const observationWithIncludes = await db.marketObservation.findUnique({
+      where: { id: observation.id },
+      include: { event: true, source: true },
+    });
+    return NextResponse.json(observationWithIncludes ?? observation, { status: 201 });
   } catch (error) {
     console.error('POST /api/observations error:', error);
     return NextResponse.json(

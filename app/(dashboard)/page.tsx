@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { db } from '@/lib/db';
 import { formatPrice } from '@/lib/utils';
 import Decimal from 'decimal.js';
@@ -137,6 +138,43 @@ export default async function DashboardPage() {
 
   return (
     <div>
+      {/* Quick Start */}
+      <div className="card mb-8 border-2 border-blue-200 bg-blue-50/50">
+        <div className="card-body">
+          <h2 className="text-lg font-semibold text-gray-900 mb-2">Quick start — make money in 4 steps</h2>
+          <ol className="list-decimal list-inside space-y-1.5 text-gray-700">
+            <li>
+              <Link href="/dashboard/observations" className="text-blue-600 hover:underline font-medium">
+                Log prices
+              </Link>
+              {' '}(Observations) so opportunities get scored automatically.
+            </li>
+            <li>
+              <Link href="/dashboard/opportunities" className="text-blue-600 hover:underline font-medium">
+                Pick deals
+              </Link>
+              {' '}(Opportunities) — buy passes off-platform when the score looks good.
+            </li>
+            <li>
+              <Link href="/dashboard/inventory" className="text-blue-600 hover:underline font-medium">
+                Record what you bought
+              </Link>
+              {' '}(Inventory → Add inventory).
+            </li>
+            <li>
+              <Link href="/dashboard/sales" className="text-blue-600 hover:underline font-medium">
+                Record sales
+              </Link>
+              {' '}(Sales → Record sale) when you sell; profit is tracked automatically.
+            </li>
+          </ol>
+          <p className="text-sm text-gray-500 mt-3">
+            New here? Add <Link href="/dashboard/venues" className="text-blue-600 hover:underline">venues</Link> and{' '}
+            <Link href="/dashboard/events" className="text-blue-600 hover:underline">events</Link> first, or use Discover on the Events page.
+          </p>
+        </div>
+      </div>
+
       {/* Header */}
       <h1 className="text-3xl font-bold text-gray-900 mb-8">Dashboard</h1>
 

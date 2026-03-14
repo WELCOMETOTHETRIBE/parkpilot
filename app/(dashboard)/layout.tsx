@@ -18,6 +18,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           <NavLink href="/dashboard">Dashboard</NavLink>
           <NavLink href="/dashboard/venues">Venues</NavLink>
           <NavLink href="/dashboard/events">Events</NavLink>
+          <NavLink href="/dashboard/observations">Observations</NavLink>
           <NavLink href="/dashboard/opportunities">Opportunities</NavLink>
           <NavLink href="/dashboard/inventory">Inventory</NavLink>
           <NavLink href="/dashboard/sales">Sales</NavLink>

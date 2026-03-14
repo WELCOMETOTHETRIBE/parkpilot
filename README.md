@@ -25,36 +25,29 @@ ParkPilot is a production-grade MVP for discovering, monitoring, scoring, and ma
 - **Validation**: Zod
 - **Scheduling**: DB-backed job runner
 
-## Quick Start
+## Get started (minimal setup)
 
-### Prerequisites
-
-- Node.js 18+ and npm
-- PostgreSQL 14+
-- SerpApi key (free tier available at https://serpapi.com)
-
-### Local Installation
+**You need:** Node.js 18+ and a Postgres database (free at [Neon](https://neon.tech) or [Supabase](https://supabase.com)).
 
 ```bash
-# 1. Clone and install
-git clone <repo>
 cd ParkPilot
-npm install
-
-# 2. Set up environment
-cp .env.example .env
-# Edit .env with your DATABASE_URL, SERPAPI_API_KEY, etc.
-
-# 3. Set up database
-npx prisma migrate deploy
-npx prisma db seed
-
-# 4. Run development server
-npm run dev
-
-# 5. Open dashboard
-# Visit http://localhost:3000/dashboard
+npm run setup
 ```
+
+If this is your first run, `setup` creates `.env` from `.env.example` and exits. **Edit `.env` and set `DATABASE_URL`** to your Postgres connection string, then run:
+
+```bash
+npm run setup
+```
+
+Then start the app and open the dashboard:
+
+```bash
+npm run dev
+# Open http://localhost:3000/dashboard
+```
+
+The dashboard shows a **Quick start** card with four steps: log prices → pick opportunities → record inventory → record sales. Optional: add `SERPAPI_API_KEY` to `.env` for event discovery (free key at [serpapi.com](https://serpapi.com)).
 
 ### Database Migrations
 
