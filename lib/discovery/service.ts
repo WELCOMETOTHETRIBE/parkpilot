@@ -124,7 +124,7 @@ export class DiscoveryService {
           continue;
         }
         
-        // Look for various date patterns
+        // Look for various date patterns first
         const datePatterns = [
           /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{1,2}(?:,?\s+\d{4})?/i, // "Jan 15" or "January 15, 2026"
           /\b\d{1,2}\/\d{1,2}\/\d{2,4}/, // "1/15/2026" or "01/15/26"
@@ -141,6 +141,13 @@ export class DiscoveryService {
           }
         }
         
+        // Skip schedule/calendar pages (they're not individual events)
+        const scheduleKeywords = ['schedule', 'calendar', 'all events', 'upcoming events', 'event calendar', 'full schedule'];
+        const isSchedulePage = scheduleKeywords.some(kw => title.includes(kw) || snippet.includes(kw));
+        if (isSchedulePage && !foundDate) {
+          continue; // Only skip if it's a schedule page AND has no specific date
+        }
+        
         // Look for event indicators (more flexible)
         const eventIndicators = [
           'ticket', 'event', 'game', 'concert', 'show', 'match', 'performance',
@@ -153,16 +160,39 @@ export class DiscoveryService {
         const isTicketSite = /ticketmaster|stubhub|seatgeek|ticketmaster|vividseats|tickets\.com/i.test(result.link);
         
         // Extract event name - clean up the title
-        let eventName = title
+        let eventName = result.title // Use original title, not lowercase
           .replace(/\s*-\s*.*$/i, '') // Remove " - Location" suffix
           .replace(/\s*\|\s*.*$/i, '') // Remove " | Site" suffix
           .replace(/\s*\(.*?\)/g, '') // Remove parenthetical info
           .replace(/\s*tickets?\s*.*$/i, '') // Remove "tickets" suffix
           .replace(/\s*at\s+.*$/i, '') // Remove "at Venue" suffix
+          .replace(/\s*schedule.*$/i, '') // Remove "schedule" suffix
+          .replace(/\s*calendar.*$/i, '') // Remove "calendar" suffix
+          .replace(/\s*upcoming\s+events?.*$/i, '') // Remove "upcoming events" suffix
+          .replace(/\s*2026.*$/i, '') // Remove year suffix
           .trim();
         
-        // Skip if it's too generic or just the venue name
-        if (eventName.length < 5 || eventName.toLowerCase() === venueName.toLowerCase()) {
+        // Skip if it's too generic, just the venue name, or looks like a schedule page
+        const lowerName = eventName.toLowerCase();
+        const lowerVenue = venueName.toLowerCase();
+        if (eventName.length < 5 || 
+            lowerName === lowerVenue || 
+            lowerName.includes('schedule') || 
+            lowerName.includes('calendar') ||
+            lowerName.includes('all events') ||
+            lowerName.startsWith(lowerVenue + ' ')) {
+          continue;
+        }
+        
+        // If event name still contains venue name at the start, remove it
+        if (lowerName.startsWith(lowerVenue)) {
+          eventName = eventName.substring(venueName.length).trim();
+          // Remove leading punctuation
+          eventName = eventName.replace(/^[,\s|-]+/, '').trim();
+        }
+        
+        // Skip if name is now too short
+        if (eventName.length < 3) {
           continue;
         }
         
@@ -361,16 +391,16 @@ export class DiscoveryService {
         });
       }
 
-      // Create market observation if we have price data
-      if (op.price) {
+      // Create market observation (even without price, we can track availability)
+      if (op.price || op.availability || op.sourceUrl) {
         const observation = await db.marketObservation.create({
           data: {
             eventId: event.id,
             parkingProductId: product.id,
             sourceId: source.id,
             observedAt: new Date(),
-            rawPriceText: `$${op.price.toString()}`,
-            normalizedPrice: op.price,
+            rawPriceText: op.price ? `$${op.price.toString()}` : 'Price not available',
+            normalizedPrice: op.price || new Decimal('0.00'),
             currency: 'USD',
             availabilityText: op.availability,
             pageUrl: op.sourceUrl,
@@ -378,10 +408,11 @@ export class DiscoveryService {
           },
         });
 
-        // Create opportunity using scoring engine
-        const estimatedFees = new Decimal('5.00'); // Default fees
-        const estimatedSellPrice = op.price.times(1.3); // 30% markup estimate
-        const margin = estimatedSellPrice.minus(op.price).minus(estimatedFees);
+        // Create opportunity using scoring engine (only if we have a price)
+        if (op.price && op.price.gt(0)) {
+          const estimatedFees = new Decimal('5.00'); // Default fees
+          const estimatedSellPrice = op.price.times(1.3); // 30% markup estimate
+          const margin = estimatedSellPrice.minus(op.price).minus(estimatedFees);
 
         // Get event and source for scoring
         const [eventData, sourceData] = await Promise.all([
@@ -449,6 +480,7 @@ export class DiscoveryService {
             });
           }
         }
+      }
       }
     }
   }
