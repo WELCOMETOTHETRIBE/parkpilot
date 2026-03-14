@@ -115,9 +115,25 @@ async function getDashboardStats(): Promise<DashboardStats> {
 
 // Force dynamic rendering since we're fetching from database
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function DashboardPage() {
-  const stats = await getDashboardStats();
+  let stats;
+  try {
+    stats = await getDashboardStats();
+  } catch (error) {
+    console.error('Error fetching dashboard stats:', error);
+    // Return default stats on error
+    stats = {
+      openOpportunitiesCount: 0,
+      topOpportunity: null,
+      projectedProfit: new Decimal(0),
+      heldCount: 0,
+      heldValue: new Decimal(0),
+      realizedProfit: new Decimal(0),
+      recentEvents: [],
+    };
+  }
 
   return (
     <div>

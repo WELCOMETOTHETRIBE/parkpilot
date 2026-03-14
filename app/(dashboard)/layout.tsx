@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
+// Ensure this layout is dynamic
+export const dynamic = 'force-dynamic';
+
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex h-screen bg-gray-100">
