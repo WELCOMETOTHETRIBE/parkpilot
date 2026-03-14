@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 const envSchema = z.object({
-  // Database
-  DATABASE_URL: z.string().url(),
+  // Database - optional for health checks, required when actually using DB
+  DATABASE_URL: z.string().url().optional(),
 
   // App
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
@@ -33,11 +33,28 @@ try {
 } catch (error) {
   if (error instanceof z.ZodError) {
     console.error('Environment validation failed:');
-    error.errors.forEach(err => {
-      console.error(`  ${err.path.join('.')}: ${err.message}`);
-    });
+    const criticalErrors = error.errors.filter(err => 
+      err.path[0] !== 'DATABASE_URL' // DATABASE_URL is optional for health checks
+    );
+    
+    if (criticalErrors.length > 0) {
+      criticalErrors.forEach(err => {
+        console.error(`  ${err.path.join('.')}: ${err.message}`);
+      });
+      process.exit(1);
+    } else {
+      // Only DATABASE_URL is missing, which is OK for health checks
+      console.warn('Warning: DATABASE_URL is not set. Database features will not work.');
+      validatedEnv = envSchema.parse({
+        ...process.env,
+        NODE_ENV: process.env.NODE_ENV || 'development',
+        DEBUG: process.env.DEBUG || 'false',
+        LOG_LEVEL: process.env.LOG_LEVEL || 'info',
+      });
+    }
+  } else {
+    throw error;
   }
-  process.exit(1);
 }
 
 export const env = validatedEnv;

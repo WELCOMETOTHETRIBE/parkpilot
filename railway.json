@@ -5,9 +5,9 @@
   },
   "deploy": {
     "numReplicas": 1,
-    "startCommand": "npm run build && npm start",
+    "startCommand": "npm start",
     "healthcheckPath": "/api/health",
-    "healthcheckTimeout": 10,
+    "healthcheckTimeout": 30,
     "restartPolicyMaxRetries": 3
   },
   "variables": {
