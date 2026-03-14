@@ -27,31 +27,65 @@ export class DiscoveryService {
    * Search for major venues in a city
    */
   async discoverVenues(city: string, state: string): Promise<Array<{ name: string; city: string; state: string; sourceUrl: string }>> {
-    const query = `major venues ${city} ${state} stadium arena concert hall`;
-    const results = await serpApiClient.search(query);
+    // Search for specific well-known venues in the city
+    const queries = [
+      `${city} ${state} stadium`,
+      `${city} ${state} arena`,
+      `${city} ${state} concert venue`,
+      `${city} ${state} amphitheater`,
+    ];
     
-    // Parse venue names from search results
-    const venues: Array<{ name: string; city: string; state: string; sourceUrl: string }> = [];
+    const allResults: Array<{ name: string; city: string; state: string; sourceUrl: string }> = [];
     const seen = new Set<string>();
     
-    for (const result of results.results) {
-      // Extract venue name from title (heuristic)
-      const title = result.title.toLowerCase();
-      const venueKeywords = ['stadium', 'arena', 'center', 'theatre', 'theater', 'hall', 'field', 'park'];
-      const hasVenueKeyword = venueKeywords.some(kw => title.includes(kw));
+    for (const query of queries) {
+      const results = await serpApiClient.search(query);
       
-      if (hasVenueKeyword && !seen.has(result.title)) {
-        seen.add(result.title);
-        venues.push({
-          name: result.title.replace(/ - .*$/, '').trim(), // Remove location suffix
-          city,
-          state,
-          sourceUrl: result.link,
-        });
+      for (const result of results.results) {
+        const title = result.title.toLowerCase();
+        const snippet = result.snippet?.toLowerCase() || '';
+        
+        // Skip list articles and generic pages
+        const skipPatterns = [
+          'best', 'top', 'list', 'guide', 'review', 'tripadvisor', 'yelp',
+          'the 15', 'the 10', 'top 10', 'best of', 'all you need'
+        ];
+        const isListArticle = skipPatterns.some(pattern => title.includes(pattern));
+        
+        if (isListArticle) continue;
+        
+        // Look for actual venue names - they usually have specific names
+        const venueKeywords = ['stadium', 'arena', 'center', 'theatre', 'theater', 'hall', 'field', 'amphitheater', 'coliseum', 'forum'];
+        const hasVenueKeyword = venueKeywords.some(kw => title.includes(kw) || snippet.includes(kw));
+        
+        // Extract venue name - remove common suffixes and location info
+        let venueName = result.title
+          .replace(/\s*-\s*.*$/i, '') // Remove " - Location" suffix
+          .replace(/\s*\|.*$/i, '') // Remove " | Site" suffix
+          .replace(/\s*\(.*?\)/g, '') // Remove parenthetical info
+          .replace(/\s*\[.*?\]/g, '') // Remove bracket info
+          .trim();
+        
+        // Skip if it's too generic or looks like a list
+        if (venueName.length < 5 || venueName.toLowerCase().includes('best') || venueName.toLowerCase().includes('top')) {
+          continue;
+        }
+        
+        // Only include if it looks like a real venue name
+        if (hasVenueKeyword && !seen.has(venueName.toLowerCase())) {
+          seen.add(venueName.toLowerCase());
+          allResults.push({
+            name: venueName,
+            city,
+            state,
+            sourceUrl: result.link,
+          });
+        }
       }
     }
     
-    return venues;
+    // Limit to top 10 unique venues
+    return allResults.slice(0, 10);
   }
 
   /**
@@ -229,8 +263,16 @@ export class DiscoveryService {
     const parkingOps = await this.discoverParking(event.name, venueName, event.id);
 
     for (const op of parkingOps) {
-      // Create parking product
-      const product = await db.parkingProduct.create({
+      // Check if parking product already exists, or create it
+      const existingProduct = await db.parkingProduct.findFirst({
+        where: {
+          eventId: event.id,
+          sourceId: source.id,
+          productName: op.productName,
+        },
+      });
+
+      const product = existingProduct || await db.parkingProduct.create({
         data: {
           eventId: event.id,
           sourceId: source.id,
@@ -240,6 +282,17 @@ export class DiscoveryService {
           transferabilityStatus: 'UNKNOWN',
         },
       });
+
+      // Update if it existed but had different info
+      if (existingProduct && (existingProduct.lotName !== op.lotName || existingProduct.sourceUrl !== op.sourceUrl)) {
+        await db.parkingProduct.update({
+          where: { id: product.id },
+          data: {
+            lotName: op.lotName || existingProduct.lotName,
+            sourceUrl: op.sourceUrl,
+          },
+        });
+      }
 
       // Create market observation if we have price data
       if (op.price) {
