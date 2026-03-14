@@ -93,46 +93,113 @@ export class DiscoveryService {
    */
   async discoverEvents(venueName: string, _venueId: string): Promise<ParsedEvent[]> {
     const currentYear = new Date().getFullYear();
-    const query = `${venueName} upcoming events ${currentYear}`;
-    const results = await serpApiClient.search(query);
     
-    const events: ParsedEvent[] = [];
+    // Try multiple search queries to get better results
+    const queries = [
+      `${venueName} schedule ${currentYear}`,
+      `${venueName} events calendar ${currentYear}`,
+      `${venueName} upcoming concerts ${currentYear}`,
+      `${venueName} tickets ${currentYear}`,
+      `${venueName} games ${currentYear}`,
+    ];
+    
+    const allEvents: ParsedEvent[] = [];
     const seen = new Set<string>();
     
-    for (const result of results.results) {
-      const title = result.title.toLowerCase();
-      const snippet = result.snippet.toLowerCase();
+    for (const query of queries) {
+      const results = await serpApiClient.search(query);
       
-      // Look for date patterns and event indicators
-      const datePattern = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{1,2}/i;
-      const hasDate = datePattern.test(title) || datePattern.test(snippet);
-      const eventKeywords = ['tickets', 'event', 'game', 'concert', 'show', 'match'];
-      const hasEventKeyword = eventKeywords.some(kw => title.includes(kw) || snippet.includes(kw));
-      
-      if (hasDate && hasEventKeyword && !seen.has(result.title)) {
-        seen.add(result.title);
+      for (const result of results.results) {
+        const title = result.title;
+        const snippet = result.snippet || '';
+        const fullText = (title + ' ' + snippet).toLowerCase();
         
-        // Try to extract date from title or snippet
-        const dateMatch = (title + ' ' + snippet).match(datePattern);
-        let startTime = new Date();
-        if (dateMatch) {
-          // Simple date parsing (could be improved)
-          startTime = this.parseEventDate(dateMatch[0], currentYear);
+        // Skip venue info pages, not event pages
+        if (fullText.includes('about') && fullText.includes('venue') && !fullText.includes('event')) {
+          continue;
         }
         
-        // Determine category from keywords
-        const category = this.inferCategory(title + ' ' + snippet);
+        // Skip social media profiles
+        if (result.link.includes('facebook.com') || result.link.includes('instagram.com') || result.link.includes('twitter.com')) {
+          continue;
+        }
         
-        events.push({
-          name: result.title.replace(/ - .*$/, '').replace(/ tickets?.*$/i, '').trim(),
-          category,
-          startTime,
-          sourceUrl: result.link,
-        });
+        // Look for various date patterns
+        const datePatterns = [
+          /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{1,2}(?:,?\s+\d{4})?/i, // "Jan 15" or "January 15, 2026"
+          /\b\d{1,2}\/\d{1,2}\/\d{2,4}/, // "1/15/2026" or "01/15/26"
+          /\b\d{1,2}-\d{1,2}-\d{2,4}/, // "1-15-2026"
+          /\b(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{1,2}(?:,?\s+\d{4})?/i, // Full month names
+        ];
+        
+        let foundDate: string | null = null;
+        for (const pattern of datePatterns) {
+          const match = fullText.match(pattern);
+          if (match) {
+            foundDate = match[0];
+            break;
+          }
+        }
+        
+        // Look for event indicators (more flexible)
+        const eventIndicators = [
+          'ticket', 'event', 'game', 'concert', 'show', 'match', 'performance',
+          'schedule', 'calendar', 'tour', 'series', 'vs', 'v.', 'versus',
+          'live', 'on stage', 'playing', 'appearing'
+        ];
+        const hasEventIndicator = eventIndicators.some(indicator => fullText.includes(indicator));
+        
+        // Also check if it's a ticketmaster, stubhub, seatgeek, etc. link
+        const isTicketSite = /ticketmaster|stubhub|seatgeek|ticketmaster|vividseats|tickets\.com/i.test(result.link);
+        
+        // Extract event name - clean up the title
+        let eventName = title
+          .replace(/\s*-\s*.*$/i, '') // Remove " - Location" suffix
+          .replace(/\s*\|\s*.*$/i, '') // Remove " | Site" suffix
+          .replace(/\s*\(.*?\)/g, '') // Remove parenthetical info
+          .replace(/\s*tickets?\s*.*$/i, '') // Remove "tickets" suffix
+          .replace(/\s*at\s+.*$/i, '') // Remove "at Venue" suffix
+          .trim();
+        
+        // Skip if it's too generic or just the venue name
+        if (eventName.length < 5 || eventName.toLowerCase() === venueName.toLowerCase()) {
+          continue;
+        }
+        
+        // Create event if we have a date OR it's a ticket site OR it has strong event indicators
+        if ((foundDate || isTicketSite || hasEventIndicator) && !seen.has(eventName.toLowerCase())) {
+          seen.add(eventName.toLowerCase());
+          
+          // Parse date if found
+          let startTime = new Date();
+          if (foundDate) {
+            startTime = this.parseEventDate(foundDate, currentYear);
+          } else {
+            // Default to 30 days from now if no date found
+            startTime = new Date();
+            startTime.setDate(startTime.getDate() + 30);
+          }
+          
+          // Determine category
+          const category = this.inferCategory(fullText);
+          
+          allEvents.push({
+            name: eventName,
+            category,
+            startTime,
+            sourceUrl: result.link,
+          });
+        }
       }
     }
     
-    return events;
+    // Sort by date and return unique events
+    return allEvents
+      .filter((event, index, self) => 
+        index === self.findIndex(e => e.name.toLowerCase() === event.name.toLowerCase())
+      )
+      .sort((a, b) => a.startTime.getTime() - b.startTime.getTime())
+      .slice(0, 20); // Limit to top 20 events
   }
 
   /**
@@ -387,23 +454,75 @@ export class DiscoveryService {
   }
 
   // Helper methods
-  private parseEventDate(dateStr: string, year: number): Date {
-    // Simple date parsing - could be improved
-    const months: Record<string, number> = {
-      jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
-      jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11,
-    };
+  private parseEventDate(dateStr: string, defaultYear: number): Date {
+    const now = new Date();
+    const currentYear = now.getFullYear();
     
-    const match = dateStr.match(/(\w{3})\w*\s+(\d{1,2})/i);
-    if (match) {
-      const month = months[match[1].toLowerCase().substring(0, 3)];
-      const day = parseInt(match[2]);
-      if (month !== undefined) {
-        return new Date(year, month, day, 19, 0, 0); // Default to 7 PM
+    // Try to parse various date formats
+    // Format 1: "Jan 15" or "January 15"
+    const monthNameMatch = dateStr.match(/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|january|february|march|april|may|june|july|august|september|october|november|december)[a-z]*\s+(\d{1,2})(?:,?\s+(\d{4}))?/i);
+    if (monthNameMatch) {
+      const months: Record<string, number> = {
+        jan: 0, january: 0, feb: 1, february: 1, mar: 2, march: 2,
+        apr: 3, april: 3, may: 4, jun: 5, june: 5,
+        jul: 6, july: 6, aug: 7, august: 7, sep: 8, september: 8,
+        oct: 9, october: 9, nov: 10, november: 10, dec: 11, december: 11,
+      };
+      const monthName = monthNameMatch[1].toLowerCase();
+      const month = months[monthName] ?? months[monthName.substring(0, 3)];
+      const day = parseInt(monthNameMatch[2]);
+      const year = monthNameMatch[3] ? parseInt(monthNameMatch[3]) : defaultYear;
+      
+      if (month !== undefined && day) {
+        const date = new Date(year, month, day, 19, 0, 0);
+        // If date is in the past, assume it's next year
+        if (date < now && !monthNameMatch[3]) {
+          date.setFullYear(year + 1);
+        }
+        return date;
       }
     }
     
-    return new Date();
+    // Format 2: "1/15/2026" or "01/15/26"
+    const slashMatch = dateStr.match(/(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);
+    if (slashMatch) {
+      const month = parseInt(slashMatch[1]) - 1; // JS months are 0-indexed
+      const day = parseInt(slashMatch[2]);
+      let year = parseInt(slashMatch[3]);
+      if (year < 100) {
+        year = year + 2000; // Convert 2-digit to 4-digit
+      }
+      if (month >= 0 && month < 12 && day > 0 && day <= 31) {
+        const date = new Date(year, month, day, 19, 0, 0);
+        if (date < now && year === currentYear) {
+          date.setFullYear(year + 1);
+        }
+        return date;
+      }
+    }
+    
+    // Format 3: "1-15-2026"
+    const dashMatch = dateStr.match(/(\d{1,2})-(\d{1,2})-(\d{2,4})/);
+    if (dashMatch) {
+      const month = parseInt(dashMatch[1]) - 1;
+      const day = parseInt(dashMatch[2]);
+      let year = parseInt(dashMatch[3]);
+      if (year < 100) {
+        year = year + 2000;
+      }
+      if (month >= 0 && month < 12 && day > 0 && day <= 31) {
+        const date = new Date(year, month, day, 19, 0, 0);
+        if (date < now && year === currentYear) {
+          date.setFullYear(year + 1);
+        }
+        return date;
+      }
+    }
+    
+    // Default: 30 days from now
+    const defaultDate = new Date();
+    defaultDate.setDate(defaultDate.getDate() + 30);
+    return defaultDate;
   }
 
   private inferCategory(text: string): string {
