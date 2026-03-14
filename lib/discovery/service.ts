@@ -26,7 +26,7 @@ export class DiscoveryService {
   /**
    * Search for major venues in a city
    */
-  async discoverVenues(city: string, state: string): Promise<any[]> {
+  async discoverVenues(city: string, state: string): Promise<Array<{ name: string; city: string; state: string; sourceUrl: string }>> {
     const query = `major venues ${city} ${state} stadium arena concert hall`;
     const results = await serpApiClient.search(query);
     
@@ -57,7 +57,7 @@ export class DiscoveryService {
   /**
    * Search for upcoming events at a venue
    */
-  async discoverEvents(venueName: string, venueId: string): Promise<ParsedEvent[]> {
+  async discoverEvents(venueName: string, _venueId: string): Promise<ParsedEvent[]> {
     const currentYear = new Date().getFullYear();
     const query = `${venueName} upcoming events ${currentYear}`;
     const results = await serpApiClient.search(query);
@@ -104,7 +104,7 @@ export class DiscoveryService {
   /**
    * Search for parking opportunities for an event
    */
-  async discoverParking(eventName: string, venueName: string, eventId: string): Promise<ParsedParkingOpportunity[]> {
+  async discoverParking(eventName: string, venueName: string, _eventId: string): Promise<ParsedParkingOpportunity[]> {
     const query = `${venueName} ${eventName} parking`;
     const results = await serpApiClient.search(query);
     
@@ -378,7 +378,7 @@ export class DiscoveryService {
     return undefined;
   }
 
-  private getTimezone(city: string, state: string): string {
+  private getTimezone(_city: string, state: string): string {
     // Simple timezone mapping - could be improved
     const pacific = ['CA', 'OR', 'WA', 'NV'];
     const mountain = ['MT', 'ID', 'WY', 'CO', 'NM', 'AZ', 'UT'];
