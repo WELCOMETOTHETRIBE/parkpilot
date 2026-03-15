@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node -e \"try { require('fs').accessSync('.next/BUILD_ID'); } catch (e) { require('child_process').execSync('npx prisma generate && npm run build', { stdio: 'inherit' }); }\" && next start",
     "setup": "node scripts/setup.js",
     "lint": "eslint . --ext .ts,.tsx",
     "type-check": "tsc --noEmit",
