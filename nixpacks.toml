@@ -1,6 +1,8 @@
-# Railway / Nixpacks: ensure Next.js is built before start
+# Railway / Nixpacks: Node 20 + OpenSSL for Prisma engine (debian-openssl-1.1.x / 3.0.x)
 [phases.setup]
 nixPkgs = ["nodejs_20", "openssl"]
+# Ensure runtime has libssl for Prisma (apt packages available in Debian base)
+aptPkgs = ["libssl1.1", "ca-certificates"]
 
 [phases.install]
 cmds = ["npm ci"]
