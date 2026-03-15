@@ -12,6 +12,10 @@
   },
   "variables": {
     "NODE_ENV": "production",
+    "PRISMA_QUERY_ENGINE_LIBRARY": {
+      "description": "Force Prisma to use OpenSSL 3 engine on Railway (set in Dashboard)",
+      "value": "/app/node_modules/.prisma/client/libquery_engine-debian-openssl-3.0.x.so.node"
+    },
     "DATABASE_URL": {
       "description": "PostgreSQL connection string",
       "value": ""

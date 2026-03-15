@@ -184,7 +184,10 @@ SERPAPI_API_KEY=<your key>
 APP_BASE_URL=https://<your-railway-domain>.railway.app
 ADMIN_PASSWORD=<strong password>
 NODE_ENV=production
+PRISMA_QUERY_ENGINE_LIBRARY=/app/node_modules/.prisma/client/libquery_engine-debian-openssl-3.0.x.so.node
 ```
+
+The last variable forces Prisma to use the OpenSSL 3 engine on Railway (Nixpacks); without it you may see "Query Engine for runtime debian-openssl-1.1.x" errors.
 
 ### 5. Deploy
 
@@ -205,6 +208,7 @@ railway run npx prisma db seed
 |----------|-------------|---------|
 | `DATABASE_URL` | PostgreSQL connection string | `postgresql://user:pass@host/db` |
 | `NODE_ENV` | Environment (`development` or `production`) | `production` |
+| `PRISMA_QUERY_ENGINE_LIBRARY` | Prisma engine path (Railway/Nixpacks; avoids 1.1.x error) | `/app/node_modules/.prisma/client/libquery_engine-debian-openssl-3.0.x.so.node` |
 | `APP_BASE_URL` | Base URL of deployed app | `https://app.railway.app` |
 | `SERPAPI_API_KEY` | API key for SerpApi | (from serpapi.com) |
 | `ADMIN_PASSWORD` | Admin password (MVP auth) | (your strong password) |

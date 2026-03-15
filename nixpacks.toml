@@ -1,8 +1,8 @@
-# Railway / Nixpacks: Node 20 + OpenSSL for Prisma engine (debian-openssl-1.1.x / 3.0.x)
+# Railway / Nixpacks: Node 20 + OpenSSL 3 for Prisma (use PRISMA_QUERY_ENGINE_LIBRARY in Railway vars)
 [phases.setup]
 nixPkgs = ["nodejs_20", "openssl"]
-# Ensure runtime has libssl for Prisma (apt packages available in Debian base)
-aptPkgs = ["libssl1.1", "ca-certificates"]
+# OpenSSL 3 so Prisma debian-openssl-3.0.x engine loads when PRISMA_QUERY_ENGINE_LIBRARY is set
+aptPkgs = ["libssl3", "ca-certificates"]
 
 [phases.install]
 cmds = ["npm ci"]
