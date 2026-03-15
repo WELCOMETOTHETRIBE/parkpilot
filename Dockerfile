@@ -1,5 +1,5 @@
-# Build stage
-FROM node:20-alpine AS builder
+# Build stage (Debian for Prisma engine compatibility on Railway)
+FROM node:20-slim AS builder
 
 WORKDIR /app
 
@@ -10,8 +10,8 @@ COPY . .
 RUN npx prisma generate
 RUN npm run build
 
-# Production stage (Next.js app)
-FROM node:20-alpine AS runner
+# Production stage (Debian = glibc + OpenSSL, avoids musl/libssl.so.1.1 errors)
+FROM node:20-slim AS runner
 
 WORKDIR /app
 
@@ -37,7 +37,7 @@ ENV HOSTNAME="0.0.0.0"
 CMD ["node", "server.js"]
 
 # Worker stage (BullMQ workers; needs full source)
-FROM node:20-alpine AS worker
+FROM node:20-slim AS worker
 
 WORKDIR /app
 

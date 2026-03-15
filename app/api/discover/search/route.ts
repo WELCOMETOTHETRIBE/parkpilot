@@ -1,6 +1,8 @@
 import { discoveryService } from '@/lib/discovery/service';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * GET /api/discover/search?city=Los Angeles&state=CA
  * Search for venues in a city

@@ -4,6 +4,8 @@ import { CreateObservationSchema } from '@/lib/validators';
 import { NextRequest, NextResponse } from 'next/server';
 import Decimal from 'decimal.js';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     const searchParams = req.nextUrl.searchParams;

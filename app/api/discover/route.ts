@@ -2,6 +2,8 @@ import { env } from '@/lib/env';
 import serpApiClient from '@/lib/serpapi/client';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * GET /api/discover?q=SoFi+Stadium+events
  * Uses SerpApi to discover events or parking-related search results.
