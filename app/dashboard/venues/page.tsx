@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import { DataTable, type DataTableColumn } from '@/components/ui/DataTable';
 import { Toast } from '@/components/ui/Toast';
 import { ScanFavoritesButton } from '../ScanFavoritesButton';
@@ -41,6 +41,7 @@ export default function VenuesPage() {
   const [favoriteVenueIds, setFavoriteVenueIds] = useState<Set<string>>(new Set());
   const [favoriteVenues, setFavoriteVenues] = useState<Array<{ id: string; name: string; city: string; state: string }>>([]);
   const [favoriteLoading, setFavoriteLoading] = useState<string | null>(null);
+  const hasAutoLoadedMaster = useRef(false);
 
   async function handleDiscoverVenue(venueName: string, city: string, state: string) {
     setDiscoveringVenue(venueName);
@@ -103,6 +104,21 @@ export default function VenuesPage() {
   useEffect(() => {
     fetchVenues();
   }, [fetchVenues]);
+
+  // When user has no venues, auto-open Discover and load master list so they see the enriched venues
+  useEffect(() => {
+    if (loading || venues.length > 0 || hasAutoLoadedMaster.current) return;
+    hasAutoLoadedMaster.current = true;
+    setShowDiscover(true);
+    setDiscoverTab('master');
+    fetch('/api/venues/master?limit=1500')
+      .then((res) => (res.ok ? res.json() : { venues: [] }))
+      .then((data) => {
+        setMasterResults(data.venues ?? []);
+        setMasterTotalAvailable(data.totalAvailable ?? null);
+      })
+      .catch(() => {});
+  }, [loading, venues.length]);
 
   const filteredAndSorted = useMemo(() => {
     let list = [...venues];
