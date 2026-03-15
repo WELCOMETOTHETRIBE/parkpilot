@@ -1,7 +1,9 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { formatPrice, formatDateTime } from '@/lib/utils';
+import { DataTable, type DataTableColumn } from '@/components/ui/DataTable';
+import { Toast } from '@/components/ui/Toast';
 
 interface Event {
   id: string;
@@ -100,29 +102,59 @@ export default function InventoryPage() {
         notes: '',
       });
       setShowForm(false);
+      setSuccessMessage('Inventory added.');
       await fetchInventory();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
     }
   }
 
-  if (loading) return <div className="text-center py-8">Loading inventory...</div>;
+  const [statusFilter, setStatusFilter] = useState('');
+  const [sort, setSort] = useState<{ key: string; dir: 'asc' | 'desc' }>({ key: 'acquiredAt', dir: 'desc' });
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const heldInventory = inventory.filter(i => i.status === 'HELD');
-  const totalValue = heldInventory.reduce((sum, i) => sum + (Number(i.acquiredPrice) * i.quantity), 0);
-  const selectedEvent = events.find(e => e.id === formData.eventId);
+  const heldInventory = useMemo(() => inventory.filter((i) => i.status === 'HELD'), [inventory]);
+  const totalValue = heldInventory.reduce((sum, i) => sum + Number(i.acquiredPrice) * i.quantity, 0);
+  const selectedEvent = events.find((e) => e.id === formData.eventId);
   const productsForEvent = selectedEvent?.parkingProducts ?? [];
 
+  const filteredAndSorted = useMemo(() => {
+    let list = statusFilter ? inventory.filter((i) => i.status === statusFilter) : [...inventory];
+    list.sort((a, b) => {
+      const aVal = sort.key === 'acquiredAt' ? new Date(a.acquiredAt).getTime() : (a as unknown as Record<string, unknown>)[sort.key];
+      const bVal = sort.key === 'acquiredAt' ? new Date(b.acquiredAt).getTime() : (b as unknown as Record<string, unknown>)[sort.key];
+      if (typeof aVal === 'number' && typeof bVal === 'number') return sort.dir === 'asc' ? aVal - bVal : bVal - aVal;
+      return sort.dir === 'asc' ? String(aVal).localeCompare(String(bVal)) : String(bVal).localeCompare(String(aVal));
+    });
+    return list;
+  }, [inventory, statusFilter, sort]);
+
+  const columns: DataTableColumn<InventoryItem>[] = useMemo(
+    () => [
+      { id: 'event', header: 'Event', accessor: (r) => r.event?.name, sortKey: 'event', render: (_, r) => <span className="font-semibold">{r.event?.name}</span> },
+      { id: 'quantity', header: 'Qty', accessor: (r) => r.quantity, sortKey: 'quantity' },
+      { id: 'acquiredPrice', header: 'Price', accessor: (r) => r.acquiredPrice, render: (_, r) => formatPrice(Number(r.acquiredPrice)) },
+      { id: 'total', header: 'Total', accessor: (r) => Number(r.acquiredPrice) * r.quantity, render: (_, r) => formatPrice(Number(r.acquiredPrice) * r.quantity) },
+      { id: 'source', header: 'Source', accessor: (r) => r.source },
+      { id: 'acquiredAt', header: 'Acquired', accessor: (r) => r.acquiredAt, sortKey: 'acquiredAt', render: (_, r) => formatDateTime(r.acquiredAt, false) },
+      { id: 'status', header: 'Status', accessor: (r) => r.status, render: (_, r) => <span className={r.status === 'HELD' ? 'badge badge-yellow' : 'badge badge-green'}>{r.status}</span> },
+    ],
+    []
+  );
+
+  if (loading) return <div className="text-center py-8">Loading inventory…</div>;
+
   return (
-    <div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Inventory</h1>
-        <button onClick={() => setShowForm(!showForm)} className="btn btn-primary">
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h1 className="text-2xl font-bold text-gray-900">Inventory</h1>
+        <button type="button" onClick={() => setShowForm(!showForm)} className="btn btn-primary">
           {showForm ? 'Cancel' : '+ Add Inventory'}
         </button>
       </div>
 
-      {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
+      {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">{error}</div>}
+      {successMessage && <Toast message={successMessage} onDismiss={() => setSuccessMessage('')} />}
 
       {showForm && (
         <div className="card mb-6">
@@ -255,52 +287,28 @@ export default function InventoryPage() {
         </div>
       </div>
 
-      {inventory.length === 0 ? (
-        <div className="card">
-          <div className="card-body text-center py-8">
-            <p className="text-gray-600">No inventory items yet</p>
-          </div>
+      <div className="card">
+        <div className="card-body">
+          <DataTable
+            columns={columns}
+            data={filteredAndSorted}
+            keyExtractor={(r) => r.id}
+            sort={sort}
+            onSort={(key, dir) => setSort({ key, dir })}
+            filterSlot={
+              <select className="input input-sm w-auto" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+                <option value="">All statuses</option>
+                <option value="HELD">Held</option>
+                <option value="LISTED">Listed</option>
+                <option value="SOLD">Sold</option>
+                <option value="EXPIRED">Expired</option>
+                <option value="CANCELED">Canceled</option>
+              </select>
+            }
+            emptyMessage="No inventory items yet."
+          />
         </div>
-      ) : (
-        <div className="card">
-          <div className="card-body">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Event</th>
-                  <th>Quantity</th>
-                  <th>Acquired Price</th>
-                  <th>Total Value</th>
-                  <th>Source</th>
-                  <th>Acquired Date</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {inventory.map(item => (
-                  <tr key={item.id}>
-                    <td className="font-semibold">{item.event.name}</td>
-                    <td>{item.quantity}</td>
-                    <td>{formatPrice(Number(item.acquiredPrice))}</td>
-                    <td className="font-semibold">
-                      {formatPrice(Number(item.acquiredPrice) * item.quantity)}
-                    </td>
-                    <td className="text-sm text-gray-600 capitalize">{item.source}</td>
-                    <td className="text-sm text-gray-600">
-                      {formatDateTime(item.acquiredAt, false)}
-                    </td>
-                    <td>
-                      <span className={`badge ${item.status === 'HELD' ? 'badge-yellow' : 'badge-green'}`}>
-                        {item.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }

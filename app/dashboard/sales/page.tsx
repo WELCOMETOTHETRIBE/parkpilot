@@ -1,7 +1,9 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { formatPrice, formatDateTime } from '@/lib/utils';
+import { DataTable, type DataTableColumn } from '@/components/ui/DataTable';
+import { Toast } from '@/components/ui/Toast';
 
 interface Sale {
   id: string;
@@ -101,24 +103,53 @@ export default function SalesPage() {
         saleChannel: 'marketplace',
       });
       setShowForm(false);
+      setSuccessMessage('Sale recorded.');
       await fetchSales();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
     }
   }
 
-  if (loading) return <div className="text-center py-8">Loading sales...</div>;
+  const [sort, setSort] = useState<{ key: string; dir: 'asc' | 'desc' }>({ key: 'soldAt', dir: 'desc' });
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const sortedSales = useMemo(() => {
+    const list = [...sales];
+    list.sort((a, b) => {
+      const aVal = sort.key === 'soldAt' ? new Date(a.soldAt).getTime() : (a as unknown as Record<string, unknown>)[sort.key];
+      const bVal = sort.key === 'soldAt' ? new Date(b.soldAt).getTime() : (b as unknown as Record<string, unknown>)[sort.key];
+      if (typeof aVal === 'number' && typeof bVal === 'number') return sort.dir === 'asc' ? aVal - bVal : bVal - aVal;
+      return sort.dir === 'asc' ? String(aVal).localeCompare(String(bVal)) : String(bVal).localeCompare(String(aVal));
+    });
+    return list;
+  }, [sales, sort]);
+
+  const columns: DataTableColumn<Sale>[] = useMemo(
+    () => [
+      { id: 'event', header: 'Event', accessor: (r) => r.inventoryItem?.event?.name, render: (_, r) => <span className="font-semibold">{r.inventoryItem?.event?.name}</span> },
+      { id: 'soldPrice', header: 'Sold Price', accessor: (r) => r.soldPrice, sortKey: 'soldPrice', render: (_, r) => formatPrice(Number(r.soldPrice)) },
+      { id: 'fees', header: 'Fees', accessor: (r) => r.fees, render: (_, r) => formatPrice(Number(r.fees)) },
+      { id: 'netProfit', header: 'Net Profit', accessor: (r) => r.netProfit, sortKey: 'netProfit', render: (_, r) => <span className="font-semibold text-green-600">{formatPrice(Number(r.netProfit))}</span> },
+      { id: 'channel', header: 'Channel', accessor: (r) => r.saleChannel },
+      { id: 'soldAt', header: 'Date Sold', accessor: (r) => r.soldAt, sortKey: 'soldAt', render: (_, r) => formatDateTime(r.soldAt, false) },
+      { id: 'margin', header: 'Margin %', accessor: (r) => Number(r.netProfit) / Number(r.soldPrice), render: (_, r) => ((Number(r.netProfit) / Number(r.soldPrice)) * 100).toFixed(1) + '%' },
+    ],
+    []
+  );
 
   const totalRevenue = sales.reduce((sum, s) => sum + Number(s.soldPrice), 0);
   const totalFees = sales.reduce((sum, s) => sum + Number(s.fees), 0);
   const totalProfit = sales.reduce((sum, s) => sum + Number(s.netProfit), 0);
-  const selectedItem = inventory.find(i => i.id === formData.inventoryItemId);
+  const selectedItem = inventory.find((i) => i.id === formData.inventoryItemId);
+
+  if (loading) return <div className="text-center py-8">Loading sales…</div>;
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Sales</h1>
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h1 className="text-2xl font-bold text-gray-900">Sales</h1>
         <button
+          type="button"
           onClick={() => setShowForm(!showForm)}
           className="btn btn-primary"
           disabled={inventory.length === 0}
@@ -127,7 +158,8 @@ export default function SalesPage() {
         </button>
       </div>
 
-      {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
+      {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">{error}</div>}
+      {successMessage && <Toast message={successMessage} onDismiss={() => setSuccessMessage('')} />}
 
       {inventory.length === 0 && !showForm && (
         <div className="bg-amber-50 border border-amber-200 text-amber-800 px-4 py-3 rounded mb-4">
@@ -252,51 +284,18 @@ export default function SalesPage() {
         </div>
       </div>
 
-      {sales.length === 0 ? (
-        <div className="card">
-          <div className="card-body text-center py-8">
-            <p className="text-gray-600">No sales recorded yet</p>
-          </div>
+      <div className="card">
+        <div className="card-body">
+          <DataTable
+            columns={columns}
+            data={sortedSales}
+            keyExtractor={(r) => r.id}
+            sort={sort}
+            onSort={(key, dir) => setSort({ key, dir })}
+            emptyMessage="No sales recorded yet."
+          />
         </div>
-      ) : (
-        <div className="card">
-          <div className="card-body">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Event</th>
-                  <th>Sold Price</th>
-                  <th>Fees</th>
-                  <th>Net Profit</th>
-                  <th>Channel</th>
-                  <th>Date Sold</th>
-                  <th>Margin %</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sales.map(sale => {
-                  const margin = Number(sale.netProfit) / Number(sale.soldPrice);
-                  return (
-                    <tr key={sale.id}>
-                      <td className="font-semibold">{sale.inventoryItem.event.name}</td>
-                      <td>{formatPrice(Number(sale.soldPrice))}</td>
-                      <td>{formatPrice(Number(sale.fees))}</td>
-                      <td className="font-semibold text-green-600">
-                        {formatPrice(Number(sale.netProfit))}
-                      </td>
-                      <td className="text-sm text-gray-600 capitalize">{sale.saleChannel}</td>
-                      <td className="text-sm text-gray-600">
-                        {formatDateTime(sale.soldAt, false)}
-                      </td>
-                      <td className="font-semibold">{(margin * 100).toFixed(1)}%</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }

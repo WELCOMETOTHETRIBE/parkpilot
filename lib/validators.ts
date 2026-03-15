@@ -48,6 +48,8 @@ export const OpportunityFilterSchema = z.object({
   minScore: z.coerce.number().int().min(0).max(1000).optional(),
   limit: z.coerce.number().int().min(1).max(100).default(50),
   offset: z.coerce.number().int().nonnegative().default(0),
+  sortKey: z.enum(['opportunityScore', 'projectedProfit', 'createdAt']).optional(),
+  sortOrder: z.enum(['asc', 'desc']).optional(),
 });
 
 export const UpdateOpportunitySchema = z.object({

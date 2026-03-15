@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { formatPrice } from '@/lib/utils';
+import { DataTable, type DataTableColumn } from '@/components/ui/DataTable';
 
 interface Opportunity {
   id: string;
@@ -13,129 +14,108 @@ interface Opportunity {
   estimatedFees: string;
   projectedProfit: string;
   status: string;
-  event: {
-    name: string;
-    startTime: string;
-    category: string;
-  };
+  event: { name: string; startTime: string; category: string };
   rationale: Record<string, unknown>;
 }
 
+const PAGE_SIZE = 20;
+
 export default function OpportunitiesPage() {
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
+  const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<string>('');
+  const [page, setPage] = useState(1);
+  const [sort, setSort] = useState<{ key: string; dir: 'asc' | 'desc' }>({ key: 'opportunityScore', dir: 'desc' });
 
   const fetchOpportunities = useCallback(async () => {
+    setLoading(true);
     try {
       const query = new URLSearchParams();
-      if (statusFilter) query.append('status', statusFilter);
+      if (statusFilter) query.set('status', statusFilter);
+      query.set('limit', String(PAGE_SIZE));
+      query.set('offset', String((page - 1) * PAGE_SIZE));
+      query.set('sortKey', sort.key);
+      query.set('sortOrder', sort.dir);
       const res = await fetch(`/api/opportunities?${query.toString()}`);
       if (!res.ok) throw new Error('Failed to fetch opportunities');
-      const data = await res.json();
-      setOpportunities(data);
+      const json = await res.json();
+      setOpportunities(json.data ?? []);
+      setTotal(json.total ?? 0);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
+      setOpportunities([]);
+      setTotal(0);
     } finally {
       setLoading(false);
     }
-  }, [statusFilter]);
+  }, [statusFilter, page, sort.key, sort.dir]);
 
   useEffect(() => {
     fetchOpportunities();
-  }, [statusFilter, fetchOpportunities]);
+  }, [fetchOpportunities]);
 
-  if (loading) return <div className="text-center py-8">Loading opportunities...</div>;
+  const columns: DataTableColumn<Opportunity>[] = [
+    { id: 'event', header: 'Event', accessor: (r) => r.event?.name, sortKey: 'opportunityScore', render: (_, r) => <span className="font-semibold">{r.event?.name}</span> },
+    { id: 'date', header: 'Date', accessor: (r) => r.event?.startTime, render: (_, r) => new Date(r.event?.startTime ?? 0).toLocaleDateString() },
+    { id: 'category', header: 'Category', accessor: (r) => r.event?.category },
+    { id: 'score', header: 'Score', accessor: (r) => r.opportunityScore, sortKey: 'opportunityScore', render: (v) => <span className="font-semibold text-blue-600">{Number(v)}</span> },
+    { id: 'buy', header: 'Buy', accessor: (r) => r.estimatedBuyPrice, render: (_, r) => formatPrice(Number(r.estimatedBuyPrice)) },
+    { id: 'sell', header: 'Sell', accessor: (r) => r.estimatedSellPrice, render: (_, r) => formatPrice(Number(r.estimatedSellPrice)) },
+    { id: 'profit', header: 'Projected', accessor: (r) => r.projectedProfit, sortKey: 'projectedProfit', render: (_, r) => <span className="text-green-600 font-medium">{formatPrice(Number(r.projectedProfit))}</span> },
+    { id: 'confidence', header: 'Conf.', accessor: (r) => r.confidenceScore, render: (v) => `${v}%` },
+    { id: 'status', header: 'Status', accessor: (r) => r.status, render: (_, r) => <span className={r.status === 'OPEN' ? 'badge badge-green' : r.status === 'WATCHING' ? 'badge badge-yellow' : r.status === 'ACTIONED' ? 'badge badge-blue' : 'badge badge-red'}>{r.status}</span> },
+  ];
+
+  if (loading && opportunities.length === 0) return <div className="text-center py-8">Loading opportunities…</div>;
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Opportunities</h1>
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h1 className="text-2xl font-bold text-gray-900">Opportunities</h1>
         <div className="flex gap-2">
-          <select
-            className="input"
-            value={statusFilter}
-            onChange={e => setStatusFilter(e.target.value)}
-          >
-            <option value="">All Statuses</option>
+          <select className="input input-sm w-auto" value={statusFilter} onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}>
+            <option value="">All statuses</option>
             <option value="OPEN">Open</option>
             <option value="WATCHING">Watching</option>
             <option value="ACTIONED">Actioned</option>
             <option value="CLOSED">Closed</option>
+            <option value="REJECTED">Rejected</option>
           </select>
         </div>
       </div>
 
-      {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
+      {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">{error}</div>}
 
-      {opportunities.length === 0 ? (
-        <div className="card">
-          <div className="card-body text-center py-8">
-            <p className="text-gray-600">No opportunities found</p>
-          </div>
+      <div className="card">
+        <div className="card-body">
+          <DataTable
+            columns={columns}
+            data={opportunities}
+            keyExtractor={(r) => r.id}
+            sort={sort}
+            onSort={(key, dir) => setSort({ key, dir })}
+            filterSlot={
+              <select className="input input-sm w-auto" value={statusFilter} onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}>
+                <option value="">All statuses</option>
+                <option value="OPEN">Open</option>
+                <option value="WATCHING">Watching</option>
+                <option value="ACTIONED">Actioned</option>
+                <option value="CLOSED">Closed</option>
+                <option value="REJECTED">Rejected</option>
+              </select>
+            }
+            pagination={{
+              total,
+              page,
+              pageSize: PAGE_SIZE,
+              onPageChange: setPage,
+            }}
+            emptyMessage="No opportunities found. Log observations to discover deals."
+          />
         </div>
-      ) : (
-        <div className="space-y-4">
-          {opportunities
-            .sort((a, b) => b.opportunityScore - a.opportunityScore)
-            .map(opp => (
-              <div key={opp.id} className="card hover:shadow-lg transition-shadow">
-                <div className="card-body">
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-gray-900">{opp.event.name}</h3>
-                      <p className="text-gray-600 text-sm mt-1">
-                        {new Date(opp.event.startTime).toLocaleDateString()} · {opp.event.category}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-3xl font-bold text-blue-600">{opp.opportunityScore}</div>
-                      <p className="text-gray-600 text-xs">Opportunity Score</p>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-5 gap-4 mt-4 pt-4 border-t border-gray-200">
-                    <div>
-                      <p className="text-gray-600 text-sm">Buy Price</p>
-                      <p className="font-semibold text-gray-900">{formatPrice(Number(opp.estimatedBuyPrice))}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-600 text-sm">Sell Price</p>
-                      <p className="font-semibold text-gray-900">{formatPrice(Number(opp.estimatedSellPrice))}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-600 text-sm">Fees</p>
-                      <p className="font-semibold text-gray-900">{formatPrice(Number(opp.estimatedFees))}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-600 text-sm">Projected Profit</p>
-                      <p className="font-semibold text-green-600">{formatPrice(Number(opp.projectedProfit))}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-600 text-sm">Confidence</p>
-                      <p className="font-semibold text-gray-900">{opp.confidenceScore}%</p>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 flex justify-between items-center">
-                    <span className={`badge ${
-                      opp.status === 'OPEN' ? 'badge-green' :
-                      opp.status === 'WATCHING' ? 'badge-yellow' :
-                      opp.status === 'ACTIONED' ? 'badge-blue' :
-                      'badge-red'
-                    }`}>
-                      {opp.status}
-                    </span>
-                    <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                      View Details →
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-        </div>
-      )}
+      </div>
     </div>
   );
 }

@@ -1,6 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
+import { DataTable, type DataTableColumn } from '@/components/ui/DataTable';
+import { Toast } from '@/components/ui/Toast';
 
 interface Venue {
   id: string;
@@ -17,8 +19,11 @@ export default function VenuesPage() {
   const [error, setError] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', city: '', state: '', timezone: 'America/Los_Angeles' });
-  
-  // Discovery state
+  const [successMessage, setSuccessMessage] = useState('');
+  const [sort, setSort] = useState<{ key: string; dir: 'asc' | 'desc' }>({ key: 'name', dir: 'asc' });
+  const [cityFilter, setCityFilter] = useState('');
+  const [stateFilter, setStateFilter] = useState('');
+
   const [showDiscover, setShowDiscover] = useState(false);
   const [discoverCity, setDiscoverCity] = useState('');
   const [discoverState, setDiscoverState] = useState('');
@@ -26,11 +31,32 @@ export default function VenuesPage() {
   const [discoverResults, setDiscoverResults] = useState<Array<{ name: string; city: string; state: string; sourceUrl: string }>>([]);
   const [discoveringVenue, setDiscoveringVenue] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchVenues();
-  }, []);
+  async function handleDiscoverVenue(venueName: string, city: string, state: string) {
+    setDiscoveringVenue(venueName);
+    setError(null);
+    try {
+      const res = await fetch('/api/discover/venue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ venueName, city, state }),
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Discovery failed');
+      }
+      const data = await res.json();
+      setSuccessMessage(`Venue "${data.venue?.name}" created with ${data.eventsCreated ?? 0} events.`);
+      await fetchVenues();
+      setShowDiscover(false);
+      setDiscoverResults([]);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Discovery failed');
+    } finally {
+      setDiscoveringVenue(null);
+    }
+  }
 
-  async function fetchVenues() {
+  const fetchVenues = useCallback(async () => {
     try {
       const res = await fetch('/api/venues');
       if (!res.ok) throw new Error('Failed to fetch venues');
@@ -41,10 +67,61 @@ export default function VenuesPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, []);
+
+  useEffect(() => {
+    fetchVenues();
+  }, [fetchVenues]);
+
+  const filteredAndSorted = useMemo(() => {
+    let list = [...venues];
+    if (cityFilter) list = list.filter((v) => v.city.toLowerCase().includes(cityFilter.toLowerCase()));
+    if (stateFilter) list = list.filter((v) => v.state === stateFilter);
+    list.sort((a, b) => {
+      const aVal = (a as unknown as Record<string, unknown>)[sort.key];
+      const bVal = (b as unknown as Record<string, unknown>)[sort.key];
+      const aStr = String(aVal ?? '');
+      const bStr = String(bVal ?? '');
+      return sort.dir === 'asc' ? aStr.localeCompare(bStr) : bStr.localeCompare(aStr);
+    });
+    return list;
+  }, [venues, cityFilter, stateFilter, sort]);
+
+  const columns: DataTableColumn<Venue>[] = useMemo(
+    () => [
+      { id: 'name', header: 'Name', accessor: (r) => r.name, sortKey: 'name', render: (_, r) => <span className="font-semibold">{r.name}</span> },
+      { id: 'city', header: 'City', accessor: (r) => r.city, sortKey: 'city' },
+      { id: 'state', header: 'State', accessor: (r) => r.state, sortKey: 'state' },
+      { id: 'timezone', header: 'Timezone', accessor: (r) => r.timezone },
+      { id: 'createdAt', header: 'Created', accessor: (r) => r.createdAt, sortKey: 'createdAt', render: (_, r) => new Date(r.createdAt).toLocaleDateString() },
+      {
+        id: 'actions',
+        header: 'Actions',
+        accessor: () => null,
+        render: (_, r) => (
+          <button
+            type="button"
+            onClick={() => handleDiscoverVenue(r.name, r.city, r.state)}
+            disabled={discoveringVenue === r.name}
+            className="btn btn-sm btn-secondary"
+          >
+            {discoveringVenue === r.name ? 'Discovering…' : 'Discover Events'}
+          </button>
+        ),
+      },
+    ],
+    [discoveringVenue]
+  );
+
+  const states = useMemo(() => Array.from(new Set(venues.map((v) => v.state))).sort(), [venues]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setError(null);
+    if (!formData.state || formData.state.length !== 2) {
+      setError('State must be 2 characters (e.g. CA)');
+      return;
+    }
     try {
       const res = await fetch('/api/venues', {
         method: 'POST',
@@ -54,6 +131,7 @@ export default function VenuesPage() {
       if (!res.ok) throw new Error('Failed to create venue');
       setFormData({ name: '', city: '', state: '', timezone: 'America/Los_Angeles' });
       setShowForm(false);
+      setSuccessMessage('Venue created.');
       await fetchVenues();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
@@ -62,7 +140,7 @@ export default function VenuesPage() {
 
   async function handleSearchVenues() {
     if (!discoverCity.trim() || !discoverState.trim()) {
-      setError('Please enter both city and state');
+      setError('Enter both city and state');
       return;
     }
     setDiscoverLoading(true);
@@ -80,83 +158,50 @@ export default function VenuesPage() {
     }
   }
 
-  async function handleDiscoverVenue(venueName: string, city: string, state: string) {
-    setDiscoveringVenue(venueName);
-    setError(null);
-    try {
-      const res = await fetch('/api/discover/venue', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ venueName, city, state }),
-      });
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || 'Discovery failed');
-      }
-      const data = await res.json();
-      setError(null);
-      alert(`Success! Created venue "${data.venue.name}" with ${data.eventsCreated} events and discovered parking opportunities.`);
-      await fetchVenues();
-      setShowDiscover(false);
-      setDiscoverResults([]);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Discovery failed');
-    } finally {
-      setDiscoveringVenue(null);
-    }
-  }
-
-  if (loading) return <div className="text-center py-8">Loading venues...</div>;
+  if (loading) return <div className="text-center py-8">Loading venues…</div>;
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Venues</h1>
-        <div className="flex gap-2">
-          <button onClick={() => setShowDiscover(!showDiscover)} className="btn btn-secondary">
-            {showDiscover ? 'Cancel Discovery' : '🔍 Discover Venues'}
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h1 className="text-2xl font-bold text-gray-900">Venues</h1>
+        <div className="flex flex-wrap gap-2">
+          <button type="button" onClick={() => setShowDiscover(!showDiscover)} className="btn btn-secondary">
+            {showDiscover ? 'Cancel Discovery' : 'Discover Venues'}
           </button>
-          <button onClick={() => setShowForm(!showForm)} className="btn btn-primary">
+          <button type="button" onClick={() => setShowForm(!showForm)} className="btn btn-primary">
             {showForm ? 'Cancel' : '+ Add Venue'}
           </button>
         </div>
       </div>
 
-      {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
+      {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">{error}</div>}
+      {successMessage && <Toast message={successMessage} onDismiss={() => setSuccessMessage('')} />}
 
       {showDiscover && (
-        <div className="card mb-6">
+        <div className="card">
           <div className="card-header">
-            <h2 className="font-semibold">🔍 Discover Venues with SerpAPI</h2>
-            <p className="text-sm text-gray-600 mt-1">Search for venues in a city, then discover their events and parking opportunities</p>
+            <h2 className="font-semibold">Discover Venues (SerpAPI)</h2>
+            <p className="text-sm text-gray-500 mt-1">Search by city and state, then discover events and parking.</p>
           </div>
           <div className="card-body space-y-4">
-            <div className="grid grid-cols-3 gap-4">
-              <input
-                className="input"
-                placeholder="City (e.g., Los Angeles)"
-                value={discoverCity}
-                onChange={e => setDiscoverCity(e.target.value)}
-              />
-              <input
-                className="input"
-                placeholder="State (e.g., CA)"
-                value={discoverState}
-                maxLength={2}
-                onChange={e => setDiscoverState(e.target.value.toUpperCase())}
-              />
-              <button 
-                onClick={handleSearchVenues} 
-                disabled={discoverLoading}
-                className="btn btn-primary"
-              >
-                {discoverLoading ? 'Searching...' : 'Search Venues'}
-              </button>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label className="label">City</label>
+                <input className="input" placeholder="e.g. Los Angeles" value={discoverCity} onChange={(e) => setDiscoverCity(e.target.value)} />
+              </div>
+              <div>
+                <label className="label">State (2 letters)</label>
+                <input className="input" placeholder="CA" value={discoverState} maxLength={2} onChange={(e) => setDiscoverState(e.target.value.toUpperCase())} />
+              </div>
+              <div className="flex items-end">
+                <button type="button" onClick={handleSearchVenues} disabled={discoverLoading} className="btn btn-primary w-full sm:w-auto">
+                  {discoverLoading ? 'Searching…' : 'Search Venues'}
+                </button>
+              </div>
             </div>
-            
             {discoverResults.length > 0 && (
-              <div className="mt-4">
-                <h3 className="font-semibold mb-2">Found {discoverResults.length} venues:</h3>
+              <div>
+                <h3 className="font-semibold mb-2">Found {discoverResults.length} venues</h3>
                 <div className="space-y-2">
                   {discoverResults.map((venue, idx) => (
                     <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded">
@@ -164,12 +209,8 @@ export default function VenuesPage() {
                         <p className="font-semibold">{venue.name}</p>
                         <p className="text-sm text-gray-600">{venue.city}, {venue.state}</p>
                       </div>
-                      <button
-                        onClick={() => handleDiscoverVenue(venue.name, venue.city, venue.state)}
-                        disabled={discoveringVenue === venue.name}
-                        className="btn btn-sm btn-primary"
-                      >
-                        {discoveringVenue === venue.name ? 'Discovering...' : 'Discover Events & Parking'}
+                      <button type="button" onClick={() => handleDiscoverVenue(venue.name, venue.city, venue.state)} disabled={discoveringVenue === venue.name} className="btn btn-sm btn-primary">
+                        {discoveringVenue === venue.name ? 'Discovering…' : 'Discover Events & Parking'}
                       </button>
                     </div>
                   ))}
@@ -181,97 +222,60 @@ export default function VenuesPage() {
       )}
 
       {showForm && (
-        <div className="card mb-6">
+        <div className="card">
           <div className="card-header">
             <h2 className="font-semibold">Create New Venue</h2>
           </div>
           <form onSubmit={handleSubmit} className="card-body space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <input
-                className="input"
-                placeholder="Venue Name"
-                value={formData.name}
-                onChange={e => setFormData({ ...formData, name: e.target.value })}
-                required
-              />
-              <input
-                className="input"
-                placeholder="City"
-                value={formData.city}
-                onChange={e => setFormData({ ...formData, city: e.target.value })}
-                required
-              />
-              <input
-                className="input"
-                placeholder="State (e.g., CA)"
-                value={formData.state}
-                maxLength={2}
-                onChange={e => setFormData({ ...formData, state: e.target.value.toUpperCase() })}
-                required
-              />
-              <input
-                className="input"
-                type="text"
-                placeholder="Timezone"
-                value={formData.timezone}
-                onChange={e => setFormData({ ...formData, timezone: e.target.value })}
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="label">Venue Name *</label>
+                <input className="input" placeholder="Venue Name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required />
+              </div>
+              <div>
+                <label className="label">City *</label>
+                <input className="input" placeholder="City" value={formData.city} onChange={(e) => setFormData({ ...formData, city: e.target.value })} required />
+              </div>
+              <div>
+                <label className="label">State (2 letters) *</label>
+                <input className="input" placeholder="CA" value={formData.state} maxLength={2} onChange={(e) => setFormData({ ...formData, state: e.target.value.toUpperCase() })} required />
+              </div>
+              <div>
+                <label className="label">Timezone</label>
+                <input className="input" placeholder="America/Los_Angeles" value={formData.timezone} onChange={(e) => setFormData({ ...formData, timezone: e.target.value })} />
+              </div>
             </div>
             <div className="flex justify-end gap-2">
-              <button type="submit" className="btn btn-primary">
-                Create Venue
-              </button>
+              <button type="button" onClick={() => setShowForm(false)} className="btn btn-secondary">Cancel</button>
+              <button type="submit" className="btn btn-primary">Create Venue</button>
             </div>
           </form>
         </div>
       )}
 
-      {venues.length === 0 ? (
-        <div className="card">
-          <div className="card-body text-center py-8">
-            <p className="text-gray-600">No venues yet. Create one to get started!</p>
-          </div>
+      <div className="card">
+        <div className="card-body">
+          <DataTable
+            columns={columns}
+            data={filteredAndSorted}
+            keyExtractor={(r) => r.id}
+            sort={sort}
+            onSort={(key, dir) => setSort({ key, dir })}
+            filterSlot={
+              <>
+                <input className="input input-sm w-40" placeholder="Filter by city" value={cityFilter} onChange={(e) => setCityFilter(e.target.value)} />
+                <select className="input input-sm w-auto" value={stateFilter} onChange={(e) => setStateFilter(e.target.value)}>
+                  <option value="">All states</option>
+                  {states.map((s) => (
+                    <option key={s} value={s}>{s}</option>
+                  ))}
+                </select>
+              </>
+            }
+            emptyMessage="No venues yet. Add one or use Discover."
+          />
         </div>
-      ) : (
-        <div className="card">
-          <div className="card-body">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>City</th>
-                  <th>State</th>
-                  <th>Timezone</th>
-                  <th>Created</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {venues.map(venue => (
-                  <tr key={venue.id}>
-                    <td className="font-semibold">{venue.name}</td>
-                    <td>{venue.city}</td>
-                    <td>{venue.state}</td>
-                    <td className="text-sm text-gray-600">{venue.timezone}</td>
-                    <td className="text-sm text-gray-600">
-                      {new Date(venue.createdAt).toLocaleDateString()}
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => handleDiscoverVenue(venue.name, venue.city, venue.state)}
-                        disabled={discoveringVenue === venue.name}
-                        className="btn btn-sm btn-secondary"
-                      >
-                        {discoveringVenue === venue.name ? 'Discovering...' : '🔍 Discover Events'}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }

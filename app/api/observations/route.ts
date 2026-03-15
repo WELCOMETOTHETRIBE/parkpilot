@@ -7,16 +7,28 @@ import Decimal from 'decimal.js';
 export async function GET(req: NextRequest) {
   try {
     const searchParams = req.nextUrl.searchParams;
-    const eventId = searchParams.get('eventId');
+    const eventId = searchParams.get('eventId') || undefined;
+    const sourceId = searchParams.get('sourceId') || undefined;
+    const limit = Math.min(100, Math.max(1, parseInt(searchParams.get('limit') || '100', 10)));
+    const offset = Math.max(0, parseInt(searchParams.get('offset') || '0', 10));
 
-    const observations = await db.marketObservation.findMany({
-      where: eventId ? { eventId } : undefined,
-      orderBy: { observedAt: 'desc' },
-      take: 100,
-      include: { event: true, source: true },
-    });
+    const where = {
+      ...(eventId && { eventId }),
+      ...(sourceId && { sourceId }),
+    };
 
-    return NextResponse.json(observations);
+    const [observations, total] = await Promise.all([
+      db.marketObservation.findMany({
+        where,
+        orderBy: { observedAt: 'desc' },
+        take: limit,
+        skip: offset,
+        include: { event: true, source: true },
+      }),
+      db.marketObservation.count({ where }),
+    ]);
+
+    return NextResponse.json({ data: observations, total });
   } catch (error) {
     console.error('GET /api/observations error:', error);
     return NextResponse.json({ error: 'Failed to fetch observations' }, { status: 500 });

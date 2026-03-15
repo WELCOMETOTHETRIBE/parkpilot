@@ -50,7 +50,10 @@ model Event {
   opportunities       Opportunity[]
   inventoryItems      InventoryItem[]
   alerts              Alert[]
-  
+  priceHistory        PriceHistory[]
+  resaleSnapshots     ResaleSnapshot[]
+  demandForecasts     DemandForecast[]
+
   @@index([venueId])
   @@index([startTime])
   @@index([status])
@@ -69,6 +72,7 @@ model Source {
   parkingProducts ParkingProduct[]
   observations    MarketObservation[]
   opportunities   Opportunity[]
+  priceHistory    PriceHistory[]
 
   @@unique([name])
   @@index([type])
@@ -92,6 +96,8 @@ model ParkingProduct {
   observations         MarketObservation[]
   opportunities        Opportunity[]
   inventoryItems       InventoryItem[]
+  priceHistory         PriceHistory[]
+  demandForecasts      DemandForecast[]
 
   @@unique([eventId, sourceId, productName])
   @@index([eventId])
@@ -244,4 +250,74 @@ model AppSetting {
   key       String   @unique @db.VarChar(255)
   value     Json
   updatedAt DateTime @updatedAt
+}
+
+// ============================================================================
+// Pricing & demand (Phase 2)
+// ============================================================================
+
+model PriceHistory {
+  id                String   @id @default(cuid())
+  eventId           String
+  parkingProductId  String?
+  sourceId          String
+  observedAt        DateTime
+  normalizedPrice   Decimal  @db.Decimal(12, 2)
+  currency          String   @default("USD") @db.VarChar(3)
+  createdAt         DateTime @default(now())
+
+  event          Event          @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  parkingProduct ParkingProduct? @relation(fields: [parkingProductId], references: [id], onDelete: SetNull)
+  source         Source        @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+
+  @@index([eventId])
+  @@index([observedAt])
+}
+
+model ResaleSnapshot {
+  id           String   @id @default(cuid())
+  eventId      String
+  source       String   @db.VarChar(100)
+  observedAt   DateTime
+  minPrice     Decimal  @db.Decimal(12, 2)
+  maxPrice     Decimal  @db.Decimal(12, 2)
+  listingCount Int?
+  createdAt    DateTime @default(now())
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([eventId])
+  @@index([observedAt])
+}
+
+model DemandForecast {
+  id                   String   @id @default(cuid())
+  eventId              String
+  parkingProductId     String?
+  forecastAt           DateTime
+  horizonDays          Int
+  predictedDemandLevel Decimal? @db.Decimal(5, 2)
+  recommendedBuyPrice  Decimal? @db.Decimal(12, 2)
+  recommendedSellPrice Decimal? @db.Decimal(12, 2)
+  createdAt            DateTime @default(now())
+
+  event          Event           @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  parkingProduct ParkingProduct? @relation(fields: [parkingProductId], references: [id], onDelete: SetNull)
+
+  @@index([eventId])
+  @@index([forecastAt])
+}
+
+model AlertRule {
+  id        String   @id @default(cuid())
+  type      String   @db.VarChar(50)
+  threshold Json     @default("{}")
+  eventId   String?
+  channel   String   @default("INAPP")
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([type])
+  @@index([isActive])
 }

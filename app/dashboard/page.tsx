@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { db } from '@/lib/db';
 import { formatPrice } from '@/lib/utils';
 import Decimal from 'decimal.js';
+import DashboardChart from './DashboardChart';
 
 interface Opportunity {
   id: string;
@@ -25,9 +26,7 @@ interface Event {
   name: string;
   startTime: Date;
   category: string;
-  venue?: {
-    name: string;
-  };
+  venue?: { name: string };
 }
 
 interface DashboardStats {
@@ -42,66 +41,61 @@ interface DashboardStats {
 
 async function getDashboardStats(): Promise<DashboardStats> {
   try {
-  // Get open opportunities count
-  const openOpportunitiesCount = await db.opportunity.count({
-    where: { status: 'OPEN' },
-  });
+    const openOpportunitiesCount = await db.opportunity.count({
+      where: { status: 'OPEN' },
+    });
 
-  // Get top scoring opportunity
-  const topOpportunity = await db.opportunity.findFirst({
-    where: { status: 'OPEN' },
-    orderBy: { opportunityScore: 'desc' },
-    include: { event: true, latestObservation: true },
-  });
+    const topOpportunity = await db.opportunity.findFirst({
+      where: { status: 'OPEN' },
+      orderBy: { opportunityScore: 'desc' },
+      include: { event: true, latestObservation: true },
+    });
 
-  // Calculate projected profit (sum of all open opportunities)
-  const opportunities = await db.opportunity.findMany({
-    where: { status: 'OPEN' },
-  });
-  const projectedProfit = opportunities.reduce(
-    (sum: Decimal, opp: any) => sum.plus(opp.projectedProfit || 0),
-    new Decimal(0)
-  );
+    const opportunities = await db.opportunity.findMany({
+      where: { status: 'OPEN' },
+    });
+    const projectedProfit = opportunities.reduce(
+      (sum: Decimal, opp: { projectedProfit?: Decimal | null }) =>
+        sum.plus(opp.projectedProfit || 0),
+      new Decimal(0)
+    );
 
-  // Get held inventory count and value
-  const heldInventory = await db.inventoryItem.findMany({
-    where: { status: 'HELD' },
-  });
-  const heldCount = heldInventory.reduce((sum: number, inv: InventoryItem) => sum + inv.quantity, 0);
-  const heldValue = heldInventory.reduce(
-    (sum: Decimal, inv: InventoryItem) => sum.plus(inv.acquiredPrice.times(inv.quantity)),
-    new Decimal(0)
-  );
+    const heldInventory = await db.inventoryItem.findMany({
+      where: { status: 'HELD' },
+    });
+    const heldCount = heldInventory.reduce(
+      (sum: number, inv: InventoryItem) => sum + inv.quantity,
+      0
+    );
+    const heldValue = heldInventory.reduce(
+      (sum: Decimal, inv: InventoryItem) =>
+        sum.plus(inv.acquiredPrice.times(inv.quantity)),
+      new Decimal(0)
+    );
 
-  // Get realized profit (from sales)
-  const sales = await db.sale.findMany();
-  const realizedProfit = sales.reduce(
-    (sum: Decimal, sale: Sale) => sum.plus(sale.netProfit),
-    new Decimal(0)
-  );
+    const sales = await db.sale.findMany();
+    const realizedProfit = sales.reduce(
+      (sum: Decimal, sale: Sale) => sum.plus(sale.netProfit),
+      new Decimal(0)
+    );
 
-  // Get recent events
-  const recentEvents = await db.event.findMany({
-    take: 5,
-    orderBy: { startTime: 'asc' },
-    where: {
-      startTime: {
-        gte: new Date(),
-      },
-    },
-  });
+    const recentEvents = await db.event.findMany({
+      take: 5,
+      orderBy: { startTime: 'asc' },
+      where: { startTime: { gte: new Date() } },
+      include: { venue: true },
+    });
 
-  return {
-    openOpportunitiesCount,
-    topOpportunity,
-    projectedProfit,
-    heldCount,
-    heldValue,
-    realizedProfit,
-    recentEvents,
-  };
-  } catch (error) {
-    // Return default values if db is not available (e.g., during build)
+    return {
+      openOpportunitiesCount,
+      topOpportunity,
+      projectedProfit,
+      heldCount,
+      heldValue,
+      realizedProfit,
+      recentEvents,
+    };
+  } catch {
     return {
       openOpportunitiesCount: 0,
       topOpportunity: null,
@@ -114,17 +108,15 @@ async function getDashboardStats(): Promise<DashboardStats> {
   }
 }
 
-// Force dynamic rendering since we're fetching from database
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function DashboardPage() {
-  let stats;
+  let stats: DashboardStats;
   try {
     stats = await getDashboardStats();
   } catch (error) {
     console.error('Error fetching dashboard stats:', error);
-    // Return default stats on error
     stats = {
       openOpportunitiesCount: 0,
       topOpportunity: null,
@@ -137,49 +129,33 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div>
-      {/* Quick Start */}
-      <div className="card mb-8 border-2 border-blue-200 bg-blue-50/50">
-        <div className="card-body">
-          <h2 className="text-lg font-semibold text-gray-900 mb-2">Quick start — make money in 4 steps</h2>
-          <ol className="list-decimal list-inside space-y-1.5 text-gray-700">
-            <li>
-              <Link href="/dashboard/observations" className="text-blue-600 hover:underline font-medium">
-                Log prices
-              </Link>
-              {' '}(Observations) so opportunities get scored automatically.
-            </li>
-            <li>
-              <Link href="/dashboard/opportunities" className="text-blue-600 hover:underline font-medium">
-                Pick deals
-              </Link>
-              {' '}(Opportunities) — buy passes off-platform when the score looks good.
-            </li>
-            <li>
-              <Link href="/dashboard/inventory" className="text-blue-600 hover:underline font-medium">
-                Record what you bought
-              </Link>
-              {' '}(Inventory → Add inventory).
-            </li>
-            <li>
-              <Link href="/dashboard/sales" className="text-blue-600 hover:underline font-medium">
-                Record sales
-              </Link>
-              {' '}(Sales → Record sale) when you sell; profit is tracked automatically.
-            </li>
-          </ol>
-          <p className="text-sm text-gray-500 mt-3">
-            New here? Add <Link href="/dashboard/venues" className="text-blue-600 hover:underline">venues</Link> and{' '}
-            <Link href="/dashboard/events" className="text-blue-600 hover:underline">events</Link> first, or use Discover on the Events page.
-          </p>
+    <div className="space-y-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Dashboard</h1>
+        <div className="flex flex-wrap gap-2">
+          <Link
+            href="/dashboard/observations"
+            className="btn btn-secondary btn-sm"
+          >
+            Log price
+          </Link>
+          <Link
+            href="/dashboard/events?discover=1"
+            className="btn btn-secondary btn-sm"
+          >
+            Discover events
+          </Link>
+          <Link
+            href="/dashboard/inventory"
+            className="btn btn-primary btn-sm"
+          >
+            Add inventory
+          </Link>
         </div>
       </div>
 
-      {/* Header */}
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Dashboard</h1>
-
-      {/* Summary Cards */}
-      <div className="grid-cols-dashboard mb-8">
+      {/* KPI cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           title="Open Opportunities"
           value={stats.openOpportunitiesCount}
@@ -193,7 +169,7 @@ export default async function DashboardPage() {
         <StatCard
           title="Held Inventory"
           value={`${stats.heldCount} passes`}
-          subtitle={formatPrice(stats.heldValue, 'USD') + ' invested'}
+          subtitle={`${formatPrice(stats.heldValue, 'USD')} invested`}
         />
         <StatCard
           title="Realized Profit"
@@ -202,79 +178,139 @@ export default async function DashboardPage() {
         />
       </div>
 
-      {/* Top Opportunity */}
-      {stats.topOpportunity && (
-        <div className="card mb-8">
-          <div className="card-header">
-            <h2 className="text-xl font-semibold">Top Opportunity</h2>
-          </div>
-          <div className="card-body">
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900">
-                  {stats.topOpportunity.event?.name}
-                </h3>
-                <p className="text-gray-600 mt-1">
-                  Score: <span className="font-bold">{stats.topOpportunity.opportunityScore}</span> | 
-                  Confidence: <span className="font-bold">{stats.topOpportunity.confidenceScore}%</span>
-                </p>
-                <p className="text-gray-600 mt-2">
-                  Projected Profit: <span className="font-semibold text-green-600">
-                    {formatPrice(stats.topOpportunity.projectedProfit || 0)}
-                  </span>
-                </p>
-              </div>
-              <span className="badge badge-green">OPEN</span>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Recent Events */}
+      {/* Chart: profit over time */}
       <div className="card">
         <div className="card-header">
-          <h2 className="text-xl font-semibold">Upcoming Events</h2>
+          <h2 className="text-lg font-semibold text-gray-900">Realized profit over time</h2>
         </div>
         <div className="card-body">
-          {stats.recentEvents.length === 0 ? (
-            <p className="text-gray-600">No upcoming events</p>
-          ) : (
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Event Name</th>
-                  <th>Date</th>
-                  <th>Category</th>
-                </tr>
-              </thead>
-              <tbody>
-                {stats.recentEvents.map(event => (
-                  <tr key={event.id}>
-                    <td className="font-semibold">{event.name}</td>
-                    <td>{event.startTime.toLocaleDateString()}</td>
-                    <td>
-                      <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm">
-                        {event.category}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
+          <DashboardChart />
         </div>
       </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Top opportunity */}
+        <div className="card">
+          <div className="card-header flex flex-row items-center justify-between">
+            <h2 className="text-lg font-semibold text-gray-900">Top opportunity</h2>
+            {stats.topOpportunity && (
+              <Link
+                href="/dashboard/opportunities"
+                className="text-sm font-medium text-blue-600 hover:text-blue-800"
+              >
+                View all →
+              </Link>
+            )}
+          </div>
+          <div className="card-body">
+            {!stats.topOpportunity ? (
+              <p className="text-gray-500">No open opportunities. Log observations to discover deals.</p>
+            ) : (
+              <div className="flex justify-between items-start gap-4">
+                <div>
+                  <h3 className="font-semibold text-gray-900">
+                    {stats.topOpportunity.event?.name}
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Score <span className="font-semibold">{stats.topOpportunity.opportunityScore}</span>
+                    {' · '}
+                    Confidence <span className="font-semibold">{stats.topOpportunity.confidenceScore}%</span>
+                  </p>
+                  <p className="text-sm text-green-600 font-medium mt-2">
+                    {formatPrice(stats.topOpportunity.projectedProfit ?? 0)} projected
+                  </p>
+                </div>
+                <span className="badge badge-green shrink-0">OPEN</span>
+                <Link
+                  href="/dashboard/opportunities"
+                  className="btn btn-primary btn-sm shrink-0"
+                >
+                  View
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Upcoming events */}
+        <div className="card">
+          <div className="card-header flex flex-row items-center justify-between">
+            <h2 className="text-lg font-semibold text-gray-900">Upcoming events</h2>
+            <Link
+              href="/dashboard/events"
+              className="text-sm font-medium text-blue-600 hover:text-blue-800"
+            >
+              View all →
+            </Link>
+          </div>
+          <div className="card-body">
+            {stats.recentEvents.length === 0 ? (
+              <p className="text-gray-500">No upcoming events. Add venues and events or use Discover.</p>
+            ) : (
+              <ul className="space-y-2">
+                {stats.recentEvents.map((event) => (
+                  <li key={event.id} className="flex justify-between items-center text-sm">
+                    <span className="font-medium text-gray-900 truncate pr-2">{event.name}</span>
+                    <span className="text-gray-500 shrink-0">
+                      {event.startTime.toLocaleDateString()}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Quick start (collapsed / secondary) */}
+      <details className="card">
+        <summary className="card-body cursor-pointer list-none">
+          <span className="text-sm font-medium text-gray-700">Quick start — make money in 4 steps</span>
+        </summary>
+        <div className="card-body pt-0">
+          <ol className="list-decimal list-inside space-y-1.5 text-sm text-gray-600">
+            <li>
+              <Link href="/dashboard/observations" className="text-blue-600 hover:underline font-medium">Log prices</Link>
+              {' '}(Observations) so opportunities get scored automatically.
+            </li>
+            <li>
+              <Link href="/dashboard/opportunities" className="text-blue-600 hover:underline font-medium">Pick deals</Link>
+              {' '}(Opportunities) — buy passes when the score looks good.
+            </li>
+            <li>
+              <Link href="/dashboard/inventory" className="text-blue-600 hover:underline font-medium">Record what you bought</Link>
+              {' '}(Inventory → Add inventory).
+            </li>
+            <li>
+              <Link href="/dashboard/sales" className="text-blue-600 hover:underline font-medium">Record sales</Link>
+              {' '}when you sell; profit is tracked automatically.
+            </li>
+          </ol>
+          <p className="text-sm text-gray-500 mt-3">
+            Add <Link href="/dashboard/venues" className="text-blue-600 hover:underline">venues</Link> and{' '}
+            <Link href="/dashboard/events" className="text-blue-600 hover:underline">events</Link> first, or use Discover on the Events page.
+          </p>
+        </div>
+      </details>
     </div>
   );
 }
 
-function StatCard({ title, value, subtitle }: { title: string; value: string | number; subtitle: string }) {
+function StatCard({
+  title,
+  value,
+  subtitle,
+}: {
+  title: string;
+  value: string | number;
+  subtitle: string;
+}) {
   return (
     <div className="card">
       <div className="card-body">
         <p className="text-gray-600 text-sm font-medium">{title}</p>
-        <p className="text-3xl font-bold text-gray-900 mt-2">{value}</p>
-        <p className="text-gray-600 text-sm mt-1">{subtitle}</p>
+        <p className="text-2xl font-bold text-gray-900 mt-1">{value}</p>
+        <p className="text-gray-500 text-sm mt-0.5">{subtitle}</p>
       </div>
     </div>
   );

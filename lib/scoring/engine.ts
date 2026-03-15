@@ -22,6 +22,12 @@ export interface ScoringInput {
   confidenceScore: number; // 0-100
   transferabilityStatus: 'UNKNOWN' | 'YES' | 'NO';
   demandMultiplier?: number; // 0.5 - 2.0, default 1.0
+  /** Optional: historical price volatility (e.g. std dev). Higher = more uncertainty, slight penalty. */
+  priceVolatility?: number;
+  /** Optional: resale market trend. 'up' boosts score, 'down' reduces. */
+  resaleTrend?: 'up' | 'down' | 'stable';
+  /** Optional: sentiment/buzz score 0-100. Light weight. */
+  sentimentScore?: number;
 }
 
 export interface ScoringOutput {
@@ -47,6 +53,12 @@ export interface ScoringRationale {
   transferabilityPenalty: number;
   demandMultiplier: number;
 
+  priceVolatility?: number;
+  volatilityScore?: number;
+  resaleTrend?: string;
+  resaleTrendMultiplier?: number;
+  sentimentScore?: number;
+
   confidenceScore: number;
   finalScore: number;
   components: Array<{ name: string; value: number; weight: number }>;
@@ -66,6 +78,9 @@ export function scoreOpportunity(input: ScoringInput): ScoringOutput {
     confidenceScore,
     transferabilityStatus,
     demandMultiplier = 1.0,
+    priceVolatility,
+    resaleTrend,
+    sentimentScore,
   } = input;
 
   // 1. Margin calculation
@@ -123,13 +138,25 @@ export function scoreOpportunity(input: ScoringInput): ScoringOutput {
   // 5. Transferability penalty (0 to -150)
   let transferabilityPenalty = 0;
   if (transferabilityStatus === 'UNKNOWN') {
-    transferabilityPenalty = -100; // Major penalty for unknown
+    transferabilityPenalty = -100;
   } else if (transferabilityStatus === 'NO') {
-    transferabilityPenalty = -150; // Severe penalty
+    transferabilityPenalty = -150;
   }
-  // YES: no penalty
 
-  // 6. Components and final calculation
+  // 6. Optional: price volatility (high volatility = small penalty to confidence)
+  let volatilityScore = 0;
+  if (priceVolatility !== undefined && priceVolatility > 0) {
+    volatilityScore = Math.max(-20, -priceVolatility * 2);
+  }
+
+  // 7. Optional: resale trend multiplier
+  let resaleTrendMultiplier = 1.0;
+  if (resaleTrend === 'up') resaleTrendMultiplier = 1.08;
+  else if (resaleTrend === 'down') resaleTrendMultiplier = 0.95;
+
+  // 8. Optional: sentiment (light weight, 0-100 -> 0 to +10 bonus)
+  const sentimentBonus = sentimentScore != null ? (sentimentScore / 100) * 10 : 0;
+
   const components = [
     { name: 'Margin', value: marginScore, weight: 0.35 },
     { name: 'Time to Event', value: timeScore, weight: 0.25 },
@@ -138,14 +165,15 @@ export function scoreOpportunity(input: ScoringInput): ScoringOutput {
     { name: 'Transferability', value: transferabilityPenalty, weight: 0.1 },
   ];
 
-  const baseScore =
+  let baseScore =
     marginScore * 0.35 +
     timeScore * 0.25 +
     sourceScore * 0.15 +
     freshnessScore * 0.15 +
     transferabilityPenalty * 0.1;
 
-  const adjustedScore = baseScore * demandMultiplier;
+  baseScore += volatilityScore + sentimentBonus;
+  const adjustedScore = baseScore * demandMultiplier * resaleTrendMultiplier;
   const finalScore = Math.max(0, Math.min(1000, adjustedScore));
 
   // Confidence is based on provided confidence + source reliability
@@ -166,6 +194,9 @@ export function scoreOpportunity(input: ScoringInput): ScoringOutput {
       freshnessScore,
       transferabilityPenalty,
       demandMultiplier,
+      ...(priceVolatility !== undefined && { priceVolatility, volatilityScore }),
+      ...(resaleTrend && { resaleTrend, resaleTrendMultiplier }),
+      ...(sentimentScore !== undefined && { sentimentScore }),
       confidenceScore: finalConfidence,
       finalScore: Math.round(finalScore),
       components,

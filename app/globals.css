@@ -2,12 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   Design system: tokens (semantic colors, spacing)
+   --------------------------------------------------------------------------- */
+:root {
+  /* Semantic: success (profit, positive), warning (attention), danger (loss, closed) */
+  --color-success: 34 197 94;   /* green-500 */
+  --color-success-muted: 220 252 231; /* green-100 */
+  --color-warning: 234 179 8;   /* yellow-500 */
+  --color-warning-muted: 254 249 195; /* yellow-100 */
+  --color-danger: 239 68 68;    /* red-500 */
+  --color-danger-muted: 254 226 226; /* red-100 */
+  --color-info: 59 130 246;     /* blue-500 */
+  --color-info-muted: 219 234 254; /* blue-100 */
+  /* Spacing: consistent rhythm */
+  --space-page: 1.5rem;         /* 24px */
+  --space-section: 2rem;       /* 32px */
+  --radius-card: 0.5rem;       /* 8px */
+  --radius-btn: 0.5rem;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply text-gray-900;
+  @apply text-gray-900 antialiased;
 }
 
 a {
@@ -18,8 +38,9 @@ button {
   @apply transition-colors;
 }
 
+/* Buttons */
 .btn {
-  @apply px-4 py-2 rounded-lg font-medium;
+  @apply px-4 py-2 rounded-lg font-medium inline-flex items-center justify-center gap-2;
 }
 
 .btn-primary {
@@ -34,6 +55,15 @@ button {
   @apply btn bg-red-600 text-white hover:bg-red-700;
 }
 
+.btn-success {
+  @apply btn bg-green-600 text-white hover:bg-green-700;
+}
+
+.btn-sm {
+  @apply px-3 py-1.5 text-sm rounded-md;
+}
+
+/* Badges: semantic status */
 .badge {
   @apply inline-block px-3 py-1 rounded-full text-sm font-medium;
 }
@@ -54,6 +84,11 @@ button {
   @apply badge bg-blue-100 text-blue-800;
 }
 
+.badge-gray {
+  @apply badge bg-gray-100 text-gray-800;
+}
+
+/* Cards */
 .card {
   @apply bg-white rounded-lg shadow;
 }
@@ -70,14 +105,24 @@ button {
   @apply px-6 py-4 border-t border-gray-200 bg-gray-50;
 }
 
+/* Form inputs */
 .input {
-  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500;
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none;
+}
+
+.input-error {
+  @apply border-red-500 focus:border-red-500 focus:ring-red-500;
 }
 
 .input-sm {
   @apply input text-sm;
 }
 
+.label {
+  @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+/* Tables */
 .table {
   @apply w-full border-collapse;
 }
@@ -94,6 +139,18 @@ button {
   @apply bg-gray-50;
 }
 
+.table-wrapper {
+  @apply overflow-x-auto -mx-4 sm:mx-0;
+}
+
 .grid-cols-dashboard {
   @apply grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4;
+}
+
+/* Toast / feedback (for success messages) */
+.toast-success {
+  @apply fixed bottom-4 right-4 px-4 py-2 bg-green-600 text-white rounded-lg shadow-lg z-50;
+}
+.toast-error {
+  @apply fixed bottom-4 right-4 px-4 py-2 bg-red-600 text-white rounded-lg shadow-lg z-50;
 }

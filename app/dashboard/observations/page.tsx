@@ -1,7 +1,9 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { formatPrice, formatDateTime } from '@/lib/utils';
+import { DataTable, type DataTableColumn } from '@/components/ui/DataTable';
+import { Toast } from '@/components/ui/Toast';
 
 interface Source {
   id: string;
@@ -57,31 +59,40 @@ export default function ObservationsPage() {
     transferabilityStatus: 'UNKNOWN' as 'UNKNOWN' | 'YES' | 'NO',
   });
 
+  const [eventFilter, setEventFilter] = useState('');
+  const [sourceFilter, setSourceFilter] = useState('');
+  const [sort, setSort] = useState<{ key: string; dir: 'asc' | 'desc' }>({ key: 'observedAt', dir: 'desc' });
+  const [successMessage, setSuccessMessage] = useState('');
+
   const fetchData = useCallback(async () => {
     try {
+      const obsParams = new URLSearchParams();
+      if (eventFilter) obsParams.set('eventId', eventFilter);
+      if (sourceFilter) obsParams.set('sourceId', sourceFilter);
+      obsParams.set('limit', '100');
       const [obsRes, eventsRes, sourcesRes] = await Promise.all([
-        fetch('/api/observations'),
+        fetch(`/api/observations?${obsParams.toString()}`),
         fetch('/api/events'),
         fetch('/api/sources'),
       ]);
       if (!obsRes.ok || !eventsRes.ok || !sourcesRes.ok) throw new Error('Failed to fetch');
-      const [obsData, eventsData, sourcesData] = await Promise.all([
+      const [obsJson, eventsData, sourcesData] = await Promise.all([
         obsRes.json(),
         eventsRes.json(),
         sourcesRes.json(),
       ]);
-      setObservations(obsData);
+      setObservations(obsJson.data ?? []);
       setEvents(eventsData);
       setSources(sourcesData);
       if (eventsData.length > 0 && !formData.eventId) {
-        setFormData(prev => ({ ...prev, eventId: eventsData[0].id }));
+        setFormData((prev) => ({ ...prev, eventId: eventsData[0].id }));
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
     } finally {
       setLoading(false);
     }
-  }, [formData.eventId]);
+  }, [formData.eventId, eventFilter, sourceFilter]);
 
   useEffect(() => {
     fetchData();
@@ -119,34 +130,52 @@ export default function ObservationsPage() {
         const data = await res.json().catch(() => ({}));
         throw new Error(data.error || 'Failed to add observation');
       }
-      setFormData(prev => ({
-        ...prev,
-        rawPriceText: '',
-        normalizedPrice: '',
-        pageUrl: '',
-        availabilityText: '',
-      }));
+      setFormData((prev) => ({ ...prev, rawPriceText: '', normalizedPrice: '', pageUrl: '', availabilityText: '' }));
       setShowForm(false);
+      setSuccessMessage('Observation added. Opportunities updated.');
       await fetchData();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
     }
   }
 
-  if (loading) return <div className="text-center py-8">Loading...</div>;
+  const sortedObservations = useMemo(() => {
+    const list = [...observations];
+    list.sort((a, b) => {
+      const aVal = sort.key === 'observedAt' ? new Date(a.observedAt).getTime() : (a as unknown as Record<string, unknown>)[sort.key];
+      const bVal = sort.key === 'observedAt' ? new Date(b.observedAt).getTime() : (b as unknown as Record<string, unknown>)[sort.key];
+      if (typeof aVal === 'number' && typeof bVal === 'number') return sort.dir === 'asc' ? aVal - bVal : bVal - aVal;
+      const aStr = String(aVal ?? '');
+      const bStr = String(bVal ?? '');
+      return sort.dir === 'asc' ? aStr.localeCompare(bStr) : bStr.localeCompare(aStr);
+    });
+    return list;
+  }, [observations, sort]);
+
+  const columns: DataTableColumn<Observation>[] = useMemo(
+    () => [
+      { id: 'event', header: 'Event', accessor: (r) => r.event?.name, sortKey: 'event', render: (_, r) => <span className="font-semibold">{r.event?.name}</span> },
+      { id: 'source', header: 'Source', accessor: (r) => r.source?.name, sortKey: 'source' },
+      { id: 'price', header: 'Price', accessor: (r) => r.normalizedPrice, render: (_, r) => formatPrice(Number(r.normalizedPrice)) },
+      { id: 'observedAt', header: 'Observed', accessor: (r) => r.observedAt, sortKey: 'observedAt', render: (_, r) => formatDateTime(r.observedAt, false) },
+      { id: 'method', header: 'Method', accessor: (r) => r.extractionMethod, render: (_, r) => <span className="badge badge-blue">{r.extractionMethod}</span> },
+    ],
+    []
+  );
+
+  if (loading) return <div className="text-center py-8">Loading…</div>;
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Market Observations</h1>
-        <button onClick={() => setShowForm(!showForm)} className="btn btn-primary">
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h1 className="text-2xl font-bold text-gray-900">Market Observations</h1>
+        <button type="button" onClick={() => setShowForm(!showForm)} className="btn btn-primary">
           {showForm ? 'Cancel' : '+ Add Observation'}
         </button>
       </div>
 
-      {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>
-      )}
+      {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">{error}</div>}
+      {successMessage && <Toast message={successMessage} onDismiss={() => setSuccessMessage('')} />}
 
       {showForm && (
         <div className="card mb-6">
@@ -302,42 +331,34 @@ export default function ObservationsPage() {
         </div>
       )}
 
-      {observations.length === 0 ? (
-        <div className="card">
-          <div className="card-body text-center py-8">
-            <p className="text-gray-600">No observations yet. Add one to start scoring opportunities.</p>
-          </div>
+      <div className="card">
+        <div className="card-body">
+          <DataTable
+            columns={columns}
+            data={sortedObservations}
+            keyExtractor={(r) => r.id}
+            sort={sort}
+            onSort={(key, dir) => setSort({ key, dir })}
+            filterSlot={
+              <>
+                <select className="input input-sm w-auto" value={eventFilter} onChange={(e) => setEventFilter(e.target.value)}>
+                  <option value="">All events</option>
+                  {events.map((ev) => (
+                    <option key={ev.id} value={ev.id}>{ev.name}</option>
+                  ))}
+                </select>
+                <select className="input input-sm w-auto" value={sourceFilter} onChange={(e) => setSourceFilter(e.target.value)}>
+                  <option value="">All sources</option>
+                  {sources.map((s) => (
+                    <option key={s.id} value={s.id}>{s.name}</option>
+                  ))}
+                </select>
+              </>
+            }
+            emptyMessage="No observations yet. Add one to start scoring opportunities."
+          />
         </div>
-      ) : (
-        <div className="card">
-          <div className="card-body">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Event</th>
-                  <th>Source</th>
-                  <th>Price</th>
-                  <th>Observed</th>
-                  <th>Method</th>
-                </tr>
-              </thead>
-              <tbody>
-                {observations.map(obs => (
-                  <tr key={obs.id}>
-                    <td className="font-semibold">{obs.event.name}</td>
-                    <td className="text-sm text-gray-600">{obs.source.name}</td>
-                    <td>{formatPrice(Number(obs.normalizedPrice))}</td>
-                    <td className="text-sm text-gray-600">{formatDateTime(obs.observedAt, false)}</td>
-                    <td>
-                      <span className="badge badge-blue">{obs.extractionMethod}</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
