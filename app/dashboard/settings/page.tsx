@@ -37,6 +37,7 @@ export default function SettingsPage() {
         <div className="card-body space-y-3 text-sm text-gray-600">
           <ul className="list-disc list-inside space-y-1">
             <li><strong>SERPAPI_API_KEY</strong> — used for Discover (venues, events, parking search).</li>
+            <li><strong>OPENAI_API_KEY</strong> — used for venue normalization, event/parking parsing, and opportunity rationale.</li>
             <li><strong>SMTP_*</strong> — for email alerts (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, ALERT_EMAIL_FROM).</li>
           </ul>
           <p>See <code className="bg-gray-100 px-1 rounded">.env.example</code> or project README for a full list.</p>

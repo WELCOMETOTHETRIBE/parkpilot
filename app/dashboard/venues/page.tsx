@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { DataTable, type DataTableColumn } from '@/components/ui/DataTable';
 import { Toast } from '@/components/ui/Toast';
+import { ScanFavoritesButton } from '../ScanFavoritesButton';
 
 interface Venue {
   id: string;
@@ -25,11 +26,20 @@ export default function VenuesPage() {
   const [stateFilter, setStateFilter] = useState('');
 
   const [showDiscover, setShowDiscover] = useState(false);
+  const [discoverTab, setDiscoverTab] = useState<'master' | 'serpapi'>('master');
+  const [masterQuery, setMasterQuery] = useState('');
+  const [masterState, setMasterState] = useState('');
+  const [masterType, setMasterType] = useState('');
+  const [masterLoading, setMasterLoading] = useState(false);
+  const [masterResults, setMasterResults] = useState<Array<{ venueName: string; city: string; state: string; type: string; capacity: string }>>([]);
   const [discoverCity, setDiscoverCity] = useState('');
   const [discoverState, setDiscoverState] = useState('');
   const [discoverLoading, setDiscoverLoading] = useState(false);
   const [discoverResults, setDiscoverResults] = useState<Array<{ name: string; city: string; state: string; sourceUrl: string }>>([]);
   const [discoveringVenue, setDiscoveringVenue] = useState<string | null>(null);
+  const [favoriteVenueIds, setFavoriteVenueIds] = useState<Set<string>>(new Set());
+  const [favoriteVenues, setFavoriteVenues] = useState<Array<{ id: string; name: string; city: string; state: string }>>([]);
+  const [favoriteLoading, setFavoriteLoading] = useState<string | null>(null);
 
   async function handleDiscoverVenue(venueName: string, city: string, state: string) {
     setDiscoveringVenue(venueName);
@@ -45,7 +55,11 @@ export default function VenuesPage() {
         throw new Error(data.error || 'Discovery failed');
       }
       const data = await res.json();
-      setSuccessMessage(`Venue "${data.venue?.name}" created with ${data.eventsCreated ?? 0} events.`);
+      if (data.queued) {
+        setSuccessMessage(data.message ?? 'Scanning in background; check Events and Opportunities shortly.');
+      } else {
+        setSuccessMessage(`Venue "${data.venue?.name}" created with ${data.eventsCreated ?? 0} events.`);
+      }
       await fetchVenues();
       setShowDiscover(false);
       setDiscoverResults([]);
@@ -68,6 +82,22 @@ export default function VenuesPage() {
       setLoading(false);
     }
   }, []);
+
+  const fetchFavorites = useCallback(async () => {
+    try {
+      const res = await fetch('/api/profile/favorite-venues');
+      if (!res.ok) return;
+      const data = await res.json();
+      setFavoriteVenueIds(new Set((data.venueIds ?? [])));
+      setFavoriteVenues((data.venues ?? []).map((v: Venue) => ({ id: v.id, name: v.name, city: v.city, state: v.state })));
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchFavorites();
+  }, [fetchFavorites]);
 
   useEffect(() => {
     fetchVenues();
@@ -98,19 +128,33 @@ export default function VenuesPage() {
         id: 'actions',
         header: 'Actions',
         accessor: () => null,
-        render: (_, r) => (
-          <button
-            type="button"
-            onClick={() => handleDiscoverVenue(r.name, r.city, r.state)}
-            disabled={discoveringVenue === r.name}
-            className="btn btn-sm btn-secondary"
-          >
-            {discoveringVenue === r.name ? 'Discovering…' : 'Discover Events'}
-          </button>
-        ),
+        render: (_, r) => {
+          const isFav = favoriteVenueIds.has(r.id);
+          const loading = favoriteLoading === r.id;
+          return (
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={() => (isFav ? handleRemoveFavorite(r.id) : handleAddFavoriteById(r.id))}
+                disabled={!!loading}
+                className="btn btn-sm btn-secondary"
+              >
+                {loading ? '…' : isFav ? 'Remove from Favorites' : 'Add to Favorites'}
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDiscoverVenue(r.name, r.city, r.state)}
+                disabled={discoveringVenue === r.name}
+                className="btn btn-sm btn-primary"
+              >
+                {discoveringVenue === r.name ? 'Discovering…' : 'Discover Events'}
+              </button>
+            </div>
+          );
+        },
       },
     ],
-    [discoveringVenue]
+    [discoveringVenue, favoriteVenueIds, favoriteLoading]
   );
 
   const states = useMemo(() => Array.from(new Set(venues.map((v) => v.state))).sort(), [venues]);
@@ -135,6 +179,94 @@ export default function VenuesPage() {
       await fetchVenues();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
+    }
+  }
+
+  function isDiscoverResultFavorited(venue: { name: string; city: string; state: string }): string | null {
+    const norm = (s: string) => s.trim().toLowerCase();
+    const match = favoriteVenues.find(
+      (f) => norm(f.name) === norm(venue.name) && norm(f.city) === norm(venue.city) && f.state === venue.state.trim().toUpperCase().slice(0, 2)
+    );
+    return match?.id ?? null;
+  }
+
+  async function handleAddFavorite(venueName: string, city: string, state: string) {
+    setFavoriteLoading(`${venueName}-${city}-${state}`);
+    setError(null);
+    try {
+      const res = await fetch('/api/profile/favorite-venues', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ venueName, city, state }),
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Failed to add favorite');
+      }
+      setSuccessMessage('Venue added to favorites.');
+      await fetchFavorites();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to add favorite');
+    } finally {
+      setFavoriteLoading(null);
+    }
+  }
+
+  async function handleAddFavoriteById(venueId: string) {
+    setFavoriteLoading(venueId);
+    setError(null);
+    try {
+      const res = await fetch('/api/profile/favorite-venues', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ venueId }),
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Failed to add favorite');
+      }
+      setSuccessMessage('Venue added to favorites.');
+      await fetchFavorites();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to add favorite');
+    } finally {
+      setFavoriteLoading(null);
+    }
+  }
+
+  async function handleRemoveFavorite(venueId: string) {
+    setFavoriteLoading(venueId);
+    setError(null);
+    try {
+      const res = await fetch(`/api/profile/favorite-venues/${encodeURIComponent(venueId)}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error('Failed to remove favorite');
+      setSuccessMessage('Venue removed from favorites.');
+      await fetchFavorites();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to remove favorite');
+    } finally {
+      setFavoriteLoading(null);
+    }
+  }
+
+  async function handleSearchMaster() {
+    setMasterLoading(true);
+    setError(null);
+    try {
+      const params = new URLSearchParams();
+      if (masterQuery.trim()) params.set('q', masterQuery.trim());
+      if (masterState.trim()) params.set('state', masterState.trim());
+      if (masterType.trim()) params.set('type', masterType.trim());
+      params.set('limit', '100');
+      const res = await fetch(`/api/venues/master?${params.toString()}`);
+      if (!res.ok) throw new Error('Search failed');
+      const data = await res.json();
+      setMasterResults(data.venues || []);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Search failed');
+      setMasterResults([]);
+    } finally {
+      setMasterLoading(false);
     }
   }
 
@@ -165,6 +297,7 @@ export default function VenuesPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 className="text-2xl font-bold text-gray-900">Venues</h1>
         <div className="flex flex-wrap gap-2">
+          <ScanFavoritesButton className="btn btn-primary" />
           <button type="button" onClick={() => setShowDiscover(!showDiscover)} className="btn btn-secondary">
             {showDiscover ? 'Cancel Discovery' : 'Discover Venues'}
           </button>
@@ -180,42 +313,131 @@ export default function VenuesPage() {
       {showDiscover && (
         <div className="card">
           <div className="card-header">
-            <h2 className="font-semibold">Discover Venues (SerpAPI)</h2>
-            <p className="text-sm text-gray-500 mt-1">Search by city and state, then discover events and parking.</p>
+            <h2 className="font-semibold">Discover Venues</h2>
+            <p className="text-sm text-gray-500 mt-1">Search the US venue list or by city/state (SerpAPI).</p>
+            <div className="flex gap-2 mt-2">
+              <button
+                type="button"
+                onClick={() => setDiscoverTab('master')}
+                className={`btn btn-sm ${discoverTab === 'master' ? 'btn-primary' : 'btn-secondary'}`}
+              >
+                US Venue List
+              </button>
+              <button
+                type="button"
+                onClick={() => setDiscoverTab('serpapi')}
+                className={`btn btn-sm ${discoverTab === 'serpapi' ? 'btn-primary' : 'btn-secondary'}`}
+              >
+                Search by city/state
+              </button>
+            </div>
           </div>
           <div className="card-body space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div>
-                <label className="label">City</label>
-                <input className="input" placeholder="e.g. Los Angeles" value={discoverCity} onChange={(e) => setDiscoverCity(e.target.value)} />
-              </div>
-              <div>
-                <label className="label">State (2 letters)</label>
-                <input className="input" placeholder="CA" value={discoverState} maxLength={2} onChange={(e) => setDiscoverState(e.target.value.toUpperCase())} />
-              </div>
-              <div className="flex items-end">
-                <button type="button" onClick={handleSearchVenues} disabled={discoverLoading} className="btn btn-primary w-full sm:w-auto">
-                  {discoverLoading ? 'Searching…' : 'Search Venues'}
-                </button>
-              </div>
-            </div>
-            {discoverResults.length > 0 && (
-              <div>
-                <h3 className="font-semibold mb-2">Found {discoverResults.length} venues</h3>
-                <div className="space-y-2">
-                  {discoverResults.map((venue, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded">
-                      <div>
-                        <p className="font-semibold">{venue.name}</p>
-                        <p className="text-sm text-gray-600">{venue.city}, {venue.state}</p>
-                      </div>
-                      <button type="button" onClick={() => handleDiscoverVenue(venue.name, venue.city, venue.state)} disabled={discoveringVenue === venue.name} className="btn btn-sm btn-primary">
-                        {discoveringVenue === venue.name ? 'Discovering…' : 'Discover Events & Parking'}
-                      </button>
-                    </div>
-                  ))}
+            {discoverTab === 'master' && (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                  <div>
+                    <label className="label">Venue or city name</label>
+                    <input className="input" placeholder="e.g. SoFi or Los Angeles" value={masterQuery} onChange={(e) => setMasterQuery(e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="label">State (2 letters)</label>
+                    <input className="input" placeholder="CA" value={masterState} maxLength={2} onChange={(e) => setMasterState(e.target.value.toUpperCase())} />
+                  </div>
+                  <div>
+                    <label className="label">Type</label>
+                    <input className="input" placeholder="Stadium, Arena, etc." value={masterType} onChange={(e) => setMasterType(e.target.value)} />
+                  </div>
+                  <div className="flex items-end">
+                    <button type="button" onClick={handleSearchMaster} disabled={masterLoading} className="btn btn-primary w-full sm:w-auto">
+                      {masterLoading ? 'Searching…' : 'Search'}
+                    </button>
+                  </div>
                 </div>
-              </div>
+                {masterResults.length > 0 && (
+                  <div>
+                    <h3 className="font-semibold mb-2">Found {masterResults.length} venues</h3>
+                    <div className="max-h-96 overflow-y-auto space-y-2">
+                      {masterResults.map((venue, idx) => {
+                        const favId = isDiscoverResultFavorited({ name: venue.venueName, city: venue.city, state: venue.state });
+                        const loading = favoriteLoading === `${venue.venueName}-${venue.city}-${venue.state}` || favoriteLoading === favId;
+                        return (
+                          <div key={idx} className="flex items-center justify-between gap-2 p-3 bg-gray-50 rounded flex-wrap">
+                            <div>
+                              <p className="font-semibold">{venue.venueName}</p>
+                              <p className="text-sm text-gray-600">{venue.city}{venue.state ? `, ${venue.state}` : ''}{venue.type ? ` · ${venue.type}` : ''}</p>
+                            </div>
+                            <div className="flex gap-2">
+                              <button
+                                type="button"
+                                onClick={() => (favId ? handleRemoveFavorite(favId) : handleAddFavorite(venue.venueName, venue.city, venue.state))}
+                                disabled={!!loading}
+                                className="btn btn-sm btn-secondary"
+                              >
+                                {loading ? '…' : favId ? 'Remove from Favorites' : 'Add to Favorites'}
+                              </button>
+                              <button type="button" onClick={() => handleDiscoverVenue(venue.venueName, venue.city, venue.state)} disabled={discoveringVenue === venue.venueName} className="btn btn-sm btn-primary">
+                                {discoveringVenue === venue.venueName ? 'Discovering…' : 'Discover Events & Parking'}
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+            {discoverTab === 'serpapi' && (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="label">City</label>
+                    <input className="input" placeholder="e.g. Los Angeles" value={discoverCity} onChange={(e) => setDiscoverCity(e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="label">State (2 letters)</label>
+                    <input className="input" placeholder="CA" value={discoverState} maxLength={2} onChange={(e) => setDiscoverState(e.target.value.toUpperCase())} />
+                  </div>
+                  <div className="flex items-end">
+                    <button type="button" onClick={handleSearchVenues} disabled={discoverLoading} className="btn btn-primary w-full sm:w-auto">
+                      {discoverLoading ? 'Searching…' : 'Search Venues'}
+                    </button>
+                  </div>
+                </div>
+                {discoverResults.length > 0 && (
+                  <div>
+                    <h3 className="font-semibold mb-2">Found {discoverResults.length} venues</h3>
+                    <div className="space-y-2">
+                      {discoverResults.map((venue, idx) => {
+                        const favId = isDiscoverResultFavorited(venue);
+                        const loading = favoriteLoading === `${venue.name}-${venue.city}-${venue.state}` || favoriteLoading === favId;
+                        return (
+                          <div key={idx} className="flex items-center justify-between gap-2 p-3 bg-gray-50 rounded flex-wrap">
+                            <div>
+                              <p className="font-semibold">{venue.name}</p>
+                              <p className="text-sm text-gray-600">{venue.city}, {venue.state}</p>
+                            </div>
+                            <div className="flex gap-2">
+                              <button
+                                type="button"
+                                onClick={() => (favId ? handleRemoveFavorite(favId) : handleAddFavorite(venue.name, venue.city, venue.state))}
+                                disabled={!!loading}
+                                className="btn btn-sm btn-secondary"
+                              >
+                                {loading ? '…' : favId ? 'Remove from Favorites' : 'Add Venue to Favorites'}
+                              </button>
+                              <button type="button" onClick={() => handleDiscoverVenue(venue.name, venue.city, venue.state)} disabled={discoveringVenue === venue.name} className="btn btn-sm btn-primary">
+                                {discoveringVenue === venue.name ? 'Discovering…' : 'Discover Events & Parking'}
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>

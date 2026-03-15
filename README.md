@@ -47,7 +47,17 @@ npm run dev
 # Open http://localhost:3000/dashboard
 ```
 
-The dashboard shows a **Quick start** card with four steps: log prices → pick opportunities → record inventory → record sales. Optional: add `SERPAPI_API_KEY` to `.env` for event discovery (free key at [serpapi.com](https://serpapi.com)).
+The dashboard shows a **Quick start** card with four steps: log prices → pick opportunities → record inventory → record sales. Optional: add `SERPAPI_API_KEY` to `.env` for event discovery (free key at [serpapi.com](https://serpapi.com)). Add `OPENAI_API_KEY` for AI-powered venue normalization, event/parking parsing, and opportunity summaries.
+
+### Venue master list (optional)
+
+To build a normalized US venue list from `lib/serpapi/us_venues_master.json`, set `OPENAI_API_KEY` in your environment and run:
+
+```bash
+OPENAI_API_KEY=sk-... npm run normalize-venues
+```
+
+This writes `lib/serpapi/us_venues_master_normalized.json`. Without it, the app uses a best-effort fallback from the raw file.
 
 ### Database Migrations
 

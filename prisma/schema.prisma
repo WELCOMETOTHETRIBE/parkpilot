@@ -15,6 +15,31 @@ datasource db {
 // Core Entities
 // ============================================================================
 
+model User {
+  id        String   @id @default(cuid())
+  name      String   @db.VarChar(255)
+  email     String?  @unique @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  favoriteVenues UserFavoriteVenue[]
+
+  @@index([email])
+}
+
+model UserFavoriteVenue {
+  userId    String
+  venueId   String
+  createdAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  venue Venue @relation(fields: [venueId], references: [id], onDelete: Cascade)
+
+  @@id([userId, venueId])
+  @@index([userId])
+  @@index([venueId])
+}
+
 model Venue {
   id        String   @id @default(cuid())
   name      String   @db.VarChar(255)
@@ -27,6 +52,7 @@ model Venue {
 
   events             Event[]
   inventoryItems     InventoryItem[]
+  favoriteBy         UserFavoriteVenue[]
 
   @@index([city])
   @@index([state])

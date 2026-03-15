@@ -17,7 +17,8 @@
     "db:reset": "prisma migrate reset",
     "test": "jest",
     "worker:jobs": "node dist/workers/jobs.js",
-    "worker:bullmq": "ts-node workers/run-bullmq.ts"
+    "worker:bullmq": "ts-node workers/run-bullmq.ts",
+    "normalize-venues": "ts-node scripts/normalize-venues.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.7.0",
@@ -28,6 +29,7 @@
     "decimal.js": "^10.4.3",
     "next": "^14.0.0",
     "nodemailer": "^8.0.2",
+    "openai": "^6.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "recharts": "^3.8.0",

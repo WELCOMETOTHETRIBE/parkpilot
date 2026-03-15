@@ -11,6 +11,7 @@ const envSchema = z.object({
 
   // APIs (optional; discover shows message if missing)
   SERPAPI_API_KEY: z.string().default(''),
+  OPENAI_API_KEY: z.string().default(''),
 
   // Redis (optional; required for BullMQ job queue)
   REDIS_URL: z.string().url().optional(),

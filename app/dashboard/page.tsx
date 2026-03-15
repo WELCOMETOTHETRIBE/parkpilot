@@ -3,6 +3,7 @@ import { db } from '@/lib/db';
 import { formatPrice } from '@/lib/utils';
 import Decimal from 'decimal.js';
 import DashboardChart from './DashboardChart';
+import { ScanFavoritesButton } from './ScanFavoritesButton';
 
 interface Opportunity {
   id: string;
@@ -133,6 +134,7 @@ export default async function DashboardPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Dashboard</h1>
         <div className="flex flex-wrap gap-2">
+          <ScanFavoritesButton className="btn btn-primary btn-sm" />
           <Link
             href="/dashboard/observations"
             className="btn btn-secondary btn-sm"

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
+import Link from 'next/link';
 import { formatDateTime } from '@/lib/utils';
 import { DataTable, type DataTableColumn } from '@/components/ui/DataTable';
 import { Toast } from '@/components/ui/Toast';
@@ -135,6 +136,7 @@ export default function EventsPage() {
       { id: 'venue', header: 'Venue', accessor: (r) => r.venue?.name },
       { id: 'startTime', header: 'Start', accessor: (r) => r.startTime, sortKey: 'startTime', render: (_, r) => formatDateTime(r.startTime, false) },
       { id: 'status', header: 'Status', accessor: (r) => r.status, render: (_, r) => <span className={r.status === 'UPCOMING' ? 'badge badge-yellow' : 'badge badge-blue'}>{r.status}</span> },
+      { id: 'actions', header: '', accessor: () => null, render: (_, r) => <Link href={`/dashboard/events/${r.id}`} className="btn btn-sm btn-secondary">View</Link> },
     ],
     []
   );

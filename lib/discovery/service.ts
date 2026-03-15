@@ -2,6 +2,8 @@ import { db } from '@/lib/db';
 import serpApiClient from '@/lib/serpapi/client';
 import Decimal from 'decimal.js';
 import { scoreOpportunity, estimateSourceReliability } from '@/lib/scoring/engine';
+import { parseEventsFromSerpResults, parseParkingFromSerpResults } from '@/lib/ai/parse-discovery';
+import { env } from '@/lib/env';
 
 interface ParsedEvent {
   name: string;
@@ -94,7 +96,6 @@ export class DiscoveryService {
   async discoverEvents(venueName: string, _venueId: string): Promise<ParsedEvent[]> {
     const currentYear = new Date().getFullYear();
     
-    // Try multiple search queries to get better results
     const queries = [
       `${venueName} schedule ${currentYear}`,
       `${venueName} events calendar ${currentYear}`,
@@ -105,9 +106,13 @@ export class DiscoveryService {
     
     const allEvents: ParsedEvent[] = [];
     const seen = new Set<string>();
+    const rawResults: Array<{ title: string; snippet: string; link: string }> = [];
     
     for (const query of queries) {
       const results = await serpApiClient.search(query);
+      for (const r of results.results) {
+        rawResults.push({ title: r.title, snippet: r.snippet ?? '', link: r.link });
+      }
       
       for (const result of results.results) {
         const title = result.title;
@@ -222,14 +227,28 @@ export class DiscoveryService {
         }
       }
     }
+
+    if (env.OPENAI_API_KEY?.trim() && rawResults.length > 0) {
+      try {
+        const aiEvents = await parseEventsFromSerpResults(rawResults, venueName);
+        for (const ai of aiEvents) {
+          const already = allEvents.some(
+            (e) => e.name.toLowerCase() === ai.name.toLowerCase() &&
+              Math.abs(e.startTime.getTime() - ai.startTime.getTime()) < 24 * 60 * 60 * 1000
+          );
+          if (!already) allEvents.push({ ...ai, endTime: undefined });
+        }
+      } catch {
+        // keep regex-only results
+      }
+    }
     
-    // Sort by date and return unique events
     return allEvents
       .filter((event, index, self) => 
         index === self.findIndex(e => e.name.toLowerCase() === event.name.toLowerCase())
       )
       .sort((a, b) => a.startTime.getTime() - b.startTime.getTime())
-      .slice(0, 20); // Limit to top 20 events
+      .slice(0, 20);
   }
 
   /**
@@ -268,6 +287,26 @@ export class DiscoveryService {
           price: prices.length > 0 ? new Decimal(prices[0]) : undefined,
           availability: this.extractAvailability(result.snippet),
         });
+      }
+    }
+
+    if (env.OPENAI_API_KEY?.trim() && results.results.length > 0) {
+      try {
+        const aiParking = await parseParkingFromSerpResults(results.results);
+        for (const p of aiParking) {
+          if (!seen.has(p.sourceUrl)) {
+            seen.add(p.sourceUrl);
+            opportunities.push({
+              productName: p.productName,
+              lotName: p.lotName,
+              sourceUrl: p.sourceUrl,
+              price: p.price,
+              availability: p.availability,
+            });
+          }
+        }
+      } catch {
+        // keep regex-only results
       }
     }
     

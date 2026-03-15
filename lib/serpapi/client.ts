@@ -3,6 +3,28 @@ import { env } from '@/lib/env';
 
 const SERPAPI_BASE_URL = 'https://serpapi.com/search';
 
+/** Max requests per minute to avoid SerpAPI rate limits. */
+const RATE_LIMIT_PER_MINUTE = 30;
+const RATE_LIMIT_WINDOW_MS = 60_000;
+
+const requestTimestamps: number[] = [];
+
+async function waitForRateLimit(): Promise<void> {
+  const now = Date.now();
+  const cutoff = now - RATE_LIMIT_WINDOW_MS;
+  while (requestTimestamps.length > 0 && requestTimestamps[0] < cutoff) {
+    requestTimestamps.shift();
+  }
+  if (requestTimestamps.length >= RATE_LIMIT_PER_MINUTE) {
+    const wait = requestTimestamps[0] + RATE_LIMIT_WINDOW_MS - now;
+    if (wait > 0) {
+      await new Promise((r) => setTimeout(r, wait));
+      return waitForRateLimit();
+    }
+  }
+  requestTimestamps.push(now);
+}
+
 export interface SerpApiSearchResult {
   title: string;
   link: string;
@@ -17,7 +39,7 @@ export interface SerpApiDiscoveryResponse {
 }
 
 /**
- * SerpApi client for event and parking discovery
+ * SerpApi client for event and parking discovery (with in-memory rate limiting).
  */
 export class SerpApiClient {
   private apiKey: string;
@@ -31,6 +53,7 @@ export class SerpApiClient {
    * Example: "SoFi Stadium parking" -> returns parking-related search results
    */
   async searchParking(query: string): Promise<SerpApiDiscoveryResponse> {
+    await waitForRateLimit();
     try {
       const response = await axios.get(SERPAPI_BASE_URL, {
         params: {
