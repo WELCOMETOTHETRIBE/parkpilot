@@ -7,7 +7,8 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
-RUN npx prisma generate
+# Generate only OpenSSL 3 engine so runtime does not load libssl.so.1.1
+RUN sed -i 's/binaryTargets = .*/binaryTargets = ["debian-openssl-3.0.x"]/' prisma/schema.prisma && npx prisma generate
 RUN npm run build
 
 # Production stage (Debian = glibc + OpenSSL, avoids musl/libssl.so.1.1 errors)
@@ -45,6 +46,6 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
-RUN npx prisma generate
+RUN sed -i 's/binaryTargets = .*/binaryTargets = ["debian-openssl-3.0.x"]/' prisma/schema.prisma && npx prisma generate
 
 CMD ["npx", "ts-node", "workers/run-bullmq.ts"]
