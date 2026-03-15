@@ -4,7 +4,6 @@
   "description": "Parking-pass market intelligence and arbitrage operations platform",
   "private": true,
   "scripts": {
-    "postinstall": "prisma generate",
     "dev": "next dev",
     "build": "next build",
     "start": "node scripts/start-server.js",
