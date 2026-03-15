@@ -1,7 +1,13 @@
-import { ingestionQueue } from '@/lib/queue/client';
+import { ingestionQueue, hasRedis } from '@/lib/queue/client';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
+  if (!hasRedis() || !ingestionQueue) {
+    return NextResponse.json(
+      { error: 'Job queue not available (REDIS_URL not set)' },
+      { status: 503 }
+    );
+  }
   try {
     const body = await req.json();
     const eventId = body?.eventId;

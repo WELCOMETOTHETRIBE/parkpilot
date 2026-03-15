@@ -1,6 +1,6 @@
 # Railway / Nixpacks: ensure Next.js is built before start
 [phases.setup]
-nixPkgs = ["nodejs_20"]
+nixPkgs = ["nodejs_20", "openssl"]
 
 [phases.install]
 cmds = ["npm ci"]
