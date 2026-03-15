@@ -1,0 +1,7527 @@
+[
+  {
+    "venueName": "Conte Forum",
+    "city": "Chestnut Hill",
+    "state": "MA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Haas Pavilion",
+    "city": "Berkeley",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Littlejohn Coliseum",
+    "city": "Clemson",
+    "state": "SC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Cameron Indoor Stadium",
+    "city": "Durham",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Donald L. Tucker Civic Center",
+    "city": "Tallahassee",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Hank McCamish Pavilion",
+    "city": "Atlanta",
+    "state": "GA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "KFC Yum! Center",
+    "city": "Louisville",
+    "state": "KY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Watsco Center",
+    "city": "Coral Gables",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Dean Smith Center",
+    "city": "Chapel Hill",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Carmichael Arena",
+    "city": "Chapel Hill",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Lenovo Center",
+    "city": "Raleigh",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Reynolds Coliseum",
+    "city": "Raleigh",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Purcell Pavilion at Edmund P. Joyce Center",
+    "city": "Notre Dame",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Petersen Events Center",
+    "city": "Pittsburgh",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Moody Coliseum",
+    "city": "University Park",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Maples Pavilion",
+    "city": "Stanford",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "JMA Wireless Dome",
+    "city": "Syracuse",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "49057"
+  },
+  {
+    "venueName": "John Paul Jones Arena",
+    "city": "Charlottesville",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Cassell Coliseum",
+    "city": "Blacksburg",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Lawrence Joel Veterans Memorial Coliseum",
+    "city": "Winston-Salem",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Broadview Center",
+    "city": "Guilderland",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Binghamton University Events Center",
+    "city": "Vestal",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Cross Insurance Center",
+    "city": "Bangor",
+    "state": "ME",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Lundholm Gym",
+    "city": "Durham",
+    "state": "NH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Chace Athletic Center",
+    "city": "Smithfield",
+    "state": "RI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Wellness and Events Center",
+    "city": "Newark",
+    "state": "NJ",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Costello Athletic Center",
+    "city": "Lowell",
+    "state": "MA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Tsongas Center",
+    "city": "Lowell",
+    "state": "MA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Chesapeake Employers Insurance Arena",
+    "city": "Catonsville",
+    "state": "MD",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Patrick Gym",
+    "city": "Burlington",
+    "state": "VT",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Dale F. Halton Arena",
+    "city": "Charlotte",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Williams Arena at Minges Coliseum",
+    "city": "Greenville",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "FAU Arena",
+    "city": "Boca Raton",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "FedExForum",
+    "city": "Memphis",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Elma Roane Fieldhouse",
+    "city": "Memphis",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "UNT Coliseum",
+    "city": "Denton",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Tudor Fieldhouse",
+    "city": "Houston",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Yuengling Center",
+    "city": "Tampa",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Liacouras Center",
+    "city": "Philadelphia",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Devlin Fieldhouse",
+    "city": "New Orleans",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Reynolds Center",
+    "city": "Tulsa",
+    "state": "OK",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Bartow Arena",
+    "city": "Birmingham",
+    "state": "AL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Convocation Center",
+    "city": "San Antonio",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Charles Koch Arena",
+    "city": "Wichita",
+    "state": "KS",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "F&M Bank Arena",
+    "city": "Clarksville",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Knights Hall",
+    "city": "Louisville",
+    "state": "KY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Farris Center",
+    "city": "Conway",
+    "state": "AR",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Baptist Health Arena",
+    "city": "Richmond",
+    "state": "KY",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Alico Arena",
+    "city": "Fort Myers",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Swisher Gymnasium",
+    "city": "Jacksonville",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Allen Arena",
+    "city": "Nashville",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Flowers Hall",
+    "city": "Florence",
+    "state": "AL",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "UNF Arena",
+    "city": "Jacksonville",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Curry Arena",
+    "city": "Charlotte",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Edmunds Center",
+    "city": "DeLand",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "The Coliseum",
+    "city": "Carrollton",
+    "state": "GA",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "John M. Belk Arena",
+    "city": "Davidson",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "University of Dayton Arena",
+    "city": "Dayton",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "UPMC Cooper Fieldhouse",
+    "city": "Pittsburgh",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "Rose Hill Gymnasium",
+    "city": "Bronx",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "EagleBank Arena",
+    "city": "Fairfax",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "Charles E. Smith Center",
+    "city": "Washington",
+    "state": "DC",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "John Glaser Arena",
+    "city": "Philadelphia",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "Joseph J. Gentile Arena",
+    "city": "Chicago",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "Ryan Center",
+    "city": "Kingston",
+    "state": "RI",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "Robins Center",
+    "city": "Richmond",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "Reilly Center",
+    "city": "St. Bonaventure",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "Hagan Arena",
+    "city": "Philadelphia",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "Chaifetz Arena",
+    "city": "St. Louis",
+    "state": "MO",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "Siegel Center",
+    "city": "Richmond",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": "10"
+  },
+  {
+    "venueName": "McKale Center",
+    "city": "Tucson",
+    "state": "AZ",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Desert Financial Arena",
+    "city": "Tempe",
+    "state": "AZ",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Foster Pavilion",
+    "city": "Waco",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Marriott Center",
+    "city": "Provo",
+    "state": "UT",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Fifth Third Arena",
+    "city": "Cincinnati",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "CU Events Center",
+    "city": "Boulder",
+    "state": "CO",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Fertitta Center",
+    "city": "Houston",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Hilton Coliseum",
+    "city": "Ames",
+    "state": "IA",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Allen Fieldhouse",
+    "city": "Lawrence",
+    "state": "KS",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Bramlage Coliseum",
+    "city": "Manhattan",
+    "state": "KS",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Gallagher-Iba Arena",
+    "city": "Stillwater",
+    "state": "OK",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Schollmaier Arena",
+    "city": "Fort Worth",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "United Supermarkets Arena",
+    "city": "Lubbock",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Addition Financial Arena",
+    "city": "Orlando",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Jon M. Huntsman Center",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "WVU Coliseum",
+    "city": "Morgantown",
+    "state": "WV",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "Hinkle Fieldhouse",
+    "city": "Indianapolis",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "CHI Health Center Omaha",
+    "city": "Omaha",
+    "state": "NE",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "D. J. Sokol Arena",
+    "city": "Omaha",
+    "state": "NE",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Wintrust Arena",
+    "city": "Chicago",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Capital One Arena",
+    "city": "Washington",
+    "state": "DC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "McDonough Gymnasium",
+    "city": "Washington",
+    "state": "DC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Fiserv Forum",
+    "city": "Milwaukee",
+    "state": "WI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Al McGuire Center",
+    "city": "Milwaukee",
+    "state": "WI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Amica Mutual Pavilion",
+    "city": "Providence",
+    "state": "RI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Alumni Hall",
+    "city": "Providence",
+    "state": "RI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Prudential Center",
+    "city": "Newark",
+    "state": "NJ",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Walsh Gymnasium",
+    "city": "South Orange",
+    "state": "NJ",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Madison Square Garden",
+    "city": "New York",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Carnesecca Arena",
+    "city": "Queens",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Harry A. Gampel Pavilion",
+    "city": "Storrs",
+    "state": "CT",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Finneran Pavilion",
+    "city": "Villanova",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Cintas Center",
+    "city": "Cincinnati",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Reese Court",
+    "city": "Cheney",
+    "state": "WA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Idaho Central Credit Union Arena",
+    "city": "Moscow",
+    "state": "ID",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "ICCU Dome",
+    "city": "Pocatello",
+    "state": "ID",
+    "type": "Stadium",
+    "capacity": "12000"
+  },
+  {
+    "venueName": "Reed Gym",
+    "city": "Pocatello",
+    "state": "ID",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Dahlberg Arena",
+    "city": "Missoula",
+    "state": "MT",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Brick Breeden Fieldhouse",
+    "city": "Bozeman",
+    "state": "MT",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Walkup Skydome",
+    "city": "Flagstaff",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "11230"
+  },
+  {
+    "venueName": "Bank of Colorado Arena",
+    "city": "Greeley",
+    "state": "CO",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Viking Pavilion",
+    "city": "Portland",
+    "state": "OR",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Hornets Nest",
+    "city": "Sacramento",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Dee Events Center",
+    "city": "Ogden",
+    "state": "UT",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Buccaneer Field House",
+    "city": "North Charleston",
+    "state": "SC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Paul Porter Arena",
+    "city": "Boiling Springs",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Nido & Mariana Qubein Arena and Conference Center",
+    "city": "High Point",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Joan Perry Brock Center",
+    "city": "Farmville",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Templeton Physical Education Center",
+    "city": "Clinton",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Dedmon Center",
+    "city": "Radford",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Kimmel Arena",
+    "city": "Asheville",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "G. B. Hodge Center",
+    "city": "Spartanburg",
+    "state": "SC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Winthrop Coliseum",
+    "city": "Rock Hill",
+    "state": "SC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "State Farm Center",
+    "city": "Champaign",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Simon Skjodt Assembly Hall",
+    "city": "Bloomington",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Carver–Hawkeye Arena",
+    "city": "Iowa City",
+    "state": "IA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Xfinity Center",
+    "city": "College Park",
+    "state": "MD",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Crisler Center",
+    "city": "Ann Arbor",
+    "state": "MI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Breslin Student Events Center",
+    "city": "East Lansing",
+    "state": "MI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Williams Arena",
+    "city": "Minneapolis",
+    "state": "MN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Pinnacle Bank Arena",
+    "city": "Lincoln",
+    "state": "NE",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Welsh–Ryan Arena",
+    "city": "Evanston",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Value City Arena",
+    "city": "Columbus",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Matthew Knight Arena",
+    "city": "Eugene",
+    "state": "OR",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Bryce Jordan Center",
+    "city": "University Park",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Mackey Arena",
+    "city": "West Lafayette",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Jersey Mike's Arena",
+    "city": "Piscataway",
+    "state": "NJ",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Pauley Pavilion",
+    "city": "Los Angeles",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Galen Center",
+    "city": "Los Angeles",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Alaska Airlines Arena at Hec Edmundson Pavilion",
+    "city": "Seattle",
+    "state": "WA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Kohl Center",
+    "city": "Madison",
+    "state": "WI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Robert A. Mott Athletics Center",
+    "city": "San Luis Obispo",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Icardo Center",
+    "city": "Bakersfield",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Titan Gym",
+    "city": "Fullerton",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Premier America Credit Union Arena",
+    "city": "Northridge",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Stan Sheriff Center",
+    "city": "Honolulu",
+    "state": "HI",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "LBS Financial Credit Union Pyramid",
+    "city": "Long Beach",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "University Credit Union Center",
+    "city": "Davis",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Bren Events Center",
+    "city": "Irvine",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "UC Riverside Student Recreation Center",
+    "city": "Riverside",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "LionTree Arena",
+    "city": "La Jolla",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": "2027"
+  },
+  {
+    "venueName": "UC Santa Barbara Events Center",
+    "city": "Santa Barbara",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "John W. Pope, Jr. Convocation Center",
+    "city": "Buies Creek",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "TD Arena",
+    "city": "Charleston",
+    "state": "SC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Daskalakis Athletic Center",
+    "city": "Philadelphia",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Schar Center",
+    "city": "Elon",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Hampton Convocation Center",
+    "city": "Hampton",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Mack Sports Complex",
+    "city": "Hempstead",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "OceanFirst Bank Center",
+    "city": "West Long Branch",
+    "state": "NJ",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Corbett Sports Center",
+    "city": "Greensboro",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Matthews Arena",
+    "city": "Boston",
+    "state": "MA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Cabot Center",
+    "city": "Boston",
+    "state": "MA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Island Federal Credit Union Arena",
+    "city": "Stony Brook",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "TU Arena",
+    "city": "Towson",
+    "state": "MD",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Trask Coliseum",
+    "city": "Wilmington",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Kaplan Arena",
+    "city": "Williamsburg",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Bob Carpenter Center",
+    "city": "Newark",
+    "state": "DE",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Ocean Bank Convocation Center",
+    "city": "Miami",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Pete Mathews Coliseum",
+    "city": "Jacksonville",
+    "state": "AL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "KSU Convocation Center",
+    "city": "Kennesaw",
+    "state": "GA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Liberty Arena",
+    "city": "Lynchburg",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Thomas Assembly Center",
+    "city": "Ruston",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": "2027"
+  },
+  {
+    "venueName": "Murphy Center",
+    "city": "Murfreesboro",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Great Southern Bank Arena",
+    "city": "Springfield",
+    "state": "MO",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Pan American Center",
+    "city": "Las Cruces",
+    "state": "NM",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Bernard Johnson Coliseum",
+    "city": "Huntsville",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Don Haskins Center",
+    "city": "El Paso",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "E. A. Diddle Arena",
+    "city": "Bowling Green",
+    "state": "KY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Wolstein Center",
+    "city": "Cleveland",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Calihan Hall",
+    "city": "Detroit",
+    "state": "MI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Resch Center",
+    "city": "Ashwaubenon",
+    "state": "WI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Kress Events Center",
+    "city": "Green Bay",
+    "state": "WI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "The Jungle",
+    "city": "Indianapolis",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "UW–Milwaukee Panther Arena",
+    "city": "Milwaukee",
+    "state": "WI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Klotsche Center",
+    "city": "Milwaukee",
+    "state": "WI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Truist Arena",
+    "city": "Highland Heights",
+    "state": "KY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "OU Credit Union O'rena",
+    "city": "Rochester",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Hilliard Gates Sports Center",
+    "city": "Fort Wayne",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "UPMC Events Center",
+    "city": "Moon Township",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Nutter Center",
+    "city": "Fairborn",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Beeghly Center",
+    "city": "Youngstown",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Pizzitola Sports Center",
+    "city": "Providence",
+    "state": "RI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Levien Gymnasium",
+    "city": "New York",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Newman Arena",
+    "city": "Ithaca",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Leede Arena",
+    "city": "Hanover",
+    "state": "NH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Lavietes Pavilion",
+    "city": "Allston",
+    "state": "MA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Palestra",
+    "city": "Philadelphia",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Jadwin Gymnasium",
+    "city": "Princeton",
+    "state": "NJ",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "John J. Lee Amphitheater",
+    "city": "New Haven",
+    "state": "CT",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Koessler Athletic Center",
+    "city": "Buffalo",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Leo D. Mahoney Arena",
+    "city": "Fairfield",
+    "state": "CT",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Hynes Athletic Center",
+    "city": "New Rochelle",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Draddy Gymnasium",
+    "city": "Bronx",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "McCann Arena",
+    "city": "Poughkeepsie",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Hammel Court",
+    "city": "North Andover",
+    "state": "MA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Knott Arena",
+    "city": "Emmitsburg",
+    "state": "MD",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Gallagher Center",
+    "city": "Lewiston",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "M&T Bank Arena",
+    "city": "Hamden",
+    "state": "CT",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Alumni Gymnasium",
+    "city": "Lawrenceville",
+    "state": "NJ",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "William H. Pitt Center",
+    "city": "Fairfield",
+    "state": "CT",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "MVP Arena",
+    "city": "Albany",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "UHY Center",
+    "city": "Loudonville",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Run Baby Run Arena",
+    "city": "Jersey City",
+    "state": "NJ",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "James A. Rhodes Arena",
+    "city": "Akron",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Worthen Arena",
+    "city": "Muncie",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Stroh Center",
+    "city": "Bowling Green",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Alumni Arena",
+    "city": "Amherst",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "McGuirk Arena",
+    "city": "Mount Pleasant",
+    "state": "MI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "George Gervin GameAbove Center",
+    "city": "Ypsilanti",
+    "state": "MI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Memorial Athletic and Convocation Center",
+    "city": "Kent",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Mullins Center",
+    "city": "Amherst",
+    "state": "MA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Millett Hall",
+    "city": "Oxford",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Savage Arena",
+    "city": "Toledo",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "University Arena",
+    "city": "Kalamazoo",
+    "state": "MI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Physical Education Complex",
+    "city": "Baltimore",
+    "state": "MD",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Memorial Hall",
+    "city": "Dover",
+    "state": "DE",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Burr Gymnasium",
+    "city": "Washington",
+    "state": "DC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Hytche Athletic Center",
+    "city": "Princess Anne",
+    "state": "MD",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Talmadge L. Hill Field House",
+    "city": "Baltimore",
+    "state": "MD",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Joseph G. Echols Memorial Hall",
+    "city": "Norfolk",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "McDougald–McLendon Arena",
+    "city": "Durham",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "SHM Memorial Center",
+    "city": "Orangeburg",
+    "state": "SC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Curb Event Center",
+    "city": "Nashville",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Carver Arena",
+    "city": "Peoria",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Renaissance Coliseum",
+    "city": "Peoria",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Knapp Center",
+    "city": "Des Moines",
+    "state": "IA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Ford Center",
+    "city": "Evansville",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Meeks Family Fieldhouse at Carson Center",
+    "city": "Evansville",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "CEFCU Arena",
+    "city": "Normal",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Hulman Center",
+    "city": "Terre Haute",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "CFSB Center",
+    "city": "Murray",
+    "state": "KY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "McLeod Center",
+    "city": "Cedar Falls",
+    "state": "IA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Banterra Center",
+    "city": "Carbondale",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Credit Union 1 Arena",
+    "city": "Chicago",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Athletics–Recreation Center",
+    "city": "Valparaiso",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Clune Arena",
+    "city": "USAF Academy",
+    "state": "CO",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "ExtraMile Arena",
+    "city": "Boise",
+    "state": "ID",
+    "type": "Collegiate Arena",
+    "capacity": "122026"
+  },
+  {
+    "venueName": "Moby Arena",
+    "city": "Fort Collins",
+    "state": "CO",
+    "type": "Collegiate Arena",
+    "capacity": "122026"
+  },
+  {
+    "venueName": "Save Mart Center at Fresno State",
+    "city": "Fresno",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": "122026"
+  },
+  {
+    "venueName": "Global Credit Union Arena",
+    "city": "Phoenix",
+    "state": "AZ",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Lawlor Events Center",
+    "city": "Reno",
+    "state": "NV",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "The Pit",
+    "city": "Albuquerque",
+    "state": "NM",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Viejas Arena",
+    "city": "San Diego",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": "122026"
+  },
+  {
+    "venueName": "Provident Credit Union Event Center",
+    "city": "San Jose",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Thomas & Mack Center",
+    "city": "Paradise",
+    "state": "NV",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Cox Pavilion",
+    "city": "Paradise",
+    "state": "NV",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Smith Spectrum",
+    "city": "Logan",
+    "state": "UT",
+    "type": "Collegiate Arena",
+    "capacity": "122026"
+  },
+  {
+    "venueName": "Arena-Auditorium",
+    "city": "Laramie",
+    "state": "WY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "William H. Detrick Gymnasium",
+    "city": "New Britain",
+    "state": "CT",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Emil and Patricia Jones Convocation Center",
+    "city": "Chicago",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Bogota Savings Bank Center",
+    "city": "Hackensack",
+    "state": "NJ",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Le Moyne Events Center",
+    "city": "DeWitt",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Steinberg Wellness Center",
+    "city": "Brooklyn",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Mercyhurst Athletic Center",
+    "city": "Erie",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Jeffery P. Hazell Athletics Center",
+    "city": "West Haven",
+    "state": "CT",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "DeGol Arena",
+    "city": "Loretto",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Merkert Gymnasium",
+    "city": "Easton",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Spiro Sports Center",
+    "city": "Staten Island",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Lantz Arena",
+    "city": "Charleston",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Robert F. Hyland Performance Arena",
+    "city": "St. Charles",
+    "state": "MO",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Jack Stephens Center",
+    "city": "Little Rock",
+    "state": "AR",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Ellis Johnson Arena",
+    "city": "Morehead",
+    "state": "KY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Show Me Center",
+    "city": "Cape Girardeau",
+    "state": "MO",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Vadalabene Center",
+    "city": "Edwardsville",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Liberty Arena, Home of the Screaming Eagles",
+    "city": "Evansville",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Kathleen and Tom Elam Center",
+    "city": "Martin",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Gentry Complex",
+    "city": "Nashville",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Hooper Eblen Center",
+    "city": "Cookeville",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Western Hall",
+    "city": "Macomb",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Bender Arena",
+    "city": "Washington",
+    "state": "DC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Christl Arena",
+    "city": "West Point",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Case Gym",
+    "city": "Boston",
+    "state": "MA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Sojka Pavilion",
+    "city": "Lewisburg",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Cotterell Court",
+    "city": "Hamilton",
+    "state": "NY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Hart Center at the Luth Athletics Complex",
+    "city": "Worcester",
+    "state": "MA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Kirby Sports Center",
+    "city": "Easton",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Stabler Arena",
+    "city": "Bethlehem",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Reitz Arena",
+    "city": "Baltimore",
+    "state": "MD",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Coleman Coliseum",
+    "city": "Tuscaloosa",
+    "state": "AL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Bud Walton Arena",
+    "city": "Fayetteville",
+    "state": "AR",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Neville Arena",
+    "city": "Auburn",
+    "state": "AL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Exactech Arena at the Stephen C. O'Connell Center",
+    "city": "Gainesville",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Stegeman Coliseum",
+    "city": "Athens",
+    "state": "GA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Rupp Arena",
+    "city": "Lexington",
+    "state": "KY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Memorial Coliseum",
+    "city": "Lexington",
+    "state": "KY",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Pete Maravich Assembly Center",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Lloyd Noble Center",
+    "city": "Norman",
+    "state": "OK",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "The Sandy and John Black Pavilion at Ole Miss",
+    "city": "University",
+    "state": "MS",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Humphrey Coliseum",
+    "city": "Mississippi State",
+    "state": "MS",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Mizzou Arena",
+    "city": "Columbia",
+    "state": "MO",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Colonial Life Arena",
+    "city": "Columbia",
+    "state": "SC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Thompson–Boling Arena",
+    "city": "Knoxville",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Moody Center",
+    "city": "Austin",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Reed Arena",
+    "city": "College Station",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Memorial Gymnasium",
+    "city": "Nashville",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "McKenzie Arena",
+    "city": "Chattanooga",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "McAlister Field House",
+    "city": "Charleston",
+    "state": "SC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Freedom Hall Civic Center",
+    "city": "Johnson City",
+    "state": "TN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Timmons Arena",
+    "city": "Greenville",
+    "state": "SC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Hawkins Arena",
+    "city": "Macon",
+    "state": "GA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Pete Hanna Center",
+    "city": "Homewood",
+    "state": "AL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "First Horizon Coliseum",
+    "city": "Greensboro",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Cameron Hall",
+    "city": "Lexington",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Liston B. Ramsey Regional Activity Center",
+    "city": "Cullowhee",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Jerry Richardson Indoor Stadium",
+    "city": "Spartanburg",
+    "state": "SC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "The Field House",
+    "city": "Commerce",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Sharp Gymnasium",
+    "city": "Houston",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "McDermott Center",
+    "city": "San Antonio",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Neches Federal Credit Union Arena at the Montagne Center",
+    "city": "Beaumont",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Townsley Law Arena",
+    "city": "Lake Charles",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Lakefront Arena",
+    "city": "New Orleans",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Stopher Gymnasium",
+    "city": "Thibodaux",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Prather Coliseum",
+    "city": "Natchitoches",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "University Center",
+    "city": "Hammond",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "William R. Johnson Coliseum",
+    "city": "Nacogdoches",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "American Bank Center Arena",
+    "city": "Corpus Christi",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "UTRGV Fieldhouse",
+    "city": "Edinburg",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Hamilton Gymnasium",
+    "city": "Denver",
+    "state": "CO",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Swinney Recreation Center",
+    "city": "Kansas City",
+    "state": "MO",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Betty Engelstad Sioux Center",
+    "city": "Grand Forks",
+    "state": "ND",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Scheels Center",
+    "city": "Fargo",
+    "state": "ND",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Baxter Arena",
+    "city": "Omaha",
+    "state": "NE",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Mabee Center",
+    "city": "Tulsa",
+    "state": "OK",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Lee and Penny Anderson Arena",
+    "city": "Saint Paul",
+    "state": "MN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Sanford Coyote Sports Center",
+    "city": "Vermillion",
+    "state": "SD",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "First Bank and Trust Arena",
+    "city": "Brookings",
+    "state": "SD",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "George M. Holmes Convocation Center",
+    "city": "Boone",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "First National Bank Arena",
+    "city": "Jonesboro",
+    "state": "AR",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "HTC Center",
+    "city": "Conway",
+    "state": "SC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Jack and Ruth Ann Hill Convocation Center",
+    "city": "Statesboro",
+    "state": "GA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Georgia State Convocation Center",
+    "city": "Atlanta",
+    "state": "GA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Atlantic Union Bank Center",
+    "city": "Harrisonburg",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Cajundome",
+    "city": "Lafayette",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Fant–Ewing Coliseum",
+    "city": "Monroe",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Cam Henderson Center",
+    "city": "Huntington",
+    "state": "WV",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Chartway Arena",
+    "city": "Norfolk",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Mitchell Center",
+    "city": "Mobile",
+    "state": "AL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Reed Green Coliseum",
+    "city": "Hattiesburg",
+    "state": "MS",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Strahan Arena",
+    "city": "San Marcos",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": "122026"
+  },
+  {
+    "venueName": "Trojan Arena",
+    "city": "Troy",
+    "state": "AL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Dunn–Oliver Acadome",
+    "city": "Montgomery",
+    "state": "AL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Davey Whitney Complex",
+    "city": "Lorman",
+    "state": "MS",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "K. L. Johnson Complex",
+    "city": "Pine Bluff",
+    "state": "AR",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Moore Gymnasium",
+    "city": "Daytona Beach",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Al Lawson Center",
+    "city": "Tallahassee",
+    "state": "FL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Fredrick C. Hobdy Assembly Center",
+    "city": "Grambling",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Williams Assembly Center",
+    "city": "Jackson",
+    "state": "MS",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Harrison HPER Complex",
+    "city": "Itta Bena",
+    "state": "MS",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "William J. Nicks Building",
+    "city": "Prairie View",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "F. G. Clark Activity Center",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Health and Physical Education Arena",
+    "city": "Houston",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "McCarthey Athletic Center",
+    "city": "Spokane",
+    "state": "WA",
+    "type": "Collegiate Arena",
+    "capacity": "122026"
+  },
+  {
+    "venueName": "Gersten Pavilion",
+    "city": "Los Angeles",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Gill Coliseum",
+    "city": "Corvallis",
+    "state": "OR",
+    "type": "Collegiate Arena",
+    "capacity": "122026"
+  },
+  {
+    "venueName": "Alex G. Spanos Center",
+    "city": "Stockton",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Firestone Fieldhouse",
+    "city": "Malibu",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Chiles Center",
+    "city": "Portland",
+    "state": "OR",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "University Credit Union Pavilion",
+    "city": "Moraga",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Jenny Craig Pavilion",
+    "city": "San Diego",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "The Sobrato Center",
+    "city": "San Francisco",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Leavey Center",
+    "city": "Santa Clara",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Redhawk Center",
+    "city": "Seattle",
+    "state": "WA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Beasley Coliseum",
+    "city": "Pullman",
+    "state": "WA",
+    "type": "Collegiate Arena",
+    "capacity": "122026"
+  },
+  {
+    "venueName": "Fowler Events Center",
+    "city": "Riverside",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Burns Arena",
+    "city": "St. George",
+    "state": "UT",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "America First Event Center",
+    "city": "Cedar City",
+    "state": "UT",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "EECU Center",
+    "city": "Stephenville",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "UCCU Center",
+    "city": "Orem",
+    "state": "UT",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "College Park Center",
+    "city": "Arlington",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": "2026"
+  },
+  {
+    "venueName": "Intrust Bank Arena",
+    "city": "Wichita",
+    "state": "KS",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "T-Mobile Center",
+    "city": "Kansas City",
+    "state": "MO",
+    "type": "Collegiate Arena",
+    "capacity": "12"
+  },
+  {
+    "venueName": "McGrath-Phillips Arena",
+    "city": "Chicago",
+    "state": "IL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Xfinity Mobile Arena",
+    "city": "Philadelphia",
+    "state": "PA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "PeoplesBank Arena",
+    "city": "Hartford",
+    "state": "CT",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "North Charleston Coliseum",
+    "city": "North Charleston",
+    "state": "SC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Vines Center",
+    "city": "Lynchburg",
+    "state": "VA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Fleming Gymnasium",
+    "city": "Greensboro",
+    "state": "NC",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Dugan Wellness Center",
+    "city": "Corpus Christi",
+    "state": "TX",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Climate Pledge Arena",
+    "city": "Seattle",
+    "state": "WA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Dignity Health Arena",
+    "city": "Bakersfield",
+    "state": "CA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "James T. Morris Arena",
+    "city": "Indianapolis",
+    "state": "IN",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Grand Sierra ResortArena",
+    "city": "Reno",
+    "state": "NV",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Kalamazoo Event Center",
+    "city": "Kalamazoo",
+    "state": "MI",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "New Miami University arena",
+    "city": "Oxford",
+    "state": "OH",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "New Northeastern arena",
+    "city": "Boston",
+    "state": "MA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "New Alabama Arena",
+    "city": "Tuscaloosa",
+    "state": "AL",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "New LSU Arena",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "New Marshall Arena",
+    "city": "Huntington",
+    "state": "WV",
+    "type": "Collegiate Arena",
+    "capacity": ""
+  },
+  {
+    "venueName": "Michigan Stadium",
+    "city": "Ann Arbor",
+    "state": "MI",
+    "type": "Stadium",
+    "capacity": "107601"
+  },
+  {
+    "venueName": "Beaver Stadium",
+    "city": "University Park",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "106572"
+  },
+  {
+    "venueName": "Ohio Stadium",
+    "city": "Columbus",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "102780"
+  },
+  {
+    "venueName": "Kyle Field",
+    "city": "College Station",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "102733"
+  },
+  {
+    "venueName": "Tiger Stadium",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "102321"
+  },
+  {
+    "venueName": "Neyland Stadium",
+    "city": "Knoxville",
+    "state": "TN",
+    "type": "Stadium",
+    "capacity": "101915"
+  },
+  {
+    "venueName": "Darrell K Royal–Texas Memorial Stadium",
+    "city": "Austin",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "100119"
+  },
+  {
+    "venueName": "Bryant–Denny Stadium",
+    "city": "Tuscaloosa",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "100077"
+  },
+  {
+    "venueName": "Sanford Stadium",
+    "city": "Athens",
+    "state": "GA",
+    "type": "Stadium",
+    "capacity": "93033"
+  },
+  {
+    "venueName": "Cotton Bowl",
+    "city": "Dallas",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "92100"
+  },
+  {
+    "venueName": "Rose Bowl",
+    "city": "Pasadena",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "89702"
+  },
+  {
+    "venueName": "Ben Hill Griffin Stadium",
+    "city": "Gainesville",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "88548"
+  },
+  {
+    "venueName": "Jordan-Hare Stadium",
+    "city": "Auburn",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "88043"
+  },
+  {
+    "venueName": "Memorial Stadium",
+    "city": "Lincoln",
+    "state": "NE",
+    "type": "Stadium",
+    "capacity": "85458"
+  },
+  {
+    "venueName": "MetLife Stadium",
+    "city": "East Rutherford",
+    "state": "NJ",
+    "type": "Stadium",
+    "capacity": "82500"
+  },
+  {
+    "venueName": "Lambeau Field",
+    "city": "Green Bay",
+    "state": "WI",
+    "type": "Stadium",
+    "capacity": "81441"
+  },
+  {
+    "venueName": "Notre Dame Stadium",
+    "city": "Notre Dame",
+    "state": "IN",
+    "type": "Stadium",
+    "capacity": "80795"
+  },
+  {
+    "venueName": "Gaylord Family Oklahoma Memorial Stadium",
+    "city": "Norman",
+    "state": "OK",
+    "type": "Stadium",
+    "capacity": "80126"
+  },
+  {
+    "venueName": "AT&T Stadium",
+    "city": "Arlington",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "80000"
+  },
+  {
+    "venueName": "Williams–Brice Stadium",
+    "city": "Columbia",
+    "state": "SC",
+    "type": "Stadium",
+    "capacity": "77559"
+  },
+  {
+    "venueName": "Los Angeles Memorial Coliseum",
+    "city": "Los Angeles",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "77500"
+  },
+  {
+    "venueName": "GEHA Field at Arrowhead Stadium",
+    "city": "Kansas City",
+    "state": "MO",
+    "type": "Stadium",
+    "capacity": "76416"
+  },
+  {
+    "venueName": "Donald W. Reynolds Razorback Stadium",
+    "city": "Fayetteville",
+    "state": "AR",
+    "type": "Stadium",
+    "capacity": "76212"
+  },
+  {
+    "venueName": "Empower Field at Mile High",
+    "city": "Denver",
+    "state": "CO",
+    "type": "Stadium",
+    "capacity": "76125"
+  },
+  {
+    "venueName": "Camp Randall Stadium",
+    "city": "Madison",
+    "state": "WI",
+    "type": "Stadium",
+    "capacity": "76057"
+  },
+  {
+    "venueName": "Spartan Stadium",
+    "city": "East Lansing",
+    "state": "MI",
+    "type": "Stadium",
+    "capacity": "75005"
+  },
+  {
+    "venueName": "Bank of America Stadium",
+    "city": "Charlotte",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "74867"
+  },
+  {
+    "venueName": "Caesars Superdome",
+    "city": "New Orleans",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "73208"
+  },
+  {
+    "venueName": "NRG Stadium",
+    "city": "Houston",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "72220"
+  },
+  {
+    "venueName": "Highmark Stadium",
+    "city": "Orchard Park",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "71608"
+  },
+  {
+    "venueName": "Legion Field",
+    "city": "Birmingham",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "71594"
+  },
+  {
+    "venueName": "Mercedes-Benz Stadium",
+    "city": "Atlanta",
+    "state": "GA",
+    "type": "Stadium",
+    "capacity": "71000"
+  },
+  {
+    "venueName": "M&T Bank Stadium",
+    "city": "Baltimore",
+    "state": "MD",
+    "type": "Stadium",
+    "capacity": "70745"
+  },
+  {
+    "venueName": "SoFi Stadium",
+    "city": "Inglewood",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "70240"
+  },
+  {
+    "venueName": "Husky Stadium",
+    "city": "Seattle",
+    "state": "WA",
+    "type": "Stadium",
+    "capacity": "70083"
+  },
+  {
+    "venueName": "Kinnick Stadium",
+    "city": "Iowa City",
+    "state": "IA",
+    "type": "Stadium",
+    "capacity": "69250"
+  },
+  {
+    "venueName": "Raymond James Stadium",
+    "city": "Tampa",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "69218"
+  },
+  {
+    "venueName": "Nissan Stadium",
+    "city": "Nashville",
+    "state": "TN",
+    "type": "Stadium",
+    "capacity": "69143"
+  },
+  {
+    "venueName": "Lumen Field",
+    "city": "Seattle",
+    "state": "WA",
+    "type": "Stadium",
+    "capacity": "68740"
+  },
+  {
+    "venueName": "Levi's Stadium",
+    "city": "Santa Clara",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "68500"
+  },
+  {
+    "venueName": "Acrisure Stadium",
+    "city": "Pittsburgh",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "68400"
+  },
+  {
+    "venueName": "EverBank Stadium",
+    "city": "Jacksonville",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "67814"
+  },
+  {
+    "venueName": "Lincoln Financial Field",
+    "city": "Philadelphia",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "67594"
+  },
+  {
+    "venueName": "Huntington Bank Field",
+    "city": "Cleveland",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "67431"
+  },
+  {
+    "venueName": "Doak Campbell Stadium",
+    "city": "Tallahassee",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "67277"
+  },
+  {
+    "venueName": "The Dome at America's Center",
+    "city": "St. Louis",
+    "state": "MO",
+    "type": "Stadium",
+    "capacity": "67277"
+  },
+  {
+    "venueName": "US Bank Stadium",
+    "city": "Minneapolis",
+    "state": "MN",
+    "type": "Stadium",
+    "capacity": "66860"
+  },
+  {
+    "venueName": "Lane Stadium",
+    "city": "Blacksburg",
+    "state": "VA",
+    "type": "Stadium",
+    "capacity": "65632"
+  },
+  {
+    "venueName": "Paycor Stadium",
+    "city": "Cincinnati",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "65515"
+  },
+  {
+    "venueName": "Ford Field",
+    "city": "Detroit",
+    "state": "MI",
+    "type": "Stadium",
+    "capacity": "65000"
+  },
+  {
+    "venueName": "Allegiant Stadium",
+    "city": "Las Vegas",
+    "state": "NV",
+    "type": "Stadium",
+    "capacity": "65000"
+  },
+  {
+    "venueName": "Hard Rock Stadium",
+    "city": "Miami Gardens",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "64767"
+  },
+  {
+    "venueName": "Gillette Stadium",
+    "city": "Foxborough",
+    "state": "MA",
+    "type": "Stadium",
+    "capacity": "64628"
+  },
+  {
+    "venueName": "Vaught–Hemingway Stadium",
+    "city": "Oxford",
+    "state": "MS",
+    "type": "Stadium",
+    "capacity": "64038"
+  },
+  {
+    "venueName": "Alamodome",
+    "city": "San Antonio",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "64000"
+  },
+  {
+    "venueName": "LaVell Edwards Stadium",
+    "city": "Provo",
+    "state": "UT",
+    "type": "Stadium",
+    "capacity": "63470"
+  },
+  {
+    "venueName": "State Farm Stadium",
+    "city": "Glendale",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "63400"
+  },
+  {
+    "venueName": "California Memorial Stadium",
+    "city": "Berkeley",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "63186"
+  },
+  {
+    "venueName": "Lucas Oil Stadium",
+    "city": "Indianapolis",
+    "state": "IN",
+    "type": "Stadium",
+    "capacity": "63000"
+  },
+  {
+    "venueName": "Northwest Stadium",
+    "city": "Landover",
+    "state": "MD",
+    "type": "Stadium",
+    "capacity": "62000"
+  },
+  {
+    "venueName": "Faurot Field",
+    "city": "Columbia",
+    "state": "MO",
+    "type": "Stadium",
+    "capacity": "61620"
+  },
+  {
+    "venueName": "Soldier Field",
+    "city": "Chicago",
+    "state": "IL",
+    "type": "Stadium",
+    "capacity": "61500"
+  },
+  {
+    "venueName": "Scott Stadium",
+    "city": "Charlottesville",
+    "state": "VA",
+    "type": "Stadium",
+    "capacity": "61500"
+  },
+  {
+    "venueName": "Jack Trice Stadium",
+    "city": "Ames",
+    "state": "IA",
+    "type": "Stadium",
+    "capacity": "61500"
+  },
+  {
+    "venueName": "Yale Bowl",
+    "city": "New Haven",
+    "state": "CT",
+    "type": "Stadium",
+    "capacity": "61446"
+  },
+  {
+    "venueName": "Ross–Ade Stadium",
+    "city": "West Lafayette",
+    "state": "IN",
+    "type": "Stadium",
+    "capacity": "61441"
+  },
+  {
+    "venueName": "Davis Wade Stadium",
+    "city": "Starkville",
+    "state": "MS",
+    "type": "Stadium",
+    "capacity": "61337"
+  },
+  {
+    "venueName": "Kroger Field",
+    "city": "Lexington",
+    "state": "KY",
+    "type": "Stadium",
+    "capacity": "61000"
+  },
+  {
+    "venueName": "Cardinal Stadium",
+    "city": "Louisville",
+    "state": "KY",
+    "type": "Stadium",
+    "capacity": "60800"
+  },
+  {
+    "venueName": "Mississippi Veterans Memorial Stadium",
+    "city": "Jackson",
+    "state": "MS",
+    "type": "Stadium",
+    "capacity": "60492"
+  },
+  {
+    "venueName": "Jones AT&T Stadium",
+    "city": "Lubbock",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "60454"
+  },
+  {
+    "venueName": "Camping World Stadium",
+    "city": "Orlando",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "60219"
+  },
+  {
+    "venueName": "Mountaineer Field",
+    "city": "Morgantown",
+    "state": "WV",
+    "type": "Stadium",
+    "capacity": "60000"
+  },
+  {
+    "venueName": "Carter–Finley Stadium",
+    "city": "Raleigh",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "56919"
+  },
+  {
+    "venueName": "Dodger Stadium",
+    "city": "Los Angeles",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "56000"
+  },
+  {
+    "venueName": "Boone Pickens Stadium",
+    "city": "Stillwater",
+    "state": "OK",
+    "type": "Stadium",
+    "capacity": "55509"
+  },
+  {
+    "venueName": "Bobby Dodd Stadium at Historic Grant Field",
+    "city": "Atlanta",
+    "state": "GA",
+    "type": "Stadium",
+    "capacity": "55000"
+  },
+  {
+    "venueName": "War Memorial Stadium",
+    "city": "Little Rock",
+    "state": "AR",
+    "type": "Stadium",
+    "capacity": "54120"
+  },
+  {
+    "venueName": "Autzen Stadium",
+    "city": "Eugene",
+    "state": "OR",
+    "type": "Stadium",
+    "capacity": "54000"
+  },
+  {
+    "venueName": "Mountain America Stadium",
+    "city": "Tempe",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "53599"
+  },
+  {
+    "venueName": "Franklin Field",
+    "city": "Philadelphia",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "52593"
+  },
+  {
+    "venueName": "SHI Stadium",
+    "city": "Piscataway",
+    "state": "NJ",
+    "type": "Stadium",
+    "capacity": "52454"
+  },
+  {
+    "venueName": "SECU Stadium",
+    "city": "College Park",
+    "state": "MD",
+    "type": "Stadium",
+    "capacity": "51802"
+  },
+  {
+    "venueName": "Sun Bowl",
+    "city": "El Paso",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "51500"
+  },
+  {
+    "venueName": "Rice-Eccles Stadium",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "type": "Stadium",
+    "capacity": "51444"
+  },
+  {
+    "venueName": "Dowdy–Ficklen Stadium",
+    "city": "Greenville",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "51000"
+  },
+  {
+    "venueName": "Independence Stadium",
+    "city": "Shreveport",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "50832"
+  },
+  {
+    "venueName": "Huntington Bank Stadium",
+    "city": "Minneapolis",
+    "state": "MN",
+    "type": "Stadium",
+    "capacity": "50805"
+  },
+  {
+    "venueName": "Arizona Stadium",
+    "city": "Tucson",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "50800"
+  },
+  {
+    "venueName": "Kenan Memorial Stadium",
+    "city": "Chapel Hill",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "50500"
+  },
+  {
+    "venueName": "Stanford Stadium",
+    "city": "Stanford",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "50424"
+  },
+  {
+    "venueName": "Folsom Field",
+    "city": "Boulder",
+    "state": "CO",
+    "type": "Stadium",
+    "capacity": "50183"
+  },
+  {
+    "venueName": "Simmons Bank Liberty Stadium",
+    "city": "Memphis",
+    "state": "TN",
+    "type": "Stadium",
+    "capacity": "50000"
+  },
+  {
+    "venueName": "Bill Snyder Family Football Stadium",
+    "city": "Manhattan",
+    "state": "KS",
+    "type": "Stadium",
+    "capacity": "50000"
+  },
+  {
+    "venueName": "Aloha Stadium",
+    "city": "Honolulu",
+    "state": "HI",
+    "type": "Stadium",
+    "capacity": "50000"
+  },
+  {
+    "venueName": "Chase Field",
+    "city": "Phoenix",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "48405"
+  },
+  {
+    "venueName": "Choctaw Stadium",
+    "city": "Arlington",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "48114"
+  },
+  {
+    "venueName": "T-Mobile Park",
+    "city": "Seattle",
+    "state": "WA",
+    "type": "Stadium",
+    "capacity": "47929"
+  },
+  {
+    "venueName": "David Booth Kansas Memorial Stadium",
+    "city": "Lawrence",
+    "state": "KS",
+    "type": "Stadium",
+    "capacity": "47233"
+  },
+  {
+    "venueName": "Protective Stadium",
+    "city": "Birmingham",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "47100"
+  },
+  {
+    "venueName": "Amon G. Carter Stadium",
+    "city": "Fort Worth",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "47000"
+  },
+  {
+    "venueName": "Rice Stadium",
+    "city": "Houston",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "47000"
+  },
+  {
+    "venueName": "Coors Field",
+    "city": "Denver",
+    "state": "CO",
+    "type": "Stadium",
+    "capacity": "46897"
+  },
+  {
+    "venueName": "Oakland Coliseum",
+    "city": "Oakland",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "46847"
+  },
+  {
+    "venueName": "Falcon Stadium",
+    "city": "Colorado Springs",
+    "state": "CO",
+    "type": "Stadium",
+    "capacity": "46692"
+  },
+  {
+    "venueName": "Yankee Stadium",
+    "city": "Bronx",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "46537"
+  },
+  {
+    "venueName": "Angel Stadium",
+    "city": "Anaheim",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "45517"
+  },
+  {
+    "venueName": "FBC Mortgage Stadium",
+    "city": "Orlando",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "45301"
+  },
+  {
+    "venueName": "McLane Stadium",
+    "city": "Waco",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "45140"
+  },
+  {
+    "venueName": "Oriole Park",
+    "city": "Baltimore",
+    "state": "MD",
+    "type": "Stadium",
+    "capacity": "44970"
+  },
+  {
+    "venueName": "Alumni Stadium",
+    "city": "Chestnut Hill",
+    "state": "MA",
+    "type": "Stadium",
+    "capacity": "44500"
+  },
+  {
+    "venueName": "Busch Stadium",
+    "city": "St. Louis",
+    "state": "MO",
+    "type": "Stadium",
+    "capacity": "44383"
+  },
+  {
+    "venueName": "Great American Ball Park",
+    "city": "Cincinnati",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "43500"
+  },
+  {
+    "venueName": "Citizens Bank Park",
+    "city": "Philadelphia",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "42901"
+  },
+  {
+    "venueName": "Tropicana Field",
+    "city": "St. Petersburg",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "42735"
+  },
+  {
+    "venueName": "Citi Field",
+    "city": "Queens",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "41922"
+  },
+  {
+    "venueName": "Oracle Park",
+    "city": "San Francisco",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "41915"
+  },
+  {
+    "venueName": "American Family Field",
+    "city": "Milwaukee",
+    "state": "WI",
+    "type": "Stadium",
+    "capacity": "41900"
+  },
+  {
+    "venueName": "Wrigley Field",
+    "city": "Chicago",
+    "state": "IL",
+    "type": "Stadium",
+    "capacity": "41649"
+  },
+  {
+    "venueName": "Nationals Park",
+    "city": "Washington, D.C.",
+    "state": "DC",
+    "type": "Stadium",
+    "capacity": "41339"
+  },
+  {
+    "venueName": "Cajun Field",
+    "city": "Lafayette",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "41264"
+  },
+  {
+    "venueName": "Minute Maid Park",
+    "city": "Houston",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "41168"
+  },
+  {
+    "venueName": "Truist Park",
+    "city": "Cumberland",
+    "state": "GA",
+    "type": "Stadium",
+    "capacity": "41084"
+  },
+  {
+    "venueName": "Comerica Park",
+    "city": "Detroit",
+    "state": "MI",
+    "type": "Stadium",
+    "capacity": "41083"
+  },
+  {
+    "venueName": "Valley Children's Stadium",
+    "city": "Fresno",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "40727"
+  },
+  {
+    "venueName": "Rate Field",
+    "city": "Chicago",
+    "state": "IL",
+    "type": "Stadium",
+    "capacity": "40615"
+  },
+  {
+    "venueName": "FirstBank Stadium",
+    "city": "Nashville",
+    "state": "TN",
+    "type": "Stadium",
+    "capacity": "35000"
+  },
+  {
+    "venueName": "Globe Life Field",
+    "city": "Arlington",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "40300"
+  },
+  {
+    "venueName": "Ladd-Peebles Stadium",
+    "city": "Mobile",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "40000"
+  },
+  {
+    "venueName": "TDECU Stadium",
+    "city": "Houston",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "40000"
+  },
+  {
+    "venueName": "Petco Park",
+    "city": "San Diego",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "39860"
+  },
+  {
+    "venueName": "University Stadium",
+    "city": "Albuquerque",
+    "state": "NM",
+    "type": "Stadium",
+    "capacity": "39224"
+  },
+  {
+    "venueName": "PNC Park",
+    "city": "Pittsburgh",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "38747"
+  },
+  {
+    "venueName": "Target Field",
+    "city": "Minneapolis",
+    "state": "MN",
+    "type": "Stadium",
+    "capacity": "38544"
+  },
+  {
+    "venueName": "Nippert Stadium",
+    "city": "Cincinnati",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "38088"
+  },
+  {
+    "venueName": "Pratt & Whitney Stadium",
+    "city": "East Hartford",
+    "state": "CT",
+    "type": "Stadium",
+    "capacity": "38066"
+  },
+  {
+    "venueName": "Michie Stadium",
+    "city": "West Point",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "38000"
+  },
+  {
+    "venueName": "Kauffman Stadium",
+    "city": "Kansas City",
+    "state": "MO",
+    "type": "Stadium",
+    "capacity": "37903"
+  },
+  {
+    "venueName": "Fenway Park",
+    "city": "Boston",
+    "state": "MA",
+    "type": "Stadium",
+    "capacity": "37755"
+  },
+  {
+    "venueName": "Sam Boyd Stadium",
+    "city": "Las Vegas",
+    "state": "NV",
+    "type": "Stadium",
+    "capacity": "36800"
+  },
+  {
+    "venueName": "LoanDepot Park",
+    "city": "Miami",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "36742"
+  },
+  {
+    "venueName": "Canvas Stadium",
+    "city": "Fort Collins",
+    "state": "CO",
+    "type": "Stadium",
+    "capacity": "36500"
+  },
+  {
+    "venueName": "Albertsons Stadium",
+    "city": "Boise",
+    "state": "ID",
+    "type": "Stadium",
+    "capacity": "36387"
+  },
+  {
+    "venueName": "MM Roberts Stadium",
+    "city": "Hattiesburg",
+    "state": "MS",
+    "type": "Stadium",
+    "capacity": "36000"
+  },
+  {
+    "venueName": "Reser Stadium",
+    "city": "Corvallis",
+    "state": "OR",
+    "type": "Stadium",
+    "capacity": "35548"
+  },
+  {
+    "venueName": "Wallace Wade Stadium",
+    "city": "Durham",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "35018"
+  },
+  {
+    "venueName": "Snapdragon Stadium",
+    "city": "San Diego",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "35000"
+  },
+  {
+    "venueName": "Progressive Field",
+    "city": "Cleveland",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "34820"
+  },
+  {
+    "venueName": "Navy–Marine Corps Memorial Stadium",
+    "city": "Annapolis",
+    "state": "MD",
+    "type": "Stadium",
+    "capacity": "34000"
+  },
+  {
+    "venueName": "Martin Stadium",
+    "city": "Pullman",
+    "state": "WA",
+    "type": "Stadium",
+    "capacity": "32952"
+  },
+  {
+    "venueName": "Gerald J. Ford Stadium",
+    "city": "University Park",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "32000"
+  },
+  {
+    "venueName": "Allegacy Federal Credit Union Stadium",
+    "city": "Winston-Salem",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "31500"
+  },
+  {
+    "venueName": "DATCU Stadium",
+    "city": "Denton",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "30850"
+  },
+  {
+    "venueName": "Johnny \"Red\" Floyd Stadium",
+    "city": "Murfreesboro",
+    "state": "TN",
+    "type": "Stadium",
+    "capacity": "30788"
+  },
+  {
+    "venueName": "Joan C. Edwards Stadium",
+    "city": "Huntington",
+    "state": "WV",
+    "type": "Stadium",
+    "capacity": "30475"
+  },
+  {
+    "venueName": "Veterans Memorial Stadium",
+    "city": "Troy",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "30470"
+  },
+  {
+    "venueName": "Centennial Bank Stadium",
+    "city": "Jonesboro",
+    "state": "AR",
+    "type": "Stadium",
+    "capacity": "30406"
+  },
+  {
+    "venueName": "Harvard Stadium",
+    "city": "Allston",
+    "state": "MA",
+    "type": "Stadium",
+    "capacity": "30323"
+  },
+  {
+    "venueName": "Kelly/Shorts Stadium",
+    "city": "Mount Pleasant",
+    "state": "MI",
+    "type": "Stadium",
+    "capacity": "30255"
+  },
+  {
+    "venueName": "Waldo Stadium",
+    "city": "Kalamazoo",
+    "state": "MI",
+    "type": "Stadium",
+    "capacity": "30200"
+  },
+  {
+    "venueName": "Rynearson Stadium",
+    "city": "Ypsilanti",
+    "state": "MI",
+    "type": "Stadium",
+    "capacity": "30200"
+  },
+  {
+    "venueName": "Jonah Field at War Memorial Stadium",
+    "city": "Laramie",
+    "state": "WY",
+    "type": "Stadium",
+    "capacity": "30181"
+  },
+  {
+    "venueName": "UFCU Stadium",
+    "city": "San Marcos",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "30008"
+  },
+  {
+    "venueName": "HA Chapman Stadium",
+    "city": "Tulsa",
+    "state": "OK",
+    "type": "Stadium",
+    "capacity": "30000"
+  },
+  {
+    "venueName": "Kidd Brewer Stadium",
+    "city": "Boone",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "30000"
+  },
+  {
+    "venueName": "William \"Dick\" Price Stadium",
+    "city": "Norfolk",
+    "state": "VA",
+    "type": "Stadium",
+    "capacity": "30000"
+  },
+  {
+    "venueName": "InfoCision Stadium – Summa Field",
+    "city": "Akron",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "30000"
+  },
+  {
+    "venueName": "Benson Field at Yulman Stadium",
+    "city": "New Orleans",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "30000"
+  },
+  {
+    "venueName": "Geodis Park",
+    "city": "Nashville",
+    "state": "TN",
+    "type": "Stadium",
+    "capacity": "30000"
+  },
+  {
+    "venueName": "FAU Stadium",
+    "city": "Boca Raton",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "29571"
+  },
+  {
+    "venueName": "Aggie Memorial Stadium",
+    "city": "Las Cruces",
+    "state": "NM",
+    "type": "Stadium",
+    "capacity": "28853"
+  },
+  {
+    "venueName": "Joe Aillet Stadium",
+    "city": "Ruston",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "28562"
+  },
+  {
+    "venueName": "Princeton Stadium",
+    "city": "Princeton",
+    "state": "NJ",
+    "type": "Stadium",
+    "capacity": "27773"
+  },
+  {
+    "venueName": "Malone Stadium",
+    "city": "Monroe",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "27617"
+  },
+  {
+    "venueName": "Mackay Stadium",
+    "city": "Reno",
+    "state": "NV",
+    "type": "Stadium",
+    "capacity": "27000"
+  },
+  {
+    "venueName": "Dignity Health Sports Park Soccer Stadium",
+    "city": "Carson",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "27000"
+  },
+  {
+    "venueName": "Tad Gormley Stadium",
+    "city": "New Orleans",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "26500"
+  },
+  {
+    "venueName": "ASU Stadium",
+    "city": "Montgomery",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "26500"
+  },
+  {
+    "venueName": "The Glass Bowl",
+    "city": "Toledo",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "26038"
+  },
+  {
+    "venueName": "TQL Stadium",
+    "city": "Cincinnati",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "25513"
+  },
+  {
+    "venueName": "Ace W. Mumford Stadium",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "25500"
+  },
+  {
+    "venueName": "Inter&Co Stadium",
+    "city": "Orlando",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "25500"
+  },
+  {
+    "venueName": "Hancock Whitney Stadium",
+    "city": "Mobile",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "25450"
+  },
+  {
+    "venueName": "Dix Stadium",
+    "city": "Kent",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "25319"
+  },
+  {
+    "venueName": "Providence Park",
+    "city": "Portland",
+    "state": "OR",
+    "type": "Stadium",
+    "capacity": "25218"
+  },
+  {
+    "venueName": "Washington–Grizzly Stadium",
+    "city": "Missoula",
+    "state": "MT",
+    "type": "Stadium",
+    "capacity": "25217"
+  },
+  {
+    "venueName": "Maverik Stadium",
+    "city": "Logan",
+    "state": "UT",
+    "type": "Stadium",
+    "capacity": "25100"
+  },
+  {
+    "venueName": "UB Stadium",
+    "city": "Amherst",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "25013"
+  },
+  {
+    "venueName": "Cramton Bowl",
+    "city": "Montgomery",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "25000"
+  },
+  {
+    "venueName": "Paulson Stadium",
+    "city": "Statesboro",
+    "state": "GA",
+    "type": "Stadium",
+    "capacity": "25000"
+  },
+  {
+    "venueName": "Williams Stadium",
+    "city": "Lynchburg",
+    "state": "VA",
+    "type": "Stadium",
+    "capacity": "25000"
+  },
+  {
+    "venueName": "Sports Illustrated Stadium",
+    "city": "Harrison",
+    "state": "NJ",
+    "type": "Stadium",
+    "capacity": "25000"
+  },
+  {
+    "venueName": "Nu Stadium",
+    "city": "Miami",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "25000"
+  },
+  {
+    "venueName": "Bridgeforth Stadium",
+    "city": "Harrisonburg",
+    "state": "VA",
+    "type": "Stadium",
+    "capacity": "24877"
+  },
+  {
+    "venueName": "Charles Schwab Field Omaha",
+    "city": "Omaha",
+    "state": "NE",
+    "type": "Stadium",
+    "capacity": "24505"
+  },
+  {
+    "venueName": "Center Parc Stadium",
+    "city": "Atlanta",
+    "state": "GA",
+    "type": "Stadium",
+    "capacity": "24333"
+  },
+  {
+    "venueName": "Fred C. Yager Stadium",
+    "city": "Oxford",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "24286"
+  },
+  {
+    "venueName": "Don Peden Stadium",
+    "city": "Athens",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "24000"
+  },
+  {
+    "venueName": "Brigham Field at Huskie Stadium",
+    "city": "DeKalb",
+    "state": "IL",
+    "type": "Stadium",
+    "capacity": "24000"
+  },
+  {
+    "venueName": "Doyt L. Perry Stadium",
+    "city": "Bowling Green",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "24000"
+  },
+  {
+    "venueName": "Houchens Industries–LT Smith Stadium",
+    "city": "Bowling Green",
+    "state": "KY",
+    "type": "Stadium",
+    "capacity": "23776"
+  },
+  {
+    "venueName": "Arthur Ashe Stadium",
+    "city": "Queens",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "23711"
+  },
+  {
+    "venueName": "Fitton Field",
+    "city": "Worcester",
+    "state": "MA",
+    "type": "Stadium",
+    "capacity": "23500"
+  },
+  {
+    "venueName": "Tom Benson Hall of Fame Stadium",
+    "city": "Canton",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "23000"
+  },
+  {
+    "venueName": "City Stadium",
+    "city": "Richmond",
+    "state": "VA",
+    "type": "Stadium",
+    "capacity": "22611"
+  },
+  {
+    "venueName": "AmFirst Stadium",
+    "city": "Jacksonville",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "22500"
+  },
+  {
+    "venueName": "Jack Spinks Stadium",
+    "city": "Lorman",
+    "state": "MS",
+    "type": "Stadium",
+    "capacity": "22500"
+  },
+  {
+    "venueName": "John B. and June M. Scheumann Stadium",
+    "city": "Muncie",
+    "state": "IN",
+    "type": "Stadium",
+    "capacity": "22500"
+  },
+  {
+    "venueName": "Energizer Park",
+    "city": "St. Louis",
+    "state": "MO",
+    "type": "Stadium",
+    "capacity": "22423"
+  },
+  {
+    "venueName": "Weingart Stadium",
+    "city": "Monterey Park",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "22355"
+  },
+  {
+    "venueName": "Shell Energy Stadium",
+    "city": "Houston",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "22039"
+  },
+  {
+    "venueName": "World War I Memorial Stadium",
+    "city": "Manhattan",
+    "state": "KS",
+    "type": "Stadium",
+    "capacity": "22000"
+  },
+  {
+    "venueName": "Edwards Stadium",
+    "city": "Berkeley",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "22000"
+  },
+  {
+    "venueName": "Delaware Stadium",
+    "city": "Newark",
+    "state": "DE",
+    "type": "Stadium",
+    "capacity": "22000"
+  },
+  {
+    "venueName": "Oliver C. Dawson Stadium",
+    "city": "Orangeburg",
+    "state": "SC",
+    "type": "Stadium",
+    "capacity": "22000"
+  },
+  {
+    "venueName": "BMO Stadium",
+    "city": "Los Angeles",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "22000"
+  },
+  {
+    "venueName": "Kornblau Field at S.B. Ballard Stadium",
+    "city": "Norfolk",
+    "state": "VA",
+    "type": "Stadium",
+    "capacity": "21944"
+  },
+  {
+    "venueName": "Schoellkopf Field",
+    "city": "Ithaca",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "21500"
+  },
+  {
+    "venueName": "BREC Memorial Stadium",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "21500"
+  },
+  {
+    "venueName": "Truist Stadium",
+    "city": "Greensboro",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "21500"
+  },
+  {
+    "venueName": "Hornet Stadium",
+    "city": "Sacramento",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "21195"
+  },
+  {
+    "venueName": "Louis Crews Stadium",
+    "city": "Huntsville",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "21000"
+  },
+  {
+    "venueName": "Brooks Stadium",
+    "city": "Conway",
+    "state": "SC",
+    "type": "Stadium",
+    "capacity": "21000"
+  },
+  {
+    "venueName": "Chase Stadium",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "21000"
+  },
+  {
+    "venueName": "Bobcat Stadium",
+    "city": "Bozeman",
+    "state": "MT",
+    "type": "Stadium",
+    "capacity": "20767"
+  },
+  {
+    "venueName": "Q2 Stadium",
+    "city": "Austin",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "20738"
+  },
+  {
+    "venueName": "Stambaugh Stadium",
+    "city": "Youngstown",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "20630"
+  },
+  {
+    "venueName": "Toyota Stadium",
+    "city": "Frisco",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "20500"
+  },
+  {
+    "venueName": "Finley Stadium",
+    "city": "Chattanooga",
+    "state": "TN",
+    "type": "Stadium",
+    "capacity": "20412"
+  },
+  {
+    "venueName": "ScottsMiracle-Gro Field",
+    "city": "Columbus",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "20371"
+  },
+  {
+    "venueName": "Hughes Stadium",
+    "city": "Sacramento",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "20311"
+  },
+  {
+    "venueName": "America First Field",
+    "city": "Sandy",
+    "state": "UT",
+    "type": "Stadium",
+    "capacity": "20213"
+  },
+  {
+    "venueName": "Brown Stadium",
+    "city": "Providence",
+    "state": "RI",
+    "type": "Stadium",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Happy State Bank Stadium",
+    "city": "Canyon",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Roy Kidd Stadium",
+    "city": "Richmond",
+    "state": "KY",
+    "type": "Stadium",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Central Broward Park",
+    "city": "Lauderhill",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Pitbull Stadium",
+    "city": "Miami",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Mike A. Myers Stadium",
+    "city": "Austin",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "SeatGeek Stadium",
+    "city": "Bridgeview",
+    "state": "IL",
+    "type": "Stadium",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Audi Field",
+    "city": "Washington, D.C.",
+    "state": "DC",
+    "type": "Stadium",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Historic Crew Stadium",
+    "city": "Columbus",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "19968"
+  },
+  {
+    "venueName": "Bragg Memorial Stadium",
+    "city": "Tallahassee",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "19633"
+  },
+  {
+    "venueName": "Eddie G. Robinson Memorial Stadium",
+    "city": "Grambling",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "19600"
+  },
+  {
+    "venueName": "Mesquite Memorial Stadium",
+    "city": "Mesquite",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "19400"
+  },
+  {
+    "venueName": "Allianz Field",
+    "city": "St. Paul",
+    "state": "MN",
+    "type": "Stadium",
+    "capacity": "19400"
+  },
+  {
+    "venueName": "Dana J. Dykhouse Stadium",
+    "city": "Brookings",
+    "state": "SD",
+    "type": "Stadium",
+    "capacity": "19340"
+  },
+  {
+    "venueName": "Fargodome",
+    "city": "Fargo",
+    "state": "ND",
+    "type": "Stadium",
+    "capacity": "18700"
+  },
+  {
+    "venueName": "UC Stadium at Laidley Field",
+    "city": "Charleston",
+    "state": "WV",
+    "type": "Stadium",
+    "capacity": "18500"
+  },
+  {
+    "venueName": "Subaru Park",
+    "city": "Chester",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "18500"
+  },
+  {
+    "venueName": "Children's Mercy Park",
+    "city": "Kansas City",
+    "state": "KS",
+    "type": "Stadium",
+    "capacity": "18467"
+  },
+  {
+    "venueName": "Hiram Bithorn Stadium",
+    "city": "San Juan",
+    "state": "PR",
+    "type": "Stadium",
+    "capacity": "18264"
+  },
+  {
+    "venueName": "CEFCU Stadium",
+    "city": "San Jose",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "18203"
+  },
+  {
+    "venueName": "Dick's Sporting Goods Park",
+    "city": "Commerce City",
+    "state": "CO",
+    "type": "Stadium",
+    "capacity": "18061"
+  },
+  {
+    "venueName": "Astound Broadband Stadium",
+    "city": "Midland",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "18000"
+  },
+  {
+    "venueName": "PayPal Park",
+    "city": "San Jose",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "18000"
+  },
+  {
+    "venueName": "Ratliff Stadium",
+    "city": "Odessa",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "17931"
+  },
+  {
+    "venueName": "Cowboy Stadium",
+    "city": "Lake Charles",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "17610"
+  },
+  {
+    "venueName": "Robert W. Plaster Stadium",
+    "city": "Springfield",
+    "state": "MO",
+    "type": "Stadium",
+    "capacity": "17500"
+  },
+  {
+    "venueName": "Stewart Stadium",
+    "city": "Ogden",
+    "state": "UT",
+    "type": "Stadium",
+    "capacity": "17312"
+  },
+  {
+    "venueName": "Robert K. Kraft Field at Lawrence A. Wien Stadium",
+    "city": "New York",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "17000"
+  },
+  {
+    "venueName": "Warren McGuirk Alumni Stadium",
+    "city": "Hadley",
+    "state": "MA",
+    "type": "Stadium",
+    "capacity": "17000"
+  },
+  {
+    "venueName": "Harder Stadium",
+    "city": "Santa Barbara",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "17000"
+  },
+  {
+    "venueName": "Round-Up Stadium",
+    "city": "Pendleton",
+    "state": "OR",
+    "type": "Stadium",
+    "capacity": "17000"
+  },
+  {
+    "venueName": "Clarence T. C. Ching Athletics Complex",
+    "city": "Honolulu",
+    "state": "HI",
+    "type": "Stadium",
+    "capacity": "16909"
+  },
+  {
+    "venueName": "Roy Stewart Stadium",
+    "city": "Murray",
+    "state": "KY",
+    "type": "Stadium",
+    "capacity": "16800"
+  },
+  {
+    "venueName": "Paul Brown Tiger Stadium",
+    "city": "Massillon",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "16600"
+  },
+  {
+    "venueName": "Sahlen Field",
+    "city": "Buffalo",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "16600"
+  },
+  {
+    "venueName": "Tucker Stadium",
+    "city": "Cookeville",
+    "state": "TN",
+    "type": "Stadium",
+    "capacity": "16500"
+  },
+  {
+    "venueName": "Hanson Field",
+    "city": "Macomb",
+    "state": "IL",
+    "type": "Stadium",
+    "capacity": "16368"
+  },
+  {
+    "venueName": "UNI-Dome",
+    "city": "Cedar Falls",
+    "state": "IA",
+    "type": "Stadium",
+    "capacity": "16324"
+  },
+  {
+    "venueName": "Stadium 1",
+    "city": "Indian Wells",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "16100"
+  },
+  {
+    "venueName": "Provost Umphrey Stadium",
+    "city": "Beaumont",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "16000"
+  },
+  {
+    "venueName": "Stallworth Stadium",
+    "city": "Baytown",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "16000"
+  },
+  {
+    "venueName": "Kibbie Dome",
+    "city": "Moscow",
+    "state": "ID",
+    "type": "Stadium",
+    "capacity": "16000"
+  },
+  {
+    "venueName": "Paladin Stadium",
+    "city": "Greenville",
+    "state": "SC",
+    "type": "Stadium",
+    "capacity": "16000"
+  },
+  {
+    "venueName": "Goodman Stadium",
+    "city": "Bethlehem",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "16000"
+  },
+  {
+    "venueName": "Simmons Bank Field",
+    "city": "Pine Bluff",
+    "state": "AR",
+    "type": "Stadium",
+    "capacity": "16000"
+  },
+  {
+    "venueName": "Harry Turpin Stadium",
+    "city": "Natchitoches",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "15971"
+  },
+  {
+    "venueName": "Hersheypark Stadium",
+    "city": "Hershey",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "15641"
+  },
+  {
+    "venueName": "James R. Hallford Stadium",
+    "city": "Clarkston",
+    "state": "GA",
+    "type": "Stadium",
+    "capacity": "15600"
+  },
+  {
+    "venueName": "Jerry Richardson Stadium",
+    "city": "Charlotte",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "15314"
+  },
+  {
+    "venueName": "Stadium Bowl",
+    "city": "Tacoma",
+    "state": "WA",
+    "type": "Stadium",
+    "capacity": "15000"
+  },
+  {
+    "venueName": "Greenway Avenue Stadium",
+    "city": "Cumberland",
+    "state": "MD",
+    "type": "Stadium",
+    "capacity": "15000"
+  },
+  {
+    "venueName": "J. Birney Crum Stadium",
+    "city": "Allentown",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "15000"
+  },
+  {
+    "venueName": "Dick Bivins Stadium",
+    "city": "Amarillo",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "15000"
+  },
+  {
+    "venueName": "Saluki Stadium",
+    "city": "Carbondale",
+    "state": "IL",
+    "type": "Stadium",
+    "capacity": "15000"
+  },
+  {
+    "venueName": "Sloan Park",
+    "city": "Mesa",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "15000"
+  },
+  {
+    "venueName": "Panther Stadium at Blackshear Field",
+    "city": "Prairie View",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "15000"
+  },
+  {
+    "venueName": "Homer Bryce Stadium",
+    "city": "Nacogdoches",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "14575"
+  },
+  {
+    "venueName": "Drake Stadium",
+    "city": "Des Moines",
+    "state": "IA",
+    "type": "Stadium",
+    "capacity": "14557"
+  },
+  {
+    "venueName": "Smith's Ballpark",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "type": "Stadium",
+    "capacity": "14511"
+  },
+  {
+    "venueName": "Braly Municipal Stadium",
+    "city": "Florence",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "14215"
+  },
+  {
+    "venueName": "Louis Armstrong Stadium",
+    "city": "Queens",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "14053"
+  },
+  {
+    "venueName": "Bowers Stadium",
+    "city": "Huntsville",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "14000"
+  },
+  {
+    "venueName": "Rhodes Stadium",
+    "city": "Elon",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "14000"
+  },
+  {
+    "venueName": "Rochester Community Sports Complex Stadium",
+    "city": "Rochester",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "13768"
+  },
+  {
+    "venueName": "Bob Waters Field at EJ Whitmire Stadium",
+    "city": "Cullowhee",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "13742"
+  },
+  {
+    "venueName": "McAllen Veterans Memorial Stadium",
+    "city": "McAllen",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "13500"
+  },
+  {
+    "venueName": "Innovative Field",
+    "city": "Rochester",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "13500"
+  },
+  {
+    "venueName": "Hancock Stadium",
+    "city": "Normal",
+    "state": "IL",
+    "type": "Stadium",
+    "capacity": "13391"
+  },
+  {
+    "venueName": "Fisher Stadium",
+    "city": "Easton",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "13132"
+  },
+  {
+    "venueName": "Louisville Slugger Field",
+    "city": "Louisville",
+    "state": "KY",
+    "type": "Stadium",
+    "capacity": "13131"
+  },
+  {
+    "venueName": "Christy Mathewson–Memorial Stadium",
+    "city": "Lewisburg",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "13100"
+  },
+  {
+    "venueName": "Gibbs Stadium",
+    "city": "Spartanburg",
+    "state": "SC",
+    "type": "Stadium",
+    "capacity": "13000"
+  },
+  {
+    "venueName": "Camelback Ranch",
+    "city": "Phoenix",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "13000"
+  },
+  {
+    "venueName": "Pasadena Memorial Stadium",
+    "city": "Pasadena",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "12700"
+  },
+  {
+    "venueName": "Zable Stadium",
+    "city": "Williamsburg",
+    "state": "VA",
+    "type": "Stadium",
+    "capacity": "12672"
+  },
+  {
+    "venueName": "Hayward Field",
+    "city": "Eugene",
+    "state": "OR",
+    "type": "Stadium",
+    "capacity": "12650"
+  },
+  {
+    "venueName": "Villanova Stadium",
+    "city": "Villanova",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "12500"
+  },
+  {
+    "venueName": "Juan Ramón Loubriel Stadium",
+    "city": "Bayamón",
+    "state": "PR",
+    "type": "Stadium",
+    "capacity": "12500"
+  },
+  {
+    "venueName": "Pennington Field",
+    "city": "Bedford",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "12500"
+  },
+  {
+    "venueName": "Joy and Ralph Ellis Stadium",
+    "city": "Irving",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "12500"
+  },
+  {
+    "venueName": "Kenneth P. LaValle Stadium",
+    "city": "Stony Brook",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "12300"
+  },
+  {
+    "venueName": "Alerus Center",
+    "city": "Grand Forks",
+    "state": "ND",
+    "type": "Stadium",
+    "capacity": "12283"
+  },
+  {
+    "venueName": "Victory Field",
+    "city": "Indianapolis",
+    "state": "IN",
+    "type": "Stadium",
+    "capacity": "12230"
+  },
+  {
+    "venueName": "Wheeling Island Stadium",
+    "city": "Wheeling",
+    "state": "WV",
+    "type": "Stadium",
+    "capacity": "12220"
+  },
+  {
+    "venueName": "Mayagüez Athletics Stadium",
+    "city": "Mayagüez",
+    "state": "PR",
+    "type": "Stadium",
+    "capacity": "12175"
+  },
+  {
+    "venueName": "Swayze Field",
+    "city": "Oxford",
+    "state": "MS",
+    "type": "Stadium",
+    "capacity": "12152"
+  },
+  {
+    "venueName": "The Diamond",
+    "city": "Richmond",
+    "state": "VA",
+    "type": "Stadium",
+    "capacity": "12134"
+  },
+  {
+    "venueName": "IU Michael A. Carroll Track & Soccer Stadium",
+    "city": "Indianapolis",
+    "state": "IN",
+    "type": "Stadium",
+    "capacity": "12111"
+  },
+  {
+    "venueName": "Harbor Park",
+    "city": "Norfolk",
+    "state": "VA",
+    "type": "Stadium",
+    "capacity": "12067"
+  },
+  {
+    "venueName": "Northwestern Medicine Field at Martin Stadium",
+    "city": "Evanston",
+    "state": "IL",
+    "type": "Stadium",
+    "capacity": "12023"
+  },
+  {
+    "venueName": "Audrey J. Walton Stadium (Central Missouri)",
+    "city": "Warrensburg",
+    "state": "MO",
+    "type": "Stadium",
+    "capacity": "12000"
+  },
+  {
+    "venueName": "Armstrong Stadium",
+    "city": "Hampton",
+    "state": "VA",
+    "type": "Stadium",
+    "capacity": "12000"
+  },
+  {
+    "venueName": "John F. Kennedy Stadium",
+    "city": "Bridgeport",
+    "state": "CT",
+    "type": "Stadium",
+    "capacity": "12000"
+  },
+  {
+    "venueName": "Scottsdale Stadium",
+    "city": "Scottsdale",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "12000"
+  },
+  {
+    "venueName": "CH Collins Stadium",
+    "city": "Denton",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "12000"
+  },
+  {
+    "venueName": "Ford Center",
+    "city": "Frisco",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "12000"
+  },
+  {
+    "venueName": "Anthony Field at Wildcat Stadium",
+    "city": "Abilene",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "12000"
+  },
+  {
+    "venueName": "James M. Shuart Stadium",
+    "city": "Hempstead",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "11929"
+  },
+  {
+    "venueName": "Lynn Family Stadium",
+    "city": "Louisville",
+    "state": "KY",
+    "type": "Stadium",
+    "capacity": "11700"
+  },
+  {
+    "venueName": "Dell Diamond",
+    "city": "Round Rock",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "11631"
+  },
+  {
+    "venueName": "Ernest Hawkins Field at Memorial Stadium",
+    "city": "Commerce",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "11582"
+  },
+  {
+    "venueName": "Heart Health Park",
+    "city": "Sacramento",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "11569"
+  },
+  {
+    "venueName": "Principal Park",
+    "city": "Des Moines",
+    "state": "IA",
+    "type": "Stadium",
+    "capacity": "11500"
+  },
+  {
+    "venueName": "Kino Sports Complex",
+    "city": "Tucson",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "11500"
+  },
+  {
+    "venueName": "CPKC Stadium",
+    "city": "Kansas City",
+    "state": "MO",
+    "type": "Stadium",
+    "capacity": "11500"
+  },
+  {
+    "venueName": "Center Court",
+    "city": "Mason",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "11435"
+  },
+  {
+    "venueName": "Johnson Hagood Stadium",
+    "city": "Charleston",
+    "state": "SC",
+    "type": "Stadium",
+    "capacity": "11427"
+  },
+  {
+    "venueName": "Peoria Sports Complex",
+    "city": "Peoria",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "11333"
+  },
+  {
+    "venueName": "Johnny Unitas Stadium",
+    "city": "Towson",
+    "state": "MD",
+    "type": "Stadium",
+    "capacity": "11198"
+  },
+  {
+    "venueName": "Isotopes Park",
+    "city": "Albuquerque",
+    "state": "NM",
+    "type": "Stadium",
+    "capacity": "11124"
+  },
+  {
+    "venueName": "Alex G. Spanos Stadium",
+    "city": "San Luis Obispo",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "11075"
+  },
+  {
+    "venueName": "George M. Steinbrenner Field",
+    "city": "Tampa",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "11026"
+  },
+  {
+    "venueName": "Wildcat Stadium",
+    "city": "Durham",
+    "state": "NH",
+    "type": "Stadium",
+    "capacity": "11015"
+  },
+  {
+    "venueName": "Memorial Field",
+    "city": "Hanover",
+    "state": "NH",
+    "type": "Stadium",
+    "capacity": "11000"
+  },
+  {
+    "venueName": "Atwood Stadium",
+    "city": "Flint",
+    "state": "MI",
+    "type": "Stadium",
+    "capacity": "11000"
+  },
+  {
+    "venueName": "Welcome Stadium",
+    "city": "Dayton",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "11000"
+  },
+  {
+    "venueName": "White Stadium",
+    "city": "Boston",
+    "state": "MA",
+    "type": "Stadium",
+    "capacity": "11000"
+  },
+  {
+    "venueName": "VyStar Ballpark",
+    "city": "Jacksonville",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "11000"
+  },
+  {
+    "venueName": "Charlie W. Johnson Stadium",
+    "city": "Columbia",
+    "state": "SC",
+    "type": "Stadium",
+    "capacity": "11000"
+  },
+  {
+    "venueName": "Salt River Fields at Talking Stick",
+    "city": "Scottsdale",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "11000"
+  },
+  {
+    "venueName": "Cy-Fair FCU Stadium",
+    "city": "Cypress",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "11000"
+  },
+  {
+    "venueName": "Miller Stadium",
+    "city": "Indiana",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "11000"
+  },
+  {
+    "venueName": "JetBlue Park",
+    "city": "Fort Myers",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "10823"
+  },
+  {
+    "venueName": "NBT Bank Stadium",
+    "city": "Syracuse",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "10815"
+  },
+  {
+    "venueName": "UC Davis Health Stadium",
+    "city": "Davis",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "10743"
+  },
+  {
+    "venueName": "Baum–Walker Stadium",
+    "city": "Fayetteville",
+    "state": "AR",
+    "type": "Stadium",
+    "capacity": "10737"
+  },
+  {
+    "venueName": "Surprise Stadium",
+    "city": "Surprise",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "10714"
+  },
+  {
+    "venueName": "Chukchansi Park",
+    "city": "Fresno",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "10650"
+  },
+  {
+    "venueName": "Sutter Health Park",
+    "city": "Sacramento",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "10624"
+  },
+  {
+    "venueName": "American Legion Memorial Stadium",
+    "city": "Charlotte",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "10500"
+  },
+  {
+    "venueName": "Manning Field at John L. Guidry Stadium",
+    "city": "Thibodaux",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "10500"
+  },
+  {
+    "venueName": "Greater Zion Stadium",
+    "city": "St. George",
+    "state": "UT",
+    "type": "Stadium",
+    "capacity": "10500"
+  },
+  {
+    "venueName": "Hohokam Stadium",
+    "city": "Mesa",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "10500"
+  },
+  {
+    "venueName": "Isidoro García Stadium",
+    "city": "Mayagüez",
+    "state": "PR",
+    "type": "Stadium",
+    "capacity": "10500"
+  },
+  {
+    "venueName": "Centreville Bank Stadium",
+    "city": "Pawtucket",
+    "state": "RI",
+    "type": "Stadium",
+    "capacity": "10500"
+  },
+  {
+    "venueName": "Hammons Field",
+    "city": "Springfield",
+    "state": "MO",
+    "type": "Stadium",
+    "capacity": "10486"
+  },
+  {
+    "venueName": "Lubbers Stadium",
+    "city": "Allendale",
+    "state": "MI",
+    "type": "Stadium",
+    "capacity": "10444"
+  },
+  {
+    "venueName": "Coolray Field",
+    "city": "Lawrenceville",
+    "state": "GA",
+    "type": "Stadium",
+    "capacity": "10427"
+  },
+  {
+    "venueName": "Mansion Park",
+    "city": "Altoona",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "10400"
+  },
+  {
+    "venueName": "Alex Box Stadium",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "10326"
+  },
+  {
+    "venueName": "Riders Field",
+    "city": "Frisco",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "10316"
+  },
+  {
+    "venueName": "Fifth Third Field",
+    "city": "Toledo",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "10300"
+  },
+  {
+    "venueName": "Crown Field at Andy Kerr Stadium",
+    "city": "Hamilton",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "10221"
+  },
+  {
+    "venueName": "Credit One Stadium",
+    "city": "Charleston",
+    "state": "SC",
+    "type": "Stadium",
+    "capacity": "10200"
+  },
+  {
+    "venueName": "Coca-Cola Park",
+    "city": "Allentown",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "10200"
+  },
+  {
+    "venueName": "Fifth Third Stadium",
+    "city": "Kennesaw",
+    "state": "GA",
+    "type": "Stadium",
+    "capacity": "10200"
+  },
+  {
+    "venueName": "Five Star Stadium",
+    "city": "Macon",
+    "state": "GA",
+    "type": "Stadium",
+    "capacity": "10200"
+  },
+  {
+    "venueName": "Truist Field",
+    "city": "Charlotte",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "10200"
+  },
+  {
+    "venueName": "Mitchel Athletic Complex",
+    "city": "Uniondale",
+    "state": "NY",
+    "type": "Stadium",
+    "capacity": "10102"
+  },
+  {
+    "venueName": "Huntington Park",
+    "city": "Columbus",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "10100"
+  },
+  {
+    "venueName": "Riverfront Stadium",
+    "city": "Wichita",
+    "state": "KS",
+    "type": "Stadium",
+    "capacity": "10025"
+  },
+  {
+    "venueName": "William H. Greene Stadium",
+    "city": "Washington, D.C.",
+    "state": "DC",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Houck Stadium",
+    "city": "Cape Girardeau",
+    "state": "MO",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Mitchell Stadium",
+    "city": "Bluefield",
+    "state": "WV",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Estes Stadium",
+    "city": "Conway",
+    "state": "AR",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Fortera Stadium",
+    "city": "Clarksville",
+    "state": "TN",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Alfond Stadium",
+    "city": "Orono",
+    "state": "ME",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Suplizio Field",
+    "city": "Grand Junction",
+    "state": "CO",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "FirstEnergy Stadium",
+    "city": "Reading",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Kingston Stadium",
+    "city": "Cedar Rapids",
+    "state": "IA",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Howard Wood Field",
+    "city": "Sioux Falls",
+    "state": "SD",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Rice–Totten Stadium",
+    "city": "Itta Bena",
+    "state": "MS",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Howard J. Lamade Stadium",
+    "city": "South Williamsport",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Alumni Memorial Field",
+    "city": "Lexington",
+    "state": "VA",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Jayne Stadium",
+    "city": "Morehead",
+    "state": "KY",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "O'Brien Field",
+    "city": "Charleston",
+    "state": "IL",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "O'Kelly–Riddick Stadium",
+    "city": "Durham",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Daytona Stadium",
+    "city": "Daytona Beach",
+    "state": "FL",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "PNC Field",
+    "city": "Moosic",
+    "state": "PA",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Northwestern Medicine Field",
+    "city": "Geneva",
+    "state": "IL",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Titan Stadium",
+    "city": "Fullerton",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "LMCU Ballpark",
+    "city": "Comstock Park",
+    "state": "MI",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Prince George's Stadium",
+    "city": "Bowie",
+    "state": "MD",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Durham Bulls Athletic Park",
+    "city": "Durham",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Gold Mine on Airline",
+    "city": "Metairie",
+    "state": "LA",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "American Family Fields of Phoenix",
+    "city": "Phoenix",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Autozone Park",
+    "city": "Memphis",
+    "state": "TN",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "WakeMed Soccer Park",
+    "city": "Cary",
+    "state": "NC",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "First Horizon Park",
+    "city": "Nashville",
+    "state": "TN",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Las Vegas Ballpark",
+    "city": "Las Vegas",
+    "state": "NV",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Wild Horse Pass Stadium",
+    "city": "Chandler",
+    "state": "AZ",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Citrus Stadium",
+    "city": "Glendora",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Jerry Comalander Stadium",
+    "city": "San Antonio",
+    "state": "TX",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Rip Hewes Stadium",
+    "city": "Dothan",
+    "state": "AL",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Withington Stadium",
+    "city": "Jackson",
+    "state": "MI",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Golden Wave Stadium",
+    "city": "Tupelo",
+    "state": "MS",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "La Playa Stadium",
+    "city": "Santa Barbara",
+    "state": "CA",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Joliet Memorial Stadium",
+    "city": "Joliet",
+    "state": "IL",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Classic Auto Group Park",
+    "city": "Eastlake",
+    "state": "OH",
+    "type": "Stadium",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Central Bank Center/Rupp Arena",
+    "city": "Lexington",
+    "state": "KY",
+    "type": "Convention Center",
+    "capacity": ""
+  },
+  {
+    "venueName": "Dulles Expo and Conference Center",
+    "city": "Chantilly",
+    "state": "VA",
+    "type": "Convention Center",
+    "capacity": ""
+  },
+  {
+    "venueName": "Greensboro",
+    "city": "Greensboro",
+    "state": "NC",
+    "type": "Arena",
+    "capacity": "23500"
+  },
+  {
+    "venueName": "Chicago",
+    "city": "Chicago",
+    "state": "IL",
+    "type": "Arena",
+    "capacity": "23500"
+  },
+  {
+    "venueName": "Louisville",
+    "city": "Louisville",
+    "state": "KY",
+    "type": "Arena",
+    "capacity": "23084"
+  },
+  {
+    "venueName": "Lexington",
+    "city": "Lexington",
+    "state": "KY",
+    "type": "Arena",
+    "capacity": "23000"
+  },
+  {
+    "venueName": "Sunrise",
+    "city": "Sunrise",
+    "state": "FL",
+    "type": "Arena",
+    "capacity": "22457"
+  },
+  {
+    "venueName": "Philadelphia",
+    "city": "Philadelphia",
+    "state": "PA",
+    "type": "Arena",
+    "capacity": "21600"
+  },
+  {
+    "venueName": "Tampa",
+    "city": "Tampa",
+    "state": "FL",
+    "type": "Arena",
+    "capacity": "21500"
+  },
+  {
+    "venueName": "Tacoma",
+    "city": "Tacoma",
+    "state": "WA",
+    "type": "Arena",
+    "capacity": "21000"
+  },
+  {
+    "venueName": "Washington",
+    "city": "Washington",
+    "state": "DC",
+    "type": "Arena",
+    "capacity": "21000"
+  },
+  {
+    "venueName": "Detroit",
+    "city": "Detroit",
+    "state": "MI",
+    "type": "Arena",
+    "capacity": "21000"
+  },
+  {
+    "venueName": "St. Louis",
+    "city": "St. Louis",
+    "state": "MO",
+    "type": "Arena",
+    "capacity": "21000"
+  },
+  {
+    "venueName": "Raleigh",
+    "city": "Raleigh",
+    "state": "NC",
+    "type": "Arena",
+    "capacity": "21000"
+  },
+  {
+    "venueName": "New York City",
+    "city": "New York City",
+    "state": "NY",
+    "type": "Arena",
+    "capacity": "20789"
+  },
+  {
+    "venueName": "Miami",
+    "city": "Miami",
+    "state": "FL",
+    "type": "Arena",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Denver",
+    "city": "Denver",
+    "state": "CO",
+    "type": "Arena",
+    "capacity": "21000"
+  },
+  {
+    "venueName": "Cleveland",
+    "city": "Cleveland",
+    "state": "OH",
+    "type": "Arena",
+    "capacity": "20526"
+  },
+  {
+    "venueName": "Portland",
+    "city": "Portland",
+    "state": "OR",
+    "type": "Arena",
+    "capacity": "20500"
+  },
+  {
+    "venueName": "Columbus",
+    "city": "Columbus",
+    "state": "OH",
+    "type": "Arena",
+    "capacity": "20200"
+  },
+  {
+    "venueName": "Oakland",
+    "city": "Oakland",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Dallas",
+    "city": "Dallas",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Boston",
+    "city": "Boston",
+    "state": "MA",
+    "type": "Arena",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Minneapolis",
+    "city": "Minneapolis",
+    "state": "MN",
+    "type": "Arena",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Buffalo",
+    "city": "Buffalo",
+    "state": "NY",
+    "type": "Arena",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Pittsburgh",
+    "city": "Pittsburgh",
+    "state": "PA",
+    "type": "Arena",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Los Angeles",
+    "city": "Los Angeles",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Charlotte",
+    "city": "Charlotte",
+    "state": "NC",
+    "type": "Arena",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Orlando",
+    "city": "Orlando",
+    "state": "FL",
+    "type": "Arena",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "St. Paul",
+    "city": "St. Paul",
+    "state": "MN",
+    "type": "Arena",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Paradise",
+    "city": "Paradise",
+    "state": "NV",
+    "type": "Arena",
+    "capacity": "20000"
+  },
+  {
+    "venueName": "Kansas City",
+    "city": "Kansas City",
+    "state": "MO",
+    "type": "Arena",
+    "capacity": "19655"
+  },
+  {
+    "venueName": "Salt Lake City",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "type": "Arena",
+    "capacity": "19500"
+  },
+  {
+    "venueName": "San Francisco",
+    "city": "San Francisco",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "19500"
+  },
+  {
+    "venueName": "San Jose",
+    "city": "San Jose",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "19200"
+  },
+  {
+    "venueName": "Nashville",
+    "city": "Nashville",
+    "state": "TN",
+    "type": "Arena",
+    "capacity": "19200"
+  },
+  {
+    "venueName": "Tulsa",
+    "city": "Tulsa",
+    "state": "OK",
+    "type": "Arena",
+    "capacity": "19199"
+  },
+  {
+    "venueName": "Newark",
+    "city": "Newark",
+    "state": "NJ",
+    "type": "Arena",
+    "capacity": "19000"
+  },
+  {
+    "venueName": "Elmont",
+    "city": "Elmont",
+    "state": "NY",
+    "type": "Arena",
+    "capacity": "19000"
+  },
+  {
+    "venueName": "San Antonio",
+    "city": "San Antonio",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "19000"
+  },
+  {
+    "venueName": "Seattle",
+    "city": "Seattle",
+    "state": "WA",
+    "type": "Arena",
+    "capacity": "19000"
+  },
+  {
+    "venueName": "Glendale",
+    "city": "Glendale",
+    "state": "AZ",
+    "type": "Arena",
+    "capacity": "19000"
+  },
+  {
+    "venueName": "Stockton Arena",
+    "city": "Stockton",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "12000"
+  },
+  {
+    "venueName": "Palm Desert Arena",
+    "city": "Palm Desert",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "11679"
+  },
+  {
+    "venueName": "Spokane Arena",
+    "city": "Spokane",
+    "state": "WA",
+    "type": "Arena",
+    "capacity": "11661"
+  },
+  {
+    "venueName": "Fresno Arena",
+    "city": "Fresno",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "11300"
+  },
+  {
+    "venueName": "Ontario Arena",
+    "city": "Ontario",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "11089"
+  },
+  {
+    "venueName": "Evansville Arena",
+    "city": "Evansville",
+    "state": "IN",
+    "type": "Arena",
+    "capacity": "11000"
+  },
+  {
+    "venueName": "Mobile Arena",
+    "city": "Mobile",
+    "state": "AL",
+    "type": "Arena",
+    "capacity": "10676"
+  },
+  {
+    "venueName": "Allentown Arena",
+    "city": "Allentown",
+    "state": "PA",
+    "type": "Arena",
+    "capacity": "10500"
+  },
+  {
+    "venueName": "Trenton Arena",
+    "city": "Trenton",
+    "state": "NJ",
+    "type": "Arena",
+    "capacity": "10500"
+  },
+  {
+    "venueName": "Rapid City Arena",
+    "city": "Rapid City",
+    "state": "SD",
+    "type": "Arena",
+    "capacity": "10400"
+  },
+  {
+    "venueName": "Corpus Christi Arena",
+    "city": "Corpus Christi",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "10323"
+  },
+  {
+    "venueName": "Green Bay Arena",
+    "city": "Green Bay",
+    "state": "WI",
+    "type": "Arena",
+    "capacity": "10200"
+  },
+  {
+    "venueName": "Bismarck Arena",
+    "city": "Bismarck",
+    "state": "ND",
+    "type": "Arena",
+    "capacity": "10100"
+  },
+  {
+    "venueName": "Southaven Arena",
+    "city": "Southaven",
+    "state": "MS",
+    "type": "Arena",
+    "capacity": "10045"
+  },
+  {
+    "venueName": "Pensacola Arena",
+    "city": "Pensacola",
+    "state": "FL",
+    "type": "Arena",
+    "capacity": "10008"
+  },
+  {
+    "venueName": "Uncasville Arena",
+    "city": "Uncasville",
+    "state": "CT",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Everett Arena",
+    "city": "Everett",
+    "state": "WA",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Tupelo Arena",
+    "city": "Tupelo",
+    "state": "MS",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Florence Arena",
+    "city": "Florence",
+    "state": "SC",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Wilkes-Barre Arena",
+    "city": "Wilkes-Barre",
+    "state": "PA",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Rosenberg Arena",
+    "city": "Rosenberg",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Toledo Arena",
+    "city": "Toledo",
+    "state": "OH",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Lakeland Arena",
+    "city": "Lakeland",
+    "state": "FL",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Topeka Arena",
+    "city": "Topeka",
+    "state": "KS",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Wichita Falls Arena",
+    "city": "Wichita Falls",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Jackson Arena",
+    "city": "Jackson",
+    "state": "MS",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Bakersfield Arena",
+    "city": "Bakersfield",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Cedar Rapids Arena",
+    "city": "Cedar Rapids",
+    "state": "IA",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Lufkin Arena",
+    "city": "Lufkin",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Bridgeport Arena",
+    "city": "Bridgeport",
+    "state": "CT",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Madison Arena",
+    "city": "Madison",
+    "state": "WI",
+    "type": "Arena",
+    "capacity": "9762"
+  },
+  {
+    "venueName": "Beaumont Arena",
+    "city": "Beaumont",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "9737"
+  },
+  {
+    "venueName": "Laredo Arena",
+    "city": "Laredo",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "9622"
+  },
+  {
+    "venueName": "Savannah Arena",
+    "city": "Savannah",
+    "state": "GA",
+    "type": "Arena",
+    "capacity": "9600"
+  },
+  {
+    "venueName": "Austin",
+    "city": "Austin",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "9400"
+  },
+  {
+    "venueName": "Abilene",
+    "city": "Abilene",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "9353"
+  },
+  {
+    "venueName": "Macon",
+    "city": "Macon",
+    "state": "GA",
+    "type": "Arena",
+    "capacity": "9252"
+  },
+  {
+    "venueName": "Augusta",
+    "city": "Augusta",
+    "state": "GA",
+    "type": "Arena",
+    "capacity": "9167"
+  },
+  {
+    "venueName": "Las Vegas",
+    "city": "Las Vegas",
+    "state": "NV",
+    "type": "Arena",
+    "capacity": "9037"
+  },
+  {
+    "venueName": "Lake Charles",
+    "city": "Lake Charles",
+    "state": "LA",
+    "type": "Arena",
+    "capacity": "9000"
+  },
+  {
+    "venueName": "Sevierville",
+    "city": "Sevierville",
+    "state": "TN",
+    "type": "Arena",
+    "capacity": "9000"
+  },
+  {
+    "venueName": "Waco",
+    "city": "Waco",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "9000"
+  },
+  {
+    "venueName": "Council Bluffs",
+    "city": "Council Bluffs",
+    "state": "IA",
+    "type": "Arena",
+    "capacity": "9000"
+  },
+  {
+    "venueName": "Reading",
+    "city": "Reading",
+    "state": "PA",
+    "type": "Arena",
+    "capacity": "9000"
+  },
+  {
+    "venueName": "Huntsville",
+    "city": "Huntsville",
+    "state": "AL",
+    "type": "Arena",
+    "capacity": "9000"
+  },
+  {
+    "venueName": "Colorado Springs",
+    "city": "Colorado Springs",
+    "state": "CO",
+    "type": "Arena",
+    "capacity": "9000"
+  },
+  {
+    "venueName": "Edinburg",
+    "city": "Edinburg",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "9000"
+  },
+  {
+    "venueName": "Geddes",
+    "city": "Geddes",
+    "state": "NY",
+    "type": "Arena",
+    "capacity": "9000"
+  },
+  {
+    "venueName": "Tucson",
+    "city": "Tucson",
+    "state": "AZ",
+    "type": "Arena",
+    "capacity": "8962"
+  },
+  {
+    "venueName": "Springfield",
+    "city": "Springfield",
+    "state": "IL",
+    "type": "Arena",
+    "capacity": "8900"
+  },
+  {
+    "venueName": "Honolulu",
+    "city": "Honolulu",
+    "state": "HI",
+    "type": "Arena",
+    "capacity": "8733"
+  },
+  {
+    "venueName": "Cedar Park",
+    "city": "Cedar Park",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "8700"
+  },
+  {
+    "venueName": "Bremerton",
+    "city": "Bremerton",
+    "state": "WA",
+    "type": "Arena",
+    "capacity": "8676"
+  },
+  {
+    "venueName": "Anchorage",
+    "city": "Anchorage",
+    "state": "AK",
+    "type": "Arena",
+    "capacity": "8674"
+  },
+  {
+    "venueName": "Westfield",
+    "city": "Westfield",
+    "state": "IN",
+    "type": "Arena",
+    "capacity": "8592"
+  },
+  {
+    "venueName": "Huntington",
+    "city": "Huntington",
+    "state": "WV",
+    "type": "Arena",
+    "capacity": "8500"
+  },
+  {
+    "venueName": "Estero",
+    "city": "Estero",
+    "state": "FL",
+    "type": "Arena",
+    "capacity": "8500"
+  },
+  {
+    "venueName": "Ogden",
+    "city": "Ogden",
+    "state": "UT",
+    "type": "Arena",
+    "capacity": "8500"
+  },
+  {
+    "venueName": "Pine Bluff",
+    "city": "Pine Bluff",
+    "state": "AR",
+    "type": "Arena",
+    "capacity": "8500"
+  },
+  {
+    "venueName": "Athens",
+    "city": "Athens",
+    "state": "GA",
+    "type": "Arena",
+    "capacity": "8500"
+  },
+  {
+    "venueName": "Tyler",
+    "city": "Tyler",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "8300"
+  },
+  {
+    "venueName": "Perry",
+    "city": "Perry",
+    "state": "GA",
+    "type": "Arena",
+    "capacity": "8250"
+  },
+  {
+    "venueName": "Pueblo",
+    "city": "Pueblo",
+    "state": "CO",
+    "type": "Arena",
+    "capacity": "8225"
+  },
+  {
+    "venueName": "Mankato",
+    "city": "Mankato",
+    "state": "MN",
+    "type": "Arena",
+    "capacity": "8200"
+  },
+  {
+    "venueName": "Farmington, New Mexico",
+    "city": "Farmington",
+    "state": "NM",
+    "type": "Arena",
+    "capacity": "8137"
+  },
+  {
+    "venueName": "Allen",
+    "city": "Allen",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "8100"
+  },
+  {
+    "venueName": "Belton",
+    "city": "Belton",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "8000"
+  },
+  {
+    "venueName": "Enid",
+    "city": "Enid",
+    "state": "OK",
+    "type": "Arena",
+    "capacity": "8000"
+  },
+  {
+    "venueName": "Odessa",
+    "city": "Odessa",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "8000"
+  },
+  {
+    "venueName": "La Crosse",
+    "city": "La Crosse",
+    "state": "WI",
+    "type": "Arena",
+    "capacity": "8000"
+  },
+  {
+    "venueName": "Syracuse",
+    "city": "Syracuse",
+    "state": "NY",
+    "type": "Arena",
+    "capacity": "8000"
+  },
+  {
+    "venueName": "Kent",
+    "city": "Kent",
+    "state": "WA",
+    "type": "Arena",
+    "capacity": "8000"
+  },
+  {
+    "venueName": "Bloomington",
+    "city": "Bloomington",
+    "state": "IL",
+    "type": "Arena",
+    "capacity": "8000"
+  },
+  {
+    "venueName": "Tulare",
+    "city": "Tulare",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "7900"
+  },
+  {
+    "venueName": "Erie",
+    "city": "Erie",
+    "state": "PA",
+    "type": "Arena",
+    "capacity": "7838"
+  },
+  {
+    "venueName": "Nacogdoches",
+    "city": "Nacogdoches",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "7820"
+  },
+  {
+    "venueName": "Fort Myers",
+    "city": "Fort Myers",
+    "state": "FL",
+    "type": "Arena",
+    "capacity": "7800"
+  },
+  {
+    "venueName": "Sandy",
+    "city": "Sandy",
+    "state": "UT",
+    "type": "Arena",
+    "capacity": "7800"
+  },
+  {
+    "venueName": "Wheeling",
+    "city": "Wheeling",
+    "state": "WV",
+    "type": "Arena",
+    "capacity": "7800"
+  },
+  {
+    "venueName": "Redmond",
+    "city": "Redmond",
+    "state": "OR",
+    "type": "Arena",
+    "capacity": "7800"
+  },
+  {
+    "venueName": "Yakima",
+    "city": "Yakima",
+    "state": "WA",
+    "type": "Arena",
+    "capacity": "7782"
+  },
+  {
+    "venueName": "Kennewick",
+    "city": "Kennewick",
+    "state": "WA",
+    "type": "Arena",
+    "capacity": "7715"
+  },
+  {
+    "venueName": "Glens Falls",
+    "city": "Glens Falls",
+    "state": "NY",
+    "type": "Arena",
+    "capacity": "7562"
+  },
+  {
+    "venueName": "Oceanside",
+    "city": "Oceanside",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "7500"
+  },
+  {
+    "venueName": "Butte",
+    "city": "Butte",
+    "state": "MT",
+    "type": "Arena",
+    "capacity": "7500"
+  },
+  {
+    "venueName": "Humble",
+    "city": "Humble",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "7500"
+  },
+  {
+    "venueName": "Hutchinson",
+    "city": "Hutchinson",
+    "state": "KS",
+    "type": "Arena",
+    "capacity": "7500"
+  },
+  {
+    "venueName": "Grand Island",
+    "city": "Grand Island",
+    "state": "NE",
+    "type": "Arena",
+    "capacity": "7500"
+  },
+  {
+    "venueName": "Conroe",
+    "city": "Conroe",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "7500"
+  },
+  {
+    "venueName": "Reno",
+    "city": "Reno",
+    "state": "NV",
+    "type": "Arena",
+    "capacity": "7500"
+  },
+  {
+    "venueName": "Rio Rancho",
+    "city": "Rio Rancho",
+    "state": "NM",
+    "type": "Arena",
+    "capacity": "7500"
+  },
+  {
+    "venueName": "Fishers",
+    "city": "Fishers",
+    "state": "IN",
+    "type": "Arena",
+    "capacity": "7500"
+  },
+  {
+    "venueName": "Fort Pierce",
+    "city": "Fort Pierce",
+    "state": "FL",
+    "type": "Arena",
+    "capacity": "7285"
+  },
+  {
+    "venueName": "Loveland",
+    "city": "Loveland",
+    "state": "CO",
+    "type": "Arena",
+    "capacity": "7200"
+  },
+  {
+    "venueName": "Katy",
+    "city": "Katy",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "7200"
+  },
+  {
+    "venueName": "Knoxville",
+    "city": "Knoxville",
+    "state": "TN",
+    "type": "Arena",
+    "capacity": "7141"
+  },
+  {
+    "venueName": "Harrington",
+    "city": "Harrington",
+    "state": "DE",
+    "type": "Arena",
+    "capacity": "7116"
+  },
+  {
+    "venueName": "Owensboro",
+    "city": "Owensboro",
+    "state": "KY",
+    "type": "Arena",
+    "capacity": "7100"
+  },
+  {
+    "venueName": "Wildwood",
+    "city": "Wildwood",
+    "state": "NJ",
+    "type": "Arena",
+    "capacity": "7090"
+  },
+  {
+    "venueName": "Shelbyville",
+    "city": "Shelbyville",
+    "state": "TN",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Mesquite",
+    "city": "Mesquite",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Binghamton",
+    "city": "Binghamton",
+    "state": "NY",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Pikeville",
+    "city": "Pikeville",
+    "state": "KY",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Gary",
+    "city": "Gary",
+    "state": "IN",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Independence",
+    "city": "Independence",
+    "state": "MO",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Waterloo",
+    "city": "Waterloo",
+    "state": "IA",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Salem",
+    "city": "Salem",
+    "state": "OR",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Decatur",
+    "city": "Decatur",
+    "state": "AL",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Fargo",
+    "city": "Fargo",
+    "state": "ND",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Kalispell",
+    "city": "Kalispell",
+    "state": "MT",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Galveston",
+    "city": "Galveston",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Frisco",
+    "city": "Frisco",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Hobbs",
+    "city": "Hobbs",
+    "state": "NM",
+    "type": "Arena",
+    "capacity": "6935"
+  },
+  {
+    "venueName": "Boise",
+    "city": "Boise",
+    "state": "ID",
+    "type": "Arena",
+    "capacity": "6800"
+  },
+  {
+    "venueName": "Hidalgo",
+    "city": "Hidalgo",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "6800"
+  },
+  {
+    "venueName": "St. George",
+    "city": "St. George",
+    "state": "UT",
+    "type": "Arena",
+    "capacity": "6785"
+  },
+  {
+    "venueName": "Salisbury",
+    "city": "Salisbury",
+    "state": "MD",
+    "type": "Arena",
+    "capacity": "6747"
+  },
+  {
+    "venueName": "Claremore",
+    "city": "Claremore",
+    "state": "OK",
+    "type": "Arena",
+    "capacity": "6693"
+  },
+  {
+    "venueName": "Gonzales",
+    "city": "Gonzales",
+    "state": "LA",
+    "type": "Arena",
+    "capacity": "6600"
+  },
+  {
+    "venueName": "Lebanon",
+    "city": "Lebanon",
+    "state": "TN",
+    "type": "Arena",
+    "capacity": "6600"
+  },
+  {
+    "venueName": "Jamestown",
+    "city": "Jamestown",
+    "state": "ND",
+    "type": "Arena",
+    "capacity": "6597"
+  },
+  {
+    "venueName": "Foley",
+    "city": "Foley",
+    "state": "AL",
+    "type": "Arena",
+    "capacity": "6573"
+  },
+  {
+    "venueName": "West Monroe",
+    "city": "West Monroe",
+    "state": "LA",
+    "type": "Arena",
+    "capacity": "6560"
+  },
+  {
+    "venueName": "San Angelo",
+    "city": "San Angelo",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "6548"
+  },
+  {
+    "venueName": "Fairbanks",
+    "city": "Fairbanks",
+    "state": "AK",
+    "type": "Arena",
+    "capacity": "6539"
+  },
+  {
+    "venueName": "Corbin",
+    "city": "Corbin",
+    "state": "KY",
+    "type": "Arena",
+    "capacity": "6444"
+  },
+  {
+    "venueName": "King City",
+    "city": "King City",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "6400"
+  },
+  {
+    "venueName": "Schaumburg",
+    "city": "Schaumburg",
+    "state": "IL",
+    "type": "Arena",
+    "capacity": "6300"
+  },
+  {
+    "venueName": "Prescott Valley",
+    "city": "Prescott Valley",
+    "state": "AZ",
+    "type": "Arena",
+    "capacity": "6200"
+  },
+  {
+    "venueName": "Clarksville",
+    "city": "Clarksville",
+    "state": "TN",
+    "type": "Arena",
+    "capacity": "6000"
+  },
+  {
+    "venueName": "Rancho Cordova",
+    "city": "Rancho Cordova",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "5904"
+  },
+  {
+    "venueName": "Upper Marlboro",
+    "city": "Upper Marlboro",
+    "state": "MD",
+    "type": "Arena",
+    "capacity": "5892"
+  },
+  {
+    "venueName": "Bangor",
+    "city": "Bangor",
+    "state": "ME",
+    "type": "Arena",
+    "capacity": "5800"
+  },
+  {
+    "venueName": "Utica",
+    "city": "Utica",
+    "state": "NY",
+    "type": "Arena",
+    "capacity": "5700"
+  },
+  {
+    "venueName": "York",
+    "city": "York",
+    "state": "PA",
+    "type": "Arena",
+    "capacity": "5500"
+  },
+  {
+    "venueName": "Leesburg",
+    "city": "Leesburg",
+    "state": "VA",
+    "type": "Arena",
+    "capacity": "5500"
+  },
+  {
+    "venueName": "Kearney",
+    "city": "Kearney",
+    "state": "NE",
+    "type": "Arena",
+    "capacity": "5500"
+  },
+  {
+    "venueName": "Hibbing",
+    "city": "Hibbing",
+    "state": "MN",
+    "type": "Arena",
+    "capacity": "5460"
+  },
+  {
+    "venueName": "Steubenville",
+    "city": "Steubenville",
+    "state": "OH",
+    "type": "Arena",
+    "capacity": "5400"
+  },
+  {
+    "venueName": "Sulphur",
+    "city": "Sulphur",
+    "state": "LA",
+    "type": "Arena",
+    "capacity": "5400"
+  },
+  {
+    "venueName": "Eugene",
+    "city": "Eugene",
+    "state": "OR",
+    "type": "Arena",
+    "capacity": "5285"
+  },
+  {
+    "venueName": "Westminster",
+    "city": "Westminster",
+    "state": "MD",
+    "type": "Arena",
+    "capacity": "5250"
+  },
+  {
+    "venueName": "Secaucus",
+    "city": "Secaucus",
+    "state": "NJ",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "West Palm Beach",
+    "city": "West Palm Beach",
+    "state": "FL",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "Virginia Beach",
+    "city": "Virginia Beach",
+    "state": "VA",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "White Plains",
+    "city": "White Plains",
+    "state": "NY",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "Taylorsville",
+    "city": "Taylorsville",
+    "state": "UT",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "San Bernardino",
+    "city": "San Bernardino",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "College Park",
+    "city": "College Park",
+    "state": "GA",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "Verona",
+    "city": "Verona",
+    "state": "NY",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "Maplewood",
+    "city": "Maplewood",
+    "state": "MN",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "Sarasota",
+    "city": "Sarasota",
+    "state": "FL",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "Presque Isle",
+    "city": "Presque Isle",
+    "state": "ME",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "Shawnee",
+    "city": "Shawnee",
+    "state": "OK",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "Stateline",
+    "city": "Stateline",
+    "state": "NV",
+    "type": "Arena",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "East Grand Forks",
+    "city": "East Grand Forks",
+    "state": "MN",
+    "type": "Arena",
+    "capacity": "4900"
+  },
+  {
+    "venueName": "Tooele",
+    "city": "Tooele",
+    "state": "UT",
+    "type": "Arena",
+    "capacity": "4816"
+  },
+  {
+    "venueName": "Purvis",
+    "city": "Purvis",
+    "state": "MS",
+    "type": "Arena",
+    "capacity": "4800"
+  },
+  {
+    "venueName": "Fort Smith",
+    "city": "Fort Smith",
+    "state": "AR",
+    "type": "Arena",
+    "capacity": "4800"
+  },
+  {
+    "venueName": "Paducah",
+    "city": "Paducah",
+    "state": "KY",
+    "type": "Arena",
+    "capacity": "4752"
+  },
+  {
+    "venueName": "Danville",
+    "city": "Danville",
+    "state": "IL",
+    "type": "Arena",
+    "capacity": "4750"
+  },
+  {
+    "venueName": "Hamburg",
+    "city": "Hamburg",
+    "state": "NY",
+    "type": "Arena",
+    "capacity": "4700"
+  },
+  {
+    "venueName": "Meridian",
+    "city": "Meridian",
+    "state": "MS",
+    "type": "Arena",
+    "capacity": "4625"
+  },
+  {
+    "venueName": "Midland",
+    "city": "Midland",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "4500"
+  },
+  {
+    "venueName": "Morgantown",
+    "city": "Morgantown",
+    "state": "WV",
+    "type": "Arena",
+    "capacity": "4500"
+  },
+  {
+    "venueName": "Glen Allen",
+    "city": "Glen Allen",
+    "state": "VA",
+    "type": "Arena",
+    "capacity": "4500"
+  },
+  {
+    "venueName": "Bozeman",
+    "city": "Bozeman",
+    "state": "MT",
+    "type": "Arena",
+    "capacity": "4275"
+  },
+  {
+    "venueName": "St. Joseph",
+    "city": "Missouri",
+    "state": "MO",
+    "type": "Arena",
+    "capacity": "4200"
+  },
+  {
+    "venueName": "Garden City",
+    "city": "Idaho",
+    "state": "ID",
+    "type": "Arena",
+    "capacity": "3850"
+  },
+  {
+    "venueName": "Grants Pass",
+    "city": "Oregon",
+    "state": "OR",
+    "type": "Arena",
+    "capacity": "3840"
+  },
+  {
+    "venueName": "Hopkinsville",
+    "city": "Kentucky",
+    "state": "KY",
+    "type": "Arena",
+    "capacity": "3836"
+  },
+  {
+    "venueName": "Hurricane",
+    "city": "Utah",
+    "state": "UT",
+    "type": "Arena",
+    "capacity": "3820"
+  },
+  {
+    "venueName": "St. Cloud",
+    "city": "Minnesota",
+    "state": "MN",
+    "type": "Arena",
+    "capacity": "3800"
+  },
+  {
+    "venueName": "Elma",
+    "city": "Washington",
+    "state": "WA",
+    "type": "Arena",
+    "capacity": "3750"
+  },
+  {
+    "venueName": "Saco",
+    "city": "Maine",
+    "state": "ME",
+    "type": "Arena",
+    "capacity": "3724"
+  },
+  {
+    "venueName": "Kenner",
+    "city": "Louisiana",
+    "state": "LA",
+    "type": "Arena",
+    "capacity": "3720"
+  },
+  {
+    "venueName": "Muskogee",
+    "city": "Oklahoma",
+    "state": "OK",
+    "type": "Arena",
+    "capacity": "3710"
+  },
+  {
+    "venueName": "Indio",
+    "city": "California",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "3700"
+  },
+  {
+    "venueName": "Visalia",
+    "city": "California",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "3700"
+  },
+  {
+    "venueName": "Ozark",
+    "city": "Alabama",
+    "state": "AL",
+    "type": "Arena",
+    "capacity": "3600"
+  },
+  {
+    "venueName": "Corvallis",
+    "city": "Oregon",
+    "state": "OR",
+    "type": "Arena",
+    "capacity": "3600"
+  },
+  {
+    "venueName": "Walla Walla",
+    "city": "Washington",
+    "state": "WA",
+    "type": "Arena",
+    "capacity": "3600"
+  },
+  {
+    "venueName": "Lynden",
+    "city": "Washington",
+    "state": "WA",
+    "type": "Arena",
+    "capacity": "3600"
+  },
+  {
+    "venueName": "Myrtle Beach",
+    "city": "South Carolina",
+    "state": "SC",
+    "type": "Arena",
+    "capacity": "3570"
+  },
+  {
+    "venueName": "Hilo",
+    "city": "Hawaii",
+    "state": "HI",
+    "type": "Arena",
+    "capacity": "3568"
+  },
+  {
+    "venueName": "Thibodaux",
+    "city": "Louisiana",
+    "state": "LA",
+    "type": "Arena",
+    "capacity": "3500"
+  },
+  {
+    "venueName": "Alexandria Bay",
+    "city": "New York",
+    "state": "NY",
+    "type": "Arena",
+    "capacity": "3500"
+  },
+  {
+    "venueName": "Pendleton",
+    "city": "Oregon",
+    "state": "OR",
+    "type": "Arena",
+    "capacity": "3430"
+  },
+  {
+    "venueName": "Grand Forks",
+    "city": "Grand Forks",
+    "state": "ND",
+    "type": "Arena",
+    "capacity": "11640"
+  },
+  {
+    "venueName": "Fairborn",
+    "city": "Fairborn",
+    "state": "OH",
+    "type": "Arena",
+    "capacity": "11200"
+  },
+  {
+    "venueName": "DeKalb",
+    "city": "DeKalb",
+    "state": "IL",
+    "type": "Arena",
+    "capacity": "10000"
+  },
+  {
+    "venueName": "Georgia Tech",
+    "city": "Atlanta",
+    "state": "GA",
+    "type": "Arena",
+    "capacity": "8600"
+  },
+  {
+    "venueName": "Southern Illinois",
+    "city": "Carbondale",
+    "state": "IL",
+    "type": "Arena",
+    "capacity": "8339"
+  },
+  {
+    "venueName": "Appalachian State",
+    "city": "Boone",
+    "state": "NC",
+    "type": "Arena",
+    "capacity": "8325"
+  },
+  {
+    "venueName": "Miami (FL)",
+    "city": "Miami",
+    "state": "FL",
+    "type": "Arena",
+    "capacity": "7972"
+  },
+  {
+    "venueName": "Virginia Commonwealth",
+    "city": "Richmond",
+    "state": "VA",
+    "type": "Arena",
+    "capacity": "7617"
+  },
+  {
+    "venueName": "UC Davis",
+    "city": "Davis",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "7600"
+  },
+  {
+    "venueName": "Baylor",
+    "city": "Waco",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "7500"
+  },
+  {
+    "venueName": "Alabama State",
+    "city": "Montgomery",
+    "state": "AL",
+    "type": "Arena",
+    "capacity": "7400"
+  },
+  {
+    "venueName": "Stanford",
+    "city": "Stanford",
+    "state": "CA",
+    "type": "Arena",
+    "capacity": "7329"
+  },
+  {
+    "venueName": "Georgia State",
+    "city": "Atlanta",
+    "state": "GA",
+    "type": "Arena",
+    "capacity": "7300"
+  },
+  {
+    "venueName": "Stephen F. Austin",
+    "city": "Nacogdoches",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "7203"
+  },
+  {
+    "venueName": "Louisiana–Monroe",
+    "city": "Monroe",
+    "state": "LA",
+    "type": "Arena",
+    "capacity": "7085"
+  },
+  {
+    "venueName": "Northwestern",
+    "city": "Evanston",
+    "state": "IL",
+    "type": "Arena",
+    "capacity": "7039"
+  },
+  {
+    "venueName": "SMU",
+    "city": "Dallas",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "UT Arlington",
+    "city": "Arlington",
+    "state": "TX",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Grand Canyon",
+    "city": "Phoenix",
+    "state": "AZ",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Chicago State",
+    "city": "Chicago",
+    "state": "IL",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "Alcorn State",
+    "city": "Lorman",
+    "state": "MS",
+    "type": "Arena",
+    "capacity": "7000"
+  },
+  {
+    "venueName": "United States",
+    "city": "Alabama",
+    "state": "AL",
+    "type": "Amphitheater",
+    "capacity": "7600"
+  },
+  {
+    "venueName": "California",
+    "city": "Berkeley",
+    "state": "CA",
+    "type": "Amphitheater",
+    "capacity": "8500"
+  },
+  {
+    "venueName": "Florida",
+    "city": "Crystal River",
+    "state": "FL",
+    "type": "Amphitheater",
+    "capacity": "5000"
+  },
+  {
+    "venueName": "New York",
+    "city": "Bethel",
+    "state": "NY",
+    "type": "Amphitheater",
+    "capacity": "15000"
+  },
+  {
+    "venueName": "Texas",
+    "city": "Austin",
+    "state": "TX",
+    "type": "Amphitheater",
+    "capacity": "14000"
+  }
+]
