@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
     const state = searchParams.get('state') ?? undefined;
     const type = searchParams.get('type') ?? undefined;
     const limitParam = searchParams.get('limit');
-    const limit = limitParam ? Math.min(500, Math.max(1, parseInt(limitParam, 10))) : 100;
+    const limit = limitParam ? Math.min(2000, Math.max(1, parseInt(limitParam, 10))) : 500;
 
     const all = getMasterVenues();
     const venues = filterMasterVenues(all, { q, state, type, limit });

@@ -32,6 +32,7 @@ export default function VenuesPage() {
   const [masterType, setMasterType] = useState('');
   const [masterLoading, setMasterLoading] = useState(false);
   const [masterResults, setMasterResults] = useState<Array<{ venueName: string; city: string; state: string; type: string; capacity: string }>>([]);
+  const [masterTotalAvailable, setMasterTotalAvailable] = useState<number | null>(null);
   const [discoverCity, setDiscoverCity] = useState('');
   const [discoverState, setDiscoverState] = useState('');
   const [discoverLoading, setDiscoverLoading] = useState(false);
@@ -257,14 +258,37 @@ export default function VenuesPage() {
       if (masterQuery.trim()) params.set('q', masterQuery.trim());
       if (masterState.trim()) params.set('state', masterState.trim());
       if (masterType.trim()) params.set('type', masterType.trim());
-      params.set('limit', '100');
+      params.set('limit', '1500');
       const res = await fetch(`/api/venues/master?${params.toString()}`);
       if (!res.ok) throw new Error('Search failed');
       const data = await res.json();
       setMasterResults(data.venues || []);
+      setMasterTotalAvailable(data.totalAvailable ?? null);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Search failed');
       setMasterResults([]);
+      setMasterTotalAvailable(null);
+    } finally {
+      setMasterLoading(false);
+    }
+  }
+
+  async function handleBrowseAllMaster() {
+    setMasterLoading(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/venues/master?limit=1500');
+      if (!res.ok) throw new Error('Failed to load venues');
+      const data = await res.json();
+      setMasterResults(data.venues || []);
+      setMasterTotalAvailable(data.totalAvailable ?? null);
+      setMasterQuery('');
+      setMasterState('');
+      setMasterType('');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to load venues');
+      setMasterResults([]);
+      setMasterTotalAvailable(null);
     } finally {
       setMasterLoading(false);
     }
@@ -348,16 +372,27 @@ export default function VenuesPage() {
                     <label className="label">Type</label>
                     <input className="input" placeholder="Stadium, Arena, etc." value={masterType} onChange={(e) => setMasterType(e.target.value)} />
                   </div>
-                  <div className="flex items-end">
-                    <button type="button" onClick={handleSearchMaster} disabled={masterLoading} className="btn btn-primary w-full sm:w-auto">
+                  <div className="flex items-end gap-2 flex-wrap">
+                    <button type="button" onClick={handleSearchMaster} disabled={masterLoading} className="btn btn-primary">
                       {masterLoading ? 'Searching…' : 'Search'}
+                    </button>
+                    <button type="button" onClick={handleBrowseAllMaster} disabled={masterLoading} className="btn btn-secondary">
+                      {masterLoading ? 'Loading…' : 'Browse all venues'}
                     </button>
                   </div>
                 </div>
+                <p className="text-sm text-gray-500">
+                  {masterTotalAvailable != null ? `${masterTotalAvailable} venues in list. ` : ''}
+                  Search by name, state, or type—or browse all. Add to Favorites, then Discover Events &amp; Parking for any venue.
+                </p>
                 {masterResults.length > 0 && (
                   <div>
-                    <h3 className="font-semibold mb-2">Found {masterResults.length} venues</h3>
-                    <div className="max-h-96 overflow-y-auto space-y-2">
+                    <h3 className="font-semibold mb-2">
+                      {masterTotalAvailable != null && masterResults.length === masterTotalAvailable
+                        ? `All ${masterResults.length} venues`
+                        : `Found ${masterResults.length} venues${masterTotalAvailable != null ? ` (of ${masterTotalAvailable})` : ''}`}
+                    </h3>
+                    <div className="max-h-[60vh] overflow-y-auto space-y-2 border border-gray-200 rounded p-2">
                       {masterResults.map((venue, idx) => {
                         const favId = isDiscoverResultFavorited({ name: venue.venueName, city: venue.city, state: venue.state });
                         const loading = favoriteLoading === `${venue.venueName}-${venue.city}-${venue.state}` || favoriteLoading === favId;
