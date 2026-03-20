@@ -200,7 +200,11 @@ If you use **Nixpacks** instead of the Dockerfile, also add `PRISMA_QUERY_ENGINE
 railway up
 ```
 
-### 6. Run Migrations
+### 6. Database migrations
+
+The **Dockerfile** runs `npx prisma migrate deploy` **before** `node server.js` on each deploy, so `DATABASE_URL` must point at your Postgres plugin. Pending migrations (including `User` / favorites) apply automatically.
+
+Optional: run manually or seed:
 
 ```bash
 railway run npx prisma migrate deploy
