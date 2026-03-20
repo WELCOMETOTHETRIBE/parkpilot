@@ -12,6 +12,8 @@ RUN sed -i 's/binaryTargets = .*/binaryTargets = ["debian-openssl-3.0.x"]/' pris
 RUN npm run build
 
 # Production stage: install OpenSSL 3 libs so Prisma engine can load (Bookworm has libssl3)
+# IMPORTANT: This must be the final stage so `docker build` / Railway default image is the web app,
+# not a worker. BullMQ worker image: see Dockerfile.worker
 FROM node:20-slim AS runner
 
 WORKDIR /app
@@ -42,18 +44,3 @@ ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
 CMD ["node", "server.js"]
-
-# Worker stage (BullMQ workers; needs full source)
-FROM node:20-slim AS worker
-
-WORKDIR /app
-
-RUN apt-get update -y && apt-get install -y --no-install-recommends openssl libssl3 ca-certificates && rm -rf /var/lib/apt/lists/*
-
-COPY package*.json ./
-RUN npm ci
-
-COPY . .
-RUN sed -i 's/binaryTargets = .*/binaryTargets = ["debian-openssl-3.0.x"]/' prisma/schema.prisma && npx prisma generate
-
-CMD ["npx", "ts-node", "workers/run-bullmq.ts"]

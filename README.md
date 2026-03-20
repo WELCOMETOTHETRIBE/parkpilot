@@ -151,7 +151,7 @@ Each opportunity includes a `rationale` object breaking down component contribut
 
 This project ships a **Dockerfile** that (1) generates only the Prisma OpenSSL 3 Linux engine, (2) copies Prisma binaries into the Next.js standalone output, and (3) runs `node server.js` (not `next start`). `railway.json` and `railway.toml` set `builder = "DOCKERFILE"`.
 
-In **Railway → your service → Settings**, confirm the build uses the **Dockerfile**. If the service is set to **Nixpacks** instead, you may see Prisma “debian-openssl-1.1.x” errors unless you set `PRISMA_QUERY_ENGINE_LIBRARY` in Variables (see below).
+In **Railway → your service → Settings**, confirm the build uses the **Dockerfile** at the repo root (not `Dockerfile.worker`). The root `Dockerfile` must end with the **Next.js `runner` stage** so the default image is the web app. Optional BullMQ workers use **`Dockerfile.worker`** as a separate service’s Dockerfile path. If the service is set to **Nixpacks** instead, you may see Prisma “debian-openssl-1.1.x” errors unless you set `PRISMA_QUERY_ENGINE_LIBRARY` in Variables (see below).
 
 ### 1. Prepare for Railway
 

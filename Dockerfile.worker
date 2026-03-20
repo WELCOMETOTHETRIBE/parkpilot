@@ -1,0 +1,16 @@
+# Optional BullMQ worker — deploy as a separate Railway service with Dockerfile path = Dockerfile.worker
+# (Do not use as the default Dockerfile: the web app uses the root Dockerfile.)
+FROM node:20-slim
+
+WORKDIR /app
+
+RUN apt-get update -y && apt-get install -y --no-install-recommends openssl libssl3 ca-certificates && rm -rf /var/lib/apt/lists/*
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+RUN sed -i 's/binaryTargets = .*/binaryTargets = ["debian-openssl-3.0.x"]/' prisma/schema.prisma && npx prisma generate
+
+# tsx runs TypeScript reliably on Node 20 (avoids ts-node + ESM ERR_UNKNOWN_FILE_EXTENSION)
+CMD ["npx", "tsx", "workers/run-bullmq.ts"]
