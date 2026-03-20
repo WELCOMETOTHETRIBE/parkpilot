@@ -21,7 +21,8 @@ ENV NEXT_TELEMETRY_DISABLED=1
 # Force Prisma to use OpenSSL 3 engine (avoid runtime defaulting to 1.1.x)
 ENV PRISMA_QUERY_ENGINE_LIBRARY="/app/node_modules/.prisma/client/libquery_engine-debian-openssl-3.0.x.so.node"
 
-RUN apt-get update -y && apt-get install -y --no-install-recommends libssl3 ca-certificates && rm -rf /var/lib/apt/lists/*
+# openssl CLI so Prisma can detect OpenSSL 3 (otherwise it defaults to 1.1.x and looks for the wrong engine)
+RUN apt-get update -y && apt-get install -y --no-install-recommends openssl libssl3 ca-certificates && rm -rf /var/lib/apt/lists/*
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -46,6 +47,8 @@ CMD ["node", "server.js"]
 FROM node:20-slim AS worker
 
 WORKDIR /app
+
+RUN apt-get update -y && apt-get install -y --no-install-recommends openssl libssl3 ca-certificates && rm -rf /var/lib/apt/lists/*
 
 COPY package*.json ./
 RUN npm ci

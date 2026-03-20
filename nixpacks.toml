@@ -2,7 +2,7 @@
 [phases.setup]
 nixPkgs = ["nodejs_20", "openssl"]
 # OpenSSL 3 so Prisma debian-openssl-3.0.x engine loads when PRISMA_QUERY_ENGINE_LIBRARY is set
-aptPkgs = ["libssl3", "ca-certificates"]
+aptPkgs = ["openssl", "libssl3", "ca-certificates"]
 
 [phases.install]
 cmds = ["npm ci"]

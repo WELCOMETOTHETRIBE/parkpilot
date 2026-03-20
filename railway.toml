@@ -1,0 +1,4 @@
+# Railway reads this alongside railway.json. Use Dockerfile so Prisma generates
+# only debian-openssl-3.0.x (see Dockerfile sed) and runs `node server.js` (standalone).
+[build]
+builder = "DOCKERFILE"

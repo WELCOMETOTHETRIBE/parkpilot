@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/copy-prisma-standalone.js",
     "start": "node scripts/start-server.js",
     "setup": "node scripts/setup.js",
     "lint": "eslint . --ext .ts,.tsx",

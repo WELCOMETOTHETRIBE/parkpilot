@@ -147,6 +147,12 @@ Each opportunity includes a `rationale` object breaking down component contribut
 
 ## Deployment to Railway
 
+### 0. Builder: Dockerfile (recommended for Prisma)
+
+This project ships a **Dockerfile** that (1) generates only the Prisma OpenSSL 3 Linux engine, (2) copies Prisma binaries into the Next.js standalone output, and (3) runs `node server.js` (not `next start`). `railway.json` and `railway.toml` set `builder = "DOCKERFILE"`.
+
+In **Railway → your service → Settings**, confirm the build uses the **Dockerfile**. If the service is set to **Nixpacks** instead, you may see Prisma “debian-openssl-1.1.x” errors unless you set `PRISMA_QUERY_ENGINE_LIBRARY` in Variables (see below).
+
 ### 1. Prepare for Railway
 
 ```bash
@@ -184,10 +190,9 @@ SERPAPI_API_KEY=<your key>
 APP_BASE_URL=https://<your-railway-domain>.railway.app
 ADMIN_PASSWORD=<strong password>
 NODE_ENV=production
-PRISMA_QUERY_ENGINE_LIBRARY=/app/node_modules/.prisma/client/libquery_engine-debian-openssl-3.0.x.so.node
 ```
 
-The last variable forces Prisma to use the OpenSSL 3 engine on Railway (Nixpacks); without it you may see "Query Engine for runtime debian-openssl-1.1.x" errors.
+If you use **Nixpacks** instead of the Dockerfile, also add `PRISMA_QUERY_ENGINE_LIBRARY=/app/node_modules/.prisma/client/libquery_engine-debian-openssl-3.0.x.so.node` to avoid Prisma engine errors.
 
 ### 5. Deploy
 
@@ -208,7 +213,7 @@ railway run npx prisma db seed
 |----------|-------------|---------|
 | `DATABASE_URL` | PostgreSQL connection string | `postgresql://user:pass@host/db` |
 | `NODE_ENV` | Environment (`development` or `production`) | `production` |
-| `PRISMA_QUERY_ENGINE_LIBRARY` | Prisma engine path (Railway/Nixpacks; avoids 1.1.x error) | `/app/node_modules/.prisma/client/libquery_engine-debian-openssl-3.0.x.so.node` |
+| `PRISMA_QUERY_ENGINE_LIBRARY` | Prisma engine path (only if using Nixpacks on Railway) | `/app/node_modules/.prisma/client/libquery_engine-debian-openssl-3.0.x.so.node` |
 | `APP_BASE_URL` | Base URL of deployed app | `https://app.railway.app` |
 | `SERPAPI_API_KEY` | API key for SerpApi | (from serpapi.com) |
 | `ADMIN_PASSWORD` | Admin password (MVP auth) | (your strong password) |
