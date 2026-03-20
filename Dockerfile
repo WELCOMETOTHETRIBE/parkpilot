@@ -7,6 +7,8 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
+# Next.js expects a public/ dir for static assets; COPY in runner fails if it never existed in context
+RUN mkdir -p public
 # node:20-slim is Debian Bookworm (OpenSSL 3 only). Generate only 3.0.x engine so Prisma doesn't try to load 1.1.x.
 RUN sed -i 's/binaryTargets = .*/binaryTargets = ["debian-openssl-3.0.x"]/' prisma/schema.prisma && npx prisma generate
 RUN npm run build
