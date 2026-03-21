@@ -17,9 +17,10 @@ echo "-----------------------------------"
 echo "Testing: Search venue → Discover events → Find parking → Create opportunities"
 echo ""
 
+# sync:true waits for full discovery (slow); default API returns immediately in background without Redis
 DISCOVER_RESULT=$(curl -s -X POST "$BASE_URL/api/discover/venue" \
   -H "Content-Type: application/json" \
-  -d '{"venueName":"Madison Square Garden","city":"New York","state":"NY"}')
+  -d '{"venueName":"Madison Square Garden","city":"New York","state":"NY","sync":true}')
 
 if echo "$DISCOVER_RESULT" | jq -e '.success == true' > /dev/null; then
   VENUE_NAME=$(echo "$DISCOVER_RESULT" | jq -r '.venue.name')

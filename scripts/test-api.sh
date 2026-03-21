@@ -135,7 +135,7 @@ echo ""
 echo "11. Testing POST /api/discover/venue (full workflow)..."
 DISCOVER_RESULT=$(curl -s -X POST "$BASE_URL/api/discover/venue" \
   -H "Content-Type: application/json" \
-  -d '{"venueName":"Dodger Stadium","city":"Los Angeles","state":"CA"}')
+  -d '{"venueName":"Dodger Stadium","city":"Los Angeles","state":"CA","sync":true}')
 if echo "$DISCOVER_RESULT" | jq -e '.success == true' > /dev/null; then
   EVENTS_CREATED=$(echo "$DISCOVER_RESULT" | jq '.eventsCreated')
   VENUE_NAME=$(echo "$DISCOVER_RESULT" | jq -r '.venue.name')
